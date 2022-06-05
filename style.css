@@ -1,6 +1,88 @@
-.footer-content h3{
-    font-size: 2.1rem;
-    font-weight: 500;
-    text-transform: capitalize;
-    line-height: 3rem;
+/* =========================== LOGIN =============================== */
+html, body{
+    margin: 0;
+    padding: 0;
 }
+.header{
+    grid-area: header;
+}
+
+.footer{
+    grid-area: footer;
+}
+
+.login-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto .08fr ;
+    height: 100vh;
+    grid-template-areas: 
+    'logo input'
+    'footer footer';
+}
+
+                /*Form div - left div*/
+.login-input{
+    grid-area: input;
+    background-color: #000;
+}
+                /*Image - right div*/
+.login-logo{
+    grid-area: logo; 
+    background-color: #ddd;
+    text-align: center;
+}
+.login-logo img{
+    height: 200px;
+}
+/* =========================== HEADER =============================== */
+img#Logo{
+    max-width: 2%;
+    height: auto;
+    float: left;
+    padding: 5px 5px 0px 5px;
+}
+
+ul#navlist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(248, 248, 248);
+    text-align: right;
+  }     
+
+.navElement {
+    display: inline-block;
+}
+.navElement a{
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: -4px; 
+    padding: 16px 15px 17px 15px;
+}
+#btnExplore a{background-color: rgb(180, 180, 180);}
+#btnBecome a{background-color: rgb(196, 33, 33);}
+#btnLogin a{background-color: #ff9001;}
+#btnAbout a{color:white;background-color: rgb(0, 0, 0);}
+#btnUser a{color:white;background-color: #183040;text-transform: uppercase;}
+#btnLogout a{background-color: #ff9001;}
+
+#dropdown{
+    display: none;
+}
+/* =========================== FOOTER =============================== */
+.footer{
+    text-align: center;
+    color: rgb(255, 81, 0);
+    background-color: rgb(22, 22, 22);
+    padding: 15px;
+    font-size: 15px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    text-decoration: none;
+    align-self: center;
+}
+
