@@ -12,7 +12,7 @@
 <div class="login-container">
     <div class="login-input">
 
-        <form action="Backend/Login.php" method="post">
+        <form action="index.php" method="post">
                 <img src="Images/logo.png" class="login-logo2">
                 <div class="login-title">APADYAK</div>
                 <div class="login-text">Join us today!</div>
