@@ -3,7 +3,7 @@
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
-$dbName = "loginsystem";
+$dbName = "db_kapadyak";
 
 $connect = new mysqli($dbServername, $dbUsername, $dbPassword, $dbName);
 

@@ -10,39 +10,34 @@
 <body>
 <div class="">Enter the OTP Code</div>
     <div class="">
-        <form action="#" method="POST">
-        <div class="">
-        <label for="email_address" class="">Kindly check your email to redeem your code. The code is 6 numbers long.</label>
-        <div class="">
-            <input type="text" id="" class="" name="otp_code" required autofocus>
-        </div>
-        </div>
+        <form action="#" method="POST" name="verify">
+        <div class=""><label for="email_address" class="">Kindly check your email to redeem your code. The code is 6 numbers long.</label></div>  
+        <div class=""><input type="text" id="" class="" name="otp_code" required autofocus></div>
+        <div class=""><input type="submit" value="Verify" name="verify"></div>
         </form>
-        <div class="">
-            <input type="submit" value="Verify" name="verify">
-        </div>
     </div>    
 </div>
 </body>
 </html>
 <?php 
-    include('connection/connection.php');
+    include('connect/connection.php');
     if(isset($_POST["verify"])){
         $otp = $_SESSION['otp'];
-        $email_address = $_SESSION['email_address'];
+        $email = $_SESSION['mail'];
         $otp_code = $_POST['otp_code'];
 
         if($otp != $otp_code){
         ?>
         <script>
-            alert("Invalid OTP code");
+            alert("Invalid OTP code!");
         </script>
         <?php
         } else{
-        mysqli_query($connect, "UPDATE login SET status = 1 WHERE email_address = '$email_address'");
+        mysqli_query($connect, "UPDATE useraccount SET email_status = 1 WHERE email_address = '$email'");
         ?>
         <script>
             alert("<?php echo "You have successfully verified your account."?>");
+            window.location.replace('login.php');
         </script>
         <?php
         }
