@@ -17,8 +17,8 @@
                 <div class="login-title">APADYAK</div>
                 <div class="login-text">Join us today!</div>
 
-                <div><input class="login-textbox" type="text" name="emailUser" placeholder="Email"></div>
-                <div><input class="login-textbox" type="password" name="Password_TB" placeholder="Password"></div>
+                <div><input class="login-textbox" type="text" name="email" placeholder="Email"></div>
+                <div><input class="login-textbox" type="password" name="password" placeholder="Password"></div>
                 <div><input class="login-checkbox" type="checkbox"> Show Password</div>
                 <div><input class="login-button" type="submit" value="Sign in" class="logBtnSubmit"></div>
             <div class="login-create">
