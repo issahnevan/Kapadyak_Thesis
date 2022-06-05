@@ -13,16 +13,22 @@
         
     <div class="login-input">
         <form action="Backend/Login.php" method="post">
-                <div class="login-title">KAPADYAK</div>
-                <div>LOG IN</label></div>
-                <div>EMAIL</label></div>
-                <div><input type="text" name="emailUser" class=""></div>
-                <div><label class="">PASSWORD</label></div>
-                <div><input type="password" name="Password_TB" class=""></div>
-                <div><input type="submit" value="LOG IN" class="logBtnSubmit"></div>
+                <img src="Images/logo.png" class="login-logo2">
+                <div class="login-title">APADYAK</div>
+                <div class="login-text">Join us today!</div>
+
+                <div><input class="login-textbox" type="text" name="emailUser" placeholder="Email"></div>
+                <div><input class="login-textbox" type="password" name="Password_TB" placeholder="Password"></div>
+                <div><input class="login-checkbox" type="checkbox"> Show Password</div>
+                <div><input class="login-button" type="submit" value="LOG IN" class="logBtnSubmit"></div>
+            <div class="login-create">
+            Don't have an account?
+            <a href="user_register.php">Create an Account</a>
+        </div>
         </form>
-        <div><a href="user_register.php">Create an Account</a></div>
+      
     </div>
+
     <div class="login-logo">
         <img src="Images/logo.png">
     </div>
