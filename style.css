@@ -14,7 +14,7 @@ html, body{
 .login-container{
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr .9fr;
     grid-template-rows: auto .08fr ;
     height: 100vh;
     grid-template-areas: 
@@ -26,10 +26,10 @@ html, body{
 .login-input{
     grid-area: input;
     background-color: rgb(255, 255, 255);
-    font-family:sans-serif;
-    /* display: flex;
+    font-family:'Arial';
+    display: flex;
     align-items: center;
-    justify-content: center; */
+    justify-content: center;
 
 }
                 /*Image - right div*/
@@ -45,11 +45,66 @@ html, body{
     height: 400px;
 }
 
-.login-title{
-    font-size: 40px;
-    text-align: left;
-    margin: 40px;
+.login-logo2{
+    height: 80px;
+    margin: 0 0 -33px -20px;
+    z-index: 1;
 }
+
+.login-title{
+    font-size: 70px;
+    text-align: right;
+    font-family:'Arial Black';
+    margin: -50px 0 0 40px;
+
+}
+
+.login-text{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 0 40px 0;
+    text-align: center;
+}
+
+.login-textbox{
+    font-size: 22px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid black;
+    border-radius: .3em;
+    padding: 10px 30px;
+    text-align: left;
+    margin: 20px 0 0 50px;
+}
+
+.login-checkbox{
+    margin: 15px 0 0 60px;
+
+}
+
+.login-button{
+    padding: 15px 50px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin: 30px 0 0 130px;
+    background-color: rgba(252,176,69,1);
+}
+.login-button:hover{
+    transform: scale(1.1);
+    transition: transform 100ms ease-in;
+}
+
+.login-create{
+    margin-top: 50px;
+    font-size: 18px;
+    text-align: center;
+}
+.login-create a{
+    text-decoration: none;
+    color: rgb(185, 17, 17);
+}
+
 /* =========================== HEADER =============================== */
 img#Logo{
     max-width: 2%;
@@ -91,7 +146,7 @@ ul#navlist {
 /* =========================== FOOTER =============================== */
 .login-footer{
     text-align: center;
-    color: rgb(255, 81, 0);
+    color: #ddd;
     background-color: rgb(22, 22, 22);
     padding: 15px;
     font-size: 15px;
