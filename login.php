@@ -11,16 +11,7 @@
 <body>
 <div class="login-container">
     <div class="login-input">
-<<<<<<< HEAD
-        <form action="index.php" method="post">
-                <div class="login-title">KAPADYAK</div>
-                <div><label class="">LOG IN</label></div>
-                <div><label class="">EMAIL</label></div>
-                <div><input type="text" name="email" class=""></div>
-                <div><label class="">PASSWORD</label></div>
-                <div><input type="password" name="password" class=""></div>
-                <div><input type="submit" name="login" value="LOG IN" class=""></div>
-=======
+
         <form action="Backend/Login.php" method="post">
                 <img src="Images/logo.png" class="login-logo2">
                 <div class="login-title">APADYAK</div>
@@ -34,11 +25,8 @@
             Don't have an account?
             <a href="user_register.php">Create an Account</a>
         </div>
->>>>>>> f2a58c9a5f0ac4feb3ace8429b287de86afa6363
         </form>
-      
     </div>
-
     <div class="login-logo">
         <img src="Images/logo.png">
     </div>
