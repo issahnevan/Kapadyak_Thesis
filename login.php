@@ -12,13 +12,13 @@
 <div class="login-container">
         
     <div class="login-input">
-        <form action="Backend/Login.php" method="post">
+        <form action="index.php" method="post">
                 <div><label class="">LOG IN</label></div>
                 <div><label class="">EMAIL</label></div>
-                <div><input type="text" name="emailUser" class=""></div>
+                <div><input type="text" name="email" class=""></div>
                 <div><label class="">PASSWORD</label></div>
-                <div><input type="password" name="Password_TB" class=""></div>
-                <div><input type="submit" value="LOG IN" class="logBtnSubmit"></div>
+                <div><input type="password" name="password" class=""></div>
+                <div><input type="submit" name="login" value="LOG IN" class=""></div>
         </form>
         <div><a href="user_register.php">Create an Account</a></div>
     </div>
