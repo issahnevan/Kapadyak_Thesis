@@ -113,7 +113,7 @@
 </div> -->
 <div class="register-container">
         <div class="register-header">
-            <div class="register-HeaderTitle">Step 1 of 3</div>
+            <div class="register-HeaderTitle">Create Your Account</div>
         </div>
 
         <div class="register-content">
@@ -122,11 +122,11 @@
                <form action="#" method="post" enctype = "multipart/form-data">
             <div id="register-layer1">
                <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
-               <div class="Layer-Title">Create Your Account </div>
+               <div class="Layer-Title">Step 1 of 3</div>
                <div class="Layer-div1">
                        <div class="div-input"><input type="email" id="Email" name="email_address" placeholder="Email" required></div>
                        <div class="div-input"><input type="text"  id="Username" name="username" placeholder="Username"required></div>
-                       <div class="div-input"><input type="password" id="Password" name="Password" placeholder="Password" required></div>
+                       <div class="div-input"><input type="password" id="Password" name="password" placeholder="Password" required></div>
                        <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" required></div>
                 </div>
    
@@ -149,6 +149,9 @@
                </div>
             </div>
             <div class="nextBtn"><button onclick="displayNext()" id="Next"> Continue &#8594 </button></div>
+            <input type="checkbox" id="checkboxAccept" required>
+            <label for="checkboxAccept">Accept Terms and Condition</label>
+            <div class="Layer4Btn"><button type="submit" name="register">Sign Up</button></div>
         </div>
 </div>
 

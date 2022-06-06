@@ -117,8 +117,7 @@ html, body{
 .register-header{
     grid-area: regHeader;
     height:auto;
-    padding: 20px;
-    line-height: 20px;
+    padding: 15px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: rgb(255, 255, 255);
     background-color: rgb(22, 22, 22);
@@ -126,7 +125,7 @@ html, body{
 }
 .register-HeaderTitle{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .register-content{
@@ -162,7 +161,6 @@ html, body{
     justify-content: center;
 }
 
-/* Personal Information  */
 .Layer-Title{
     grid-area: LTitle;
     font-size: 17px;
