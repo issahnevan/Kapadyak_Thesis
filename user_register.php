@@ -61,7 +61,7 @@
                             }else{
                                 ?>
                                 <script>
-                                    alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
+                                    alert("<?php echo "Register Successfully, OTP sent to " . $email . ". Welcom to Kapadyak!"?>");
                                     window.location.replace('email_verification.php');
                                 </script>
                                 <?php
@@ -121,7 +121,7 @@
                <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
                <div class="Layer-Title">Step 1 of 3</div>
                <div class="Layer-div1">
-                       <div class="div-input"><input type="email" id="Email" name="email_address" placeholder="Email" required></div>
+                       <div class="div-input"><input type="email" id="Email" name="qwe" placeholder="Email" required></div>
                        <div class="div-input"><input type="text"  id="Username" name="username" placeholder="Username"required></div>
                        <div class="div-input"><input type="password" id="Password" name="password" placeholder="Password" required></div>
                        <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" required></div>
