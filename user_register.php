@@ -3,7 +3,7 @@
     include('connect/connection.php');
 
     if(isset($_POST["register"])){
-        $email = $_POST["qwe"];
+        $email = $_POST["email"];
         $username = $_POST["username"];
         $password = $_POST["password"];
         $confirm_password = $_POST["confirm_password"];
@@ -46,11 +46,11 @@
                     $mail->Password='Shunsuki_16';
     
                     $mail->setFrom('kapadyakofficial2022@gmail.com', 'OTP Verification');
-                    $mail->addAddress($_POST["qwe"]);
+                    $mail->addAddress($_POST["email"]);
     
                     $mail->isHTML(true);
                     $mail->Subject="Your verify code";
-                    $mail->Body="<p>Dear user, </p> <h3>Your verify OTP code is $otp <br></h3>;";
+                    $mail->Body="<p>Dear user, </p> <h3>Your verify OTP code is $otp <br></h3>";
     
                             if(!$mail->send()){
                                 ?>
@@ -82,46 +82,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
     <link rel="stylesheet" href="Style.css" type="text/css">
+    <script src="Scripts/layerDisplay.js"> </script>
     <title>Sign Up for Kapadyak</title>
 </head>
 <body>
-<!-- <div class="">
-    <div id="">
-        <div class="">Already have an account? <a href="login.php">Sign in</a></div>
-        <div class="">Create your account. Personal Information. </div>
-        <div class="">
-            <form action="#" method="post" name="register">
-                    <div class=""><input type="email" name="qwe" placeholder="Email" required></div>
-                    <div class=""><input type="text"  name="username" placeholder="Username" required></div>
-                    <div class=""><input type="password" name="password" placeholder="Password" required></div>
-                    <div class=""><input type="password" name="confirm_password" placeholder="Confirm Password" required></div>
-                    <div class=""><input type="text" name="first_name" id="" placeholder="First Name" required></div>
-                    <div class=""><input type="text" name="middle_name" id="" placeholder="Middle Name"required></div>
-                    <div class=""><input type="text" name="last_name" id="" placeholder="Last Name" required></div>
-                    <div class=""><input type="date" name="dob" placeholder="Birthdate" title="Birthday"></div>
-                    Gender: <input type="radio" name="sex" value="male">Male
-                    <input type="radio" name="sex" value="female">Female
-                    <div class=""><input type="text" name="contact_number" placeholder="Contact Number"></div>
-                    <div class=""><input type="text" name="address" placeholder="Address"></div>
-                    <div class=""><input type="submit" value="Continue" name="register">
-            </form>          
-        </div>
-    </div>
-</div> -->
+
 <div class="register-container">
         <div class="register-header">
             <div class="register-HeaderTitle">Create Your Account</div>
         </div>
 
         <div class="register-content">
+            
+        <form action="#" method="post" enctype = "multipart/form-data">
+        <div id="register-layer1" class="layer active">
                
-
-               <form action="#" method="post" enctype = "multipart/form-data">
-            <div id="register-layer1">
                <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
                <div class="Layer-Title">Step 1 of 3</div>
                <div class="Layer-div1">
-                       <div class="div-input"><input type="email" id="Email" name="email_address" placeholder="Email" required></div>
+                       <div class="div-input"><input type="email" id="Email" name="email" placeholder="Email" required></div>
                        <div class="div-input"><input type="text"  id="Username" name="username" placeholder="Username"required></div>
                        <div class="div-input"><input type="password" id="Password" name="password" placeholder="Password" required></div>
                        <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" required></div>
@@ -145,10 +124,40 @@
                     </div>                
                </div>
             </div>
-            <div class="nextBtn"><button onclick="displayNext()" id="Next"> Continue &#8594 </button></div>
-            <input type="checkbox" id="checkboxAccept" required>
-            <label for="checkboxAccept">Accept Terms and Condition</label>
+
             <div class="Layer4Btn"><button type="submit" name="register">Sign Up</button></div>
+</form>
+           <div id="register-layer2" class="layer">
+                <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
+                <div class="Layer-Title">Step 2 of 3</div>
+                <div class="layer2-title">Enter the OTP Code</div>
+                    <div class="layer2-form">
+                        <form action="index.php" method="POST" name="verify">
+                        <div class="layer2-text"><label for="email_address" >Kindly check your email to redeem your code. The code is 6 numbers long.</label></div>  
+                        <div><input type="text" id="" class="layer2-otp" name="otp_code" required autofocus></div>
+                     </form>
+                    </div>
+                    <?php include('email_verification.php'); ?>    
+            </div>
+
+            <div id="register-layer3" class="layer">
+                <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
+                <div class="Layer-Title">Step 3 of 3</div>
+                <div class="layer3-title">By signing up, you agree to the Terms of Service and Privacy Policy</div>
+                    <div class="layer3-text">I agree to the collection and use of the data that I have provided to Kapadyak 
+                    through this registration form for the use of this website. 
+                    I understand that the collection and use of this data, which may include personal 
+                    information and sensitive personal information, shall be in accordance with the 
+                    Data Privacy Act of 2012 and the Privacy Policy of Kapadyak.
+                    <div><input type="checkbox" id="checkboxAccept" required>
+                        <label for="checkboxAccept">Accept Terms and Condition</label>
+                    </div>
+                    </div>
+
+            </div>
+            <div class="nextBtn"><button onclick="displayNext()" id="Next"> Continue &#8594 </button></div>
+      
+
         </div>
 </div>
 

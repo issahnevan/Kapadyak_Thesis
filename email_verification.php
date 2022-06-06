@@ -1,26 +1,3 @@
-<?php session_start() ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
-    <link rel="stylesheet" href="Style.css" type="text/css">
-    <title>Verify your Account</title>
-</head>
-<body>
-<div class="">Enter the OTP Code</div>
-    <div class="">
-        <form action="#" method="POST" name="verify">
-        <div class=""><label for="email_address" class="">Kindly check your email to redeem your code. The code is 6 numbers long.</label></div>  
-        <div class=""><input type="text" id="" class="" name="otp_code" required autofocus></div>
-        <div class=""><input type="submit" value="Verify" name="verify"></div>
-        </form>
-    </div>    
-</div>
-</body>
-</html>
 <?php 
     include('connect/connection.php');
     if(isset($_POST["verify"])){
@@ -43,7 +20,6 @@
         </script>
         <?php
         }
-
     }
 
 ?>
