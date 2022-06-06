@@ -94,9 +94,10 @@
     <div class="login-logo">
         <img src="Images/logo.png">
     </div>
+
     <div class="footer">
-        <div class="login-footer">&#169; 2022 Kapadyak, All Rights Reserved.</div>
-    </div> 
+        <?php include_once('Includes/Footer.php')?>
+    </div>
 </div>
 
 </body>

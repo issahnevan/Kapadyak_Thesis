@@ -85,7 +85,7 @@
     <title>Sign Up for Kapadyak</title>
 </head>
 <body>
-<div class="">
+<!-- <div class="">
     <div id="">
         <div class="">Already have an account? <a href="login.php">Sign in</a></div>
         <div class="">Create your account. Personal Information. </div>
@@ -107,6 +107,50 @@
             </form>          
         </div>
     </div>
+</div> -->
+<div class="register-container">
+        <div class="register-header">
+            <div class="register-HeaderTitle">Create Your Account</div>
+        </div>
+
+        <div class="register-content">
+               
+
+               <form action="#" method="post" enctype = "multipart/form-data">
+            <div id="register-layer1">
+               <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
+               <div class="Layer-Title">Step 1 of 3</div>
+               <div class="Layer-div1">
+                       <div class="div-input"><input type="email" id="Email" name="email_address" placeholder="Email" required></div>
+                       <div class="div-input"><input type="text"  id="Username" name="username" placeholder="Username"required></div>
+                       <div class="div-input"><input type="password" id="Password" name="password" placeholder="Password" required></div>
+                       <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" required></div>
+                </div>
+   
+               <div class="Layer-div2">
+                   <div class="div-input2">
+                       <input type="text" name="first_name" id="Fname" placeholder="First Name" required> 
+                       <input type="text" name="middle_name" id="Mname" placeholder="Middle Name"required>
+                       <input type="text" name="last_name" id="Lname" placeholder="Last Name" required></div> 
+                    <div class="div-input2">
+                       <input type="text" name="contact_number" placeholder="Contact Number">
+                       <input type="text" name="address" placeholder="Address"></div> 
+                    <div class="div-input2">
+                       <input type="date" name="dob" placeholder="Birthday" title="Birthday">
+                       <select name="sex">
+                           <option value="" disabled selected hidden> GENDER </option> 
+                           <option value="male"> Male </option>
+                           <option value="female"> Female </option>
+                       </select>
+                    </div>                
+               </div>
+            </div>
+            <div class="nextBtn"><button onclick="displayNext()" id="Next"> Continue &#8594 </button></div>
+            <input type="checkbox" id="checkboxAccept" required>
+            <label for="checkboxAccept">Accept Terms and Condition</label>
+            <div class="Layer4Btn"><button type="submit" name="register">Sign Up</button></div>
+        </div>
 </div>
+
 </body>
 </html>
