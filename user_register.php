@@ -3,7 +3,7 @@
     include('connect/connection.php');
 
     if(isset($_POST["register"])){
-        $email = $_POST["email_address"];
+        $email = $_POST["qwe"];
         $username = $_POST["username"];
         $password = $_POST["password"];
         $confirm_password = $_POST["confirm_password"];
@@ -28,8 +28,7 @@
             }else{
                 $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-                $result = mysqli_query($connect, "INSERT INTO useraccount (email_address, username, password, confirm_password, first_name, middle_name, last_name, dob, sex, contact_number, address, email_status) VALUES ('$email', '$username', '$password_hash', '$confirm_password', '$first_name', '$middle_name', '$last_name', '$dob', '$sex', '$contact_number', '$address', 0)");
-    
+                $result = mysqli_query($connect, "INSERT INTO useraccount (email_address, username, password, confirm_password, first_name, middle_name, last_name, dob, sex, contact_number, address, email_status) VALUES ('$email', '$username', '$password_hash', '$confirm_password', '$first_name', '$middle_name', '$last_name', '$dob', '$sex', '$contact_number', '$address', 0)");    
                 if($result){
                     $otp = rand(100000,999999);
                     $_SESSION['otp'] = $otp;
@@ -43,18 +42,15 @@
                     $mail->SMTPAuth=true;
                     $mail->SMTPSecure='tls';
     
-                    $mail->Username='kapadyakofficial2022@gmail.com';
-                    $mail->Password='kapadyakkapadyak';
+                    $mail->Username='shunsuki1216@gmail.com';
+                    $mail->Password='Shunsuki_16';
     
-                    $mail->setFrom('kapadyakofficial2022@gmail.com', 'Email Verification using OTP');
-                    $mail->addAddress($_POST["email_address"]);
+                    $mail->setFrom('kapadyakofficial2022@gmail.com', 'OTP Verification');
+                    $mail->addAddress($_POST["qwe"]);
     
                     $mail->isHTML(true);
-                    $mail->Subject="Verify your email!";
-                    $mail->Body="<p>We've sent an email to $email.</p><h3>Your OTP code is $otp<br></h3>
-                    <br><br>
-                    <p>Welcome to Kapadyak!</p>
-                    <b>-Kapadyak 2022</b>";
+                    $mail->Subject="Your verify code";
+                    $mail->Body="<p>Dear user, </p> <h3>Your verify OTP code is $otp <br></h3>;";
     
                             if(!$mail->send()){
                                 ?>
@@ -77,13 +73,14 @@
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
+     <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
     <link rel="stylesheet" href="Style.css" type="text/css">
     <title>Sign Up for Kapadyak</title>
 </head>
@@ -94,7 +91,7 @@
         <div class="">Create your account. Personal Information. </div>
         <div class="">
             <form action="#" method="post" name="register">
-                    <div class=""><input type="email" name="email_address" placeholder="Email" required></div>
+                    <div class=""><input type="email" name="qwe" placeholder="Email" required></div>
                     <div class=""><input type="text"  name="username" placeholder="Username" required></div>
                     <div class=""><input type="password" name="password" placeholder="Password" required></div>
                     <div class=""><input type="password" name="confirm_password" placeholder="Confirm Password" required></div>
