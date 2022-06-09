@@ -35,3 +35,18 @@ function displayThird(){
 function success(){
     alert("Registration Success! You may now login.");
 }
+
+function checkPassword(){
+    const pass = document.getElementById("Password");
+    const confirmpass = document.getElementById("ConfirmPassword");
+
+    var passval = document.getElementById("Password").value;
+    var confirmpassval = document.getElementById("ConfirmPassword").value;
+
+    if(passval!= "" && confirmpassval != ""){
+        if(passval != confirmpassval){
+            alert("Passwords does not have the same value!");
+            confirmpass.focus();
+        }
+    }
+}
