@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <?php
     include('connect/connection.php');
+
     if(isset($_POST["register"])){
         $email = $_POST["email"];
         $username = $_POST["username"];
@@ -40,12 +41,20 @@
                     $mail->Port=587;
                     $mail->SMTPAuth=true;
                     $mail->SMTPSecure='tls';
+<<<<<<< HEAD
 
                     $mail->Username = 'kapadyakofficial2022@gmail.com';
                     $mail->Password = 'werghdvqduyeudax';
 
                     $mail->setFrom('kapadyakofficial2022@gmail.com', 'Kapadyak');
 
+=======
+    
+                    $mail->Username='shunsuki1216@gmail.com';
+                    $mail->Password='Shunsuki_16';
+    
+                    $mail->setFrom('kapadyakofficial2022@gmail.com', 'OTP Verification');
+>>>>>>> parent of d714c42 (Create Account 100%)
                     $mail->addAddress($_POST["email"]);
     
                     $mail->isHTML(true);
@@ -62,16 +71,19 @@
                                 <?php
                             }else{
                                 ?>
-                                    <script src="Scripts/layerDisplay.js" type="text/javascript"> </script>
                                 <script>
+<<<<<<< HEAD
 
                                     alert("<?php echo "You have successfully registered, OTP sent to " . $email . "."?>");
                                     window.onload = function() {
                                     displaySecond();
                                     }
 
+=======
+                                    alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
+                                    window.location.replace('email_verification.php');
+>>>>>>> parent of d714c42 (Create Account 100%)
                                 </script>
-                                
                                 <?php
                             }
                 }
@@ -88,9 +100,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
+     <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
     <link rel="stylesheet" href="Style.css" type="text/css">
-    <script src="Scripts/layerDisplay.js" type="text/javascript"> </script>
+    <script src="Scripts/layerDisplay.js"> </script>
     <title>Sign Up for Kapadyak</title>
 </head>
 <body>
@@ -100,13 +112,14 @@
             <div class="">Create Your Account</div>
         </div>
 
-    <div class="register-content">
+        <div class="register-content">
             
-            <div id="register-layer1">
+        <form action="#" method="post" enctype = "multipart/form-data">
+        <div id="register-layer1" class="layer active">
+               
                <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
                <div class="Layer-Title">Step 1 of 3</div>
                <div class="Layer-div1">
-               <form action="#" method="POST">
                        <div class="div-input"><input type="email" id="Email" name="email" placeholder="Email" required></div>
                        <div class="div-input"><input type="text"  id="Username" name="username" placeholder="Username"required></div>
                        <div class="div-input"><input type="password" id="Password" name="password" placeholder="Password" required></div>
@@ -134,44 +147,59 @@
                </div>
             </div>
 
+<<<<<<< HEAD
             <div class="nextBtn" id="btnStep1"><input type="submit" value="Continue &#8594" name="register" class="Next"></div>
         </form> 
             <div id="register-layer2">
+=======
+            <div class="Layer4Btn"><button type="submit" name="register">Sign Up</button></div>
+</form>
+           <div id="register-layer2" class="layer">
+>>>>>>> parent of d714c42 (Create Account 100%)
                 <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
                 <div class="Layer-Title">Step 2 of 3</div>
                 <div class="layer2-title">Enter the OTP Code</div>
                     <div class="layer2-form">
-                        <form action="#" method="POST" name="verify">
+                        <form action="index.php" method="POST" name="verify">
                         <div class="layer2-text"><label for="email_address" >Kindly check your email to redeem your code. The code is 6 numbers long.</label></div>  
-                        <div><input type="text" id="" class="layer2-otp" name="otp_code" required></div>
-                        
+                        <div><input type="text" id="" class="layer2-otp" name="otp_code" required autofocus></div>
+                     </form>
                     </div>
                     <?php include('email_verification.php'); ?>    
             </div>
+<<<<<<< HEAD
             <div class="nextBtn" id="btnStep2"><input type="submit" value="Validate &#8594" name="verify" class="Next"></div>
             </form>
            
             <div id="register-layer3">
 
+=======
+
+            <div id="register-layer3" class="layer">
+>>>>>>> parent of d714c42 (Create Account 100%)
                 <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
                 <div class="Layer-Title">Step 3 of 3</div>
                 <div class="layer3-title">By signing up, you agree to the Terms of Service and Privacy Policy</div>
                     <div class="layer3-text">I agree to the collection and use of the data that I have provided to Kapadyak 
-                    through this registration form for the use of this website. <br/>
-                    I hereby give my explicit permission to the collection and use of this data, which may include personal 
+                    through this registration form for the use of this website. 
+                    I understand that the collection and use of this data, which may include personal 
                     information and sensitive personal information, shall be in accordance with the 
-                    Data Privacy Act of 2012 and the Privacy Policy of Kapadyak. <br/>
-                    I hereby give my persmission to contact me via email or other means with any notifications, reminders, 
-                    information related to the app.
-                    <form action="login.php" onsubmit="success()">
+                    Data Privacy Act of 2012 and the Privacy Policy of Kapadyak.
                     <div><input type="checkbox" id="checkboxAccept" required>
                         <label for="checkboxAccept">Accept Terms and Condition</label>
                     </div>
                     </div>
+
             </div>
+<<<<<<< HEAD
 
             <div class="nextBtn" id="btnStep3"><input type="submit" value="Sign Up" class="Next"></div>
         </form>
+=======
+            <div class="nextBtn"><button onclick="displayNext()" id="Next"> Continue &#8594 </button></div>
+      
+
+>>>>>>> parent of d714c42 (Create Account 100%)
         </div>
 
 </div>
