@@ -40,17 +40,20 @@
                     $mail->Port=587;
                     $mail->SMTPAuth=true;
                     $mail->SMTPSecure='tls';
-    
-                    $mail->Username='kapadyakofficial2022@gmail.com';
-                    $mail->Password='werghdvqduyeudax';
-    
-                    $mail->setFrom('kapadyakofficial2022@gmail.com', 'OTP Verification');
+
+                    $mail->Username = 'kapadyakofficial2022@gmail.com';
+                    $mail->Password = 'werghdvqduyeudax';
+
+                    $mail->setFrom('kapadyakofficial2022@gmail.com', 'Kapadyak');
+
                     $mail->addAddress($_POST["email"]);
     
                     $mail->isHTML(true);
-                    $mail->Subject="Your verify code";
-                    $mail->Body="<p>Dear user, </p> <h3>Your verify OTP code is $otp <br></h3>";
-    
+                    $mail->Subject="Email Verification Using OTP";
+                    $mail->Body="<p>We've sent an email to $email.</p><h3>Your OTP code is $otp.<br></h3>
+                    <br><br>
+                    <p>Welcome, $first_name $last_name!</p>
+                    <b>-Kapadyak 2022</b>";
                             if(!$mail->send()){
                                 ?>
                                     <script>
@@ -61,11 +64,12 @@
                                 ?>
                                     <script src="Scripts/layerDisplay.js" type="text/javascript"> </script>
                                 <script>
-                                    alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
+
+                                    alert("<?php echo "You have successfully registered, OTP sent to " . $email . "."?>");
                                     window.onload = function() {
                                     displaySecond();
                                     }
-                                    
+
                                 </script>
                                 
                                 <?php
@@ -91,9 +95,9 @@
 </head>
 <body>
 
-<div class="register-container">
-        <div class="register-header">
-            <div class="register-HeaderTitle">Create Your Account</div>
+<div class="">
+        <div class="">
+            <div class="">Create Your Account</div>
         </div>
 
     <div class="register-content">
@@ -109,24 +113,27 @@
                        <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" required></div>
                 </div>
    
-               <div class="Layer-div2">
-                   <div class="div-input2">
-                       <input type="text" name="first_name" id="Fname" placeholder="First Name" required> 
-                       <input type="text" name="middle_name" id="Mname" placeholder="Middle Name"required>
-                       <input type="text" name="last_name" id="Lname" placeholder="Last Name" required></div> 
-                    <div class="div-input2">
-                       <input type="text" name="contact_number" placeholder="Contact Number">
-                       <input type="text" name="address" placeholder="Address"></div> 
-                    <div class="div-input2">
-                       <input type="date" name="dob" placeholder="Birthday" title="Birthday">
-                       <select name="sex">
-                           <option value="" disabled selected hidden> GENDER </option> 
+               <div class="">
+                   <div class="">
+                       <input type="text" name="first_name" id="Fname" placeholder="First Name" required><br>
+                       <input type="text" name="middle_name" id="Mname" placeholder="Middle Name"required><br>
+                       <input type="text" name="last_name" id="Lname" placeholder="Last Name" required><br>
+                    <div class="">
+                    <input type="date" name="dob" placeholder="Birthday" title="Birthday"><BR>
+                    <select name="sex">
+                           <option value="" disabled selected hidden> SEX </option> 
                            <option value="male"> Male </option>
                            <option value="female"> Female </option>
-                       </select>
+                    </select><BR>
+                    <input type="text" name="contact_number" placeholder="Contact Number"><BR>
+                       <input type="text" name="address" placeholder="Address"></div> 
+                       <input type="submit" value="Register" name="register">
+                    <div class="">
+                       
                     </div>                
                </div>
             </div>
+
             <div class="nextBtn" id="btnStep1"><input type="submit" value="Continue &#8594" name="register" class="Next"></div>
         </form> 
             <div id="register-layer2">
@@ -145,6 +152,7 @@
             </form>
            
             <div id="register-layer3">
+
                 <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
                 <div class="Layer-Title">Step 3 of 3</div>
                 <div class="layer3-title">By signing up, you agree to the Terms of Service and Privacy Policy</div>
@@ -161,9 +169,11 @@
                     </div>
                     </div>
             </div>
+
             <div class="nextBtn" id="btnStep3"><input type="submit" value="Sign Up" class="Next"></div>
         </form>
         </div>
+
 </div>
 
 </body>

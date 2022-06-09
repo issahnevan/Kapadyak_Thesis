@@ -7,6 +7,7 @@ $dbName = "db_kapadyak";
 
 $connect = new mysqli($dbServername, $dbUsername, $dbPassword, $dbName);
 
+
 /*
 // Check connection
 if ($mysqli -> connect_error) {
