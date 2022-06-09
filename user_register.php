@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <?php
     include('connect/connection.php');
+
     if(isset($_POST["register"])){
         $email = $_POST["email"];
         $username = $_POST["username"];
@@ -45,6 +46,7 @@
                     $mail->Password='werghdvqduyeudax';
     
                     $mail->setFrom('kapadyakofficial2022@gmail.com', 'OTP Verification');
+
                     $mail->addAddress($_POST["email"]);
     
                     $mail->isHTML(true);
@@ -59,15 +61,12 @@
                                 <?php
                             }else{
                                 ?>
-                                    <script src="Scripts/layerDisplay.js" type="text/javascript"> </script>
                                 <script>
                                     alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
                                     window.onload = function() {
                                     displaySecond();
-                                    }
-                                    
+                                    } 
                                 </script>
-                                
                                 <?php
                             }
                 }

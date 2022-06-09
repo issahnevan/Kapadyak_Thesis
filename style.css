@@ -146,12 +146,21 @@ html, body{
     margin: 50px 150px 0 150px;
     grid-template-areas: 
     'LTitle already'
-    'Ldiv1 Ldiv2';
+    'Ldiv1 Ldiv2'
+    'next next';
+}
+
+.layer.active{
+    display: grid; /* if active */
+}
+
+.layer{
+     display: none; /* Default */
 }
 
 .Layer-div1{
     grid-area: Ldiv1;
-    margin: 40px 0px;
+    margin: 0px 0px;
     align-self: center;
     justify-self: center;
 }
@@ -187,7 +196,6 @@ html, body{
     color: rgb(255, 0, 0);
 }
 /* Textboxes*/
-
 .div-input> input,select{
     font-size: 15px;
     padding: 13px 18px;     
@@ -215,7 +223,7 @@ html, body{
 }
 
 #register-layer2{
-    display: none;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
     background-color: rgb(255, 255, 255);
@@ -227,7 +235,8 @@ html, body{
     grid-template-areas: 
     'LTitle already'
     'l2title l2title'
-    'l2form l2form';
+    'l2form l2form'
+    'next next';
 }
 
 .layer2-title{
@@ -255,7 +264,7 @@ html, body{
 }
 
 #register-layer3{
-    display: none;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
     background-color: rgb(255, 255, 255);
@@ -267,7 +276,8 @@ html, body{
     grid-template-areas: 
     'LTitle already'
     'l3title l3title'
-    'l3text l3text';
+    'l3text l3text'
+    'next next';
 }
 
 .layer3-title{
@@ -310,7 +320,7 @@ html, body{
     transform: scale(1.05);  
     transition: 100ms transform;
 }
-.Next{
+#Next{
     font-size: 20px;
     padding: 18px 50px;
     border: none;
@@ -318,9 +328,6 @@ html, body{
     cursor: pointer;
     background-color: rgb(49, 49, 49);
     color: white;
-}
-#btnStep2, #btnStep3{
-    display: none;
 }
 
 /* =========================== HEADER =============================== */
