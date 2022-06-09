@@ -84,7 +84,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
-    <link rel="stylesheet" href="Style.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css">
     <script src="Scripts/layerDisplay.js" type="text/javascript"> </script>
     <title>Sign Up for Kapadyak</title>
 </head>
