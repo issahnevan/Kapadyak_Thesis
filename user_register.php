@@ -1,6 +1,9 @@
 <?php session_start(); ?>
 <?php
     include('connect/connection.php');
+    ?>
+ 
+    <?php
 
     if(isset($_POST["register"])){
         $email = $_POST["email"];
@@ -22,6 +25,7 @@
             if($rowCount > 0){
                 ?>
                 <script>
+                    checkPassword();
                     alert("User with email already exist!");
                 </script>
                 <?php
@@ -105,7 +109,7 @@
                        <div class="div-input"><input type="email" id="Email" name="email" placeholder="Email" required></div>
                        <div class="div-input"><input type="text"  id="Username" name="username" placeholder="Username"required></div>
                        <div class="div-input"><input type="password" id="Password" name="password" placeholder="Password" required></div>
-                       <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" required></div>
+                       <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" onchange="checkPassword()" required></div>
                 </div>
    
                <div class="Layer-div2">
@@ -114,19 +118,19 @@
                        <input type="text" name="middle_name" id="Mname" placeholder="Middle Name"required>
                        <input type="text" name="last_name" id="Lname" placeholder="Last Name" required></div> 
                     <div class="div-input2">
-                       <input type="text" name="contact_number" placeholder="Contact Number">
-                       <input type="text" name="address" placeholder="Address"></div> 
+                       <input type="text" name="contact_number" placeholder="Contact Number" required>
+                       <input type="text" name="address" placeholder="Address" required></div> 
                     <div class="div-input2">
-                       <input type="date" name="dob" placeholder="Birthday" title="Birthday">
-                       <select name="sex">
-                           <option value="" disabled selected hidden> GENDER </option> 
+                       <input type="date" name="dob" placeholder="Birthday" title="Birthday" required>
+                       <select name="sex" required>
+                           <option value="" disabled selected hidden> SEX </option> 
                            <option value="male"> Male </option>
                            <option value="female"> Female </option>
                        </select>
                     </div>                
                </div>
             </div>
-            <div class="nextBtn" id="btnStep1"><input type="submit" value="Continue &#8594" name="register" class="Next"></div>
+            <div class="nextBtn" id="btnStep1"><input type="submit" value="Continue &#8594" name="register" class="Next" ></div>
         </form> 
             <div id="register-layer2">
                 <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
