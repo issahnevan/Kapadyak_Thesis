@@ -1,16 +1,17 @@
 <?php
+include("connect/connection.php");
 session_start();
-include('connect/connection.php');
 if (!isset($_SESSION['id'])){
-
+header('location:login.php');
 }
-$session_id = $_SESSION['id'];
-$query=mysqli_query($connect, "SELECT * FROM useraccount where user_ID ='$session_id'");
-$rowCount = mysqli_fetch_array($query);
+
+$id = $_SESSION['id'];
+
+$query=mysqli_query ($connect,"SELECT * FROM useraccount WHERE user_ID ='$id'");
+$rowCount=mysqli_fetch_array($query);
 $cover_picture=$rowCount['cover_picture'];
 $profile_picture=$rowCount['profile_picture'];
-$firstname=$rowCount['first_name'];
-$lastname=$rowCount['last_name'];
+$firstname=$rowCount['firstname'];
+$lastname=$rowCount['lastname'];
 $username=$rowCount['user_name'];
-
 ?>

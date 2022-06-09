@@ -42,16 +42,19 @@
                     $mail->SMTPAuth=true;
                     $mail->SMTPSecure='tls';
     
-                    $mail->Username='shunsuki1216@gmail.com';
-                    $mail->Password='Shunsuki_16';
-    
-                    $mail->setFrom('kapadyakofficial2022@gmail.com', 'OTP Verification');
+                
+                    $mail->Username = 'kapadyakofficial2022@gmail.com';
+                    $mail->Password = 'werghdvqduyeudax';
+
+                    $mail->setFrom('kapadyakofficial2022@gmail.com', 'Kapadyak');
                     $mail->addAddress($_POST["email"]);
     
                     $mail->isHTML(true);
-                    $mail->Subject="Your verify code";
-                    $mail->Body="<p>Dear user, </p> <h3>Your verify OTP code is $otp <br></h3>";
-    
+                    $mail->Subject="Email Verification Using OTP";
+                    $mail->Body="<p>We've sent an email to $email.</p><h3>Your OTP code is $otp.<br></h3>
+                    <br><br>
+                    <p>Welcome, $first_name $last_name!</p>
+                    <b>-Kapadyak 2022</b>";
                             if(!$mail->send()){
                                 ?>
                                     <script>
@@ -61,7 +64,7 @@
                             }else{
                                 ?>
                                 <script>
-                                    alert("<?php echo "Register Successfully, OTP sent to " . $email . ". Welcom to Kapadyak!"?>");
+                                    alert("<?php echo "You have successfully registered, OTP sent to " . $email . "."?>");
                                     window.location.replace('email_verification.php');
                                 </script>
                                 <?php
@@ -87,60 +90,51 @@
 </head>
 <body>
 
-<div class="register-container">
-        <div class="register-header">
-            <div class="register-HeaderTitle">Create Your Account</div>
+<div class="">
+        <div class="">
+            <div class="">Create Your Account</div>
         </div>
 
-        <div class="register-content">
+        <div class="">
             
-        <form action="#" method="post" enctype = "multipart/form-data">
-        <div id="register-layer1" class="layer active">
+        <form action="#" method="post" name="register" enctype = "multipart/form-data">
+        <div id="" class="layer active">
                
-               <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
-               <div class="Layer-Title">Step 1 of 3</div>
-               <div class="Layer-div1">
+               <div class="">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
+               <div class="">Step 1 of 3</div>
+               <div class="">
 
-                       <div class="div-input"><input type="email" id="Email" name="email" placeholder="Email" required></div>
-                       <div class="div-input"><input type="text"  id="Username" name="username" placeholder="Username"required></div>
-                       <div class="div-input"><input type="password" id="Password" name="password" placeholder="Password" required></div>
-                       <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" required></div>
+                       <div class=""><input type="email" id="Email" name="email" placeholder="Email" required></div>
+                       <div class=""><input type="text"  id="Username" name="username" placeholder="Username"required></div>
+                       <div class=""><input type="password" id="Password" name="password" placeholder="Password" required></div>
+                       <div class=""><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" required></div>
                 </div>
    
-               <div class="Layer-div2">
-                   <div class="div-input2">
-                       <input type="text" name="first_name" id="Fname" placeholder="First Name" required> 
-                       <input type="text" name="middle_name" id="Mname" placeholder="Middle Name"required>
-                       <input type="text" name="last_name" id="Lname" placeholder="Last Name" required></div> 
-                    <div class="div-input2">
-                       <input type="text" name="contact_number" placeholder="Contact Number">
-                       <input type="text" name="address" placeholder="Address"></div> 
-                    <div class="div-input2">
-                       <input type="date" name="dob" placeholder="Birthday" title="Birthday">
-                       <select name="sex">
-                           <option value="" disabled selected hidden> GENDER </option> 
+               <div class="">
+                   <div class="">
+                       <input type="text" name="first_name" id="Fname" placeholder="First Name" required><br>
+                       <input type="text" name="middle_name" id="Mname" placeholder="Middle Name"required><br>
+                       <input type="text" name="last_name" id="Lname" placeholder="Last Name" required><br>
+                    <div class="">
+                    <input type="date" name="dob" placeholder="Birthday" title="Birthday"><BR>
+                    <select name="sex">
+                           <option value="" disabled selected hidden> SEX </option> 
                            <option value="male"> Male </option>
                            <option value="female"> Female </option>
-                       </select>
+                    </select><BR>
+                    <input type="text" name="contact_number" placeholder="Contact Number"><BR>
+                       <input type="text" name="address" placeholder="Address"></div> 
+                       <input type="submit" value="Register" name="register">
+                    <div class="">
+                       
                     </div>                
                </div>
             </div>
 
-            <div class="Layer4Btn"><button type="submit" name="register">Sign Up</button></div>
+           
 </form>
-           <div id="register-layer2" class="layer">
-                <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
-                <div class="Layer-Title">Step 2 of 3</div>
-                <div class="layer2-title">Enter the OTP Code</div>
-                    <div class="layer2-form">
-                        <form action="index.php" method="POST" name="verify">
-                        <div class="layer2-text"><label for="email_address" >Kindly check your email to redeem your code. The code is 6 numbers long.</label></div>  
-                        <div><input type="text" id="" class="layer2-otp" name="otp_code" required autofocus></div>
-                     </form>
-                    </div>
-                    <?php include('email_verification.php'); ?>    
-            </div>
-
+           
+<!-- 
             <div id="register-layer3" class="layer">
                 <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
                 <div class="Layer-Title">Step 3 of 3</div>
@@ -156,10 +150,11 @@
                     </div>
 
             </div>
-            <div class="nextBtn"><button onclick="displayNext()" id="Next"> Continue &#8594 </button></div>
-      
+            <form action="email_verification.php" method="post" enctype = "multipart/form-data">
+            <div class="nextBtn"><button onclick="displayNext()" id="Next" name="verify"> Continue &#8594 </button></div>
 
-        </div>
+
+        </div> -->
 </div>
 
 </body>

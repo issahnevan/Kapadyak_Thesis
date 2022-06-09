@@ -1,211 +1,170 @@
-<?php
-function time_stamp($session_time) 
-{ 
- 
-$time_difference = time() - $session_time ; 
-$seconds = $time_difference ; 
-$minutes = round($time_difference / 60 );
-$hours = round($time_difference / 3600 ); 
-$days = round($time_difference / 86400 ); 
-$weeks = round($time_difference / 604800 ); 
-$months = round($time_difference / 2419200 ); 
-$years = round($time_difference / 29030400 ); 
-
-if($seconds <= 60)
-{
-echo"$seconds seconds ago"; 
+<?php 
+require 'connect/connection.php';
+session_start();
+// Check whether user is logged on or not
+if (isset($_SESSION['user_id'])) {
+    header("location:index.php");
 }
-else if($minutes <=60)
-{
-   if($minutes==1)
-   {
-     echo"one minute ago"; 
-    }
-   else
-   {
-   echo"$minutes minutes ago"; 
-   }
-}
-else if($hours <=24)
-{
-   if($hours==1)
-   {
-   echo"one hour ago";
-   }
-  else
-  {
-  echo"$hours hours ago";
-  }
-}
-else if($days <=7)
-{
-  if($days==1)
-   {
-   echo"one day ago";
-   }
-  else
-  {
-  echo"$days days ago";
-  }
-
-
-  
-}
-else if($weeks <=4)
-{
-  if($weeks==1)
-   {
-   echo"one week ago";
-   }
-  else
-  {
-  echo"$weeks weeks ago";
-  }
- }
-else if($months <=12)
-{
-   if($months==1)
-   {
-   echo"one month ago";
-   }
-  else
-  {
-  echo"$months months ago";
-  }
- 
-   
-}
-
-else
-{
-if($years==1)
-   {
-   echo"one year ago";
-   }
-  else
-  {
-  echo"$years years ago";
-  }
-
-}
- 
-} 
+$temp = $_SESSION['user_id'];
+session_destroy();
+session_start();
+$_SESSION['user_id'] = $temp;
+ob_start(); 
+// Establish Database Connection
 
 ?>
 
+<?php
+    include('connect/connection.php'); ?>
 
+	
 <!DOCTYPE html>
-<html>
-
-	<head>
-		<title>Welcome  To Biobook - Sign up, Log in, Post </title>
-		<link rel="stylesheet" type="text/css" href="css/home.css">
-	</head>
-
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home / Kapadyak</title>
+	<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+</head>
 <body>
-<?php include ('session.php');?>
-<?php include('connect/connection.php'); ?>
-	<div id="header">
-		<div class="head-view">
-			<ul>
-				<li><a href="home.php" title="Biobook"><b>biobook</b></a></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li><a href="timeline.php" title="<?php echo $username ?>"><label><?php echo $username ?></label></a></li>
-				<li><a href="home.php" title="Home"><label class="active">Home</label></a></li>
-				<li><a href="profile.php" title="Home"><label>Profile</label></a></li>
-				<li><a href="photos.php" title="Settings"><label>Photos</label></a></li>
-				<li><a href="logout.php" title="Log out"><button class="btn-sign-in" value="Log out">Log out</button></a></li>
-			</ul>
+    <div class="container">
+	<?php include 'navbar.php'; ?>
+        <br>
+        <div class="createpost">
+            <form method="post" action="" onsubmit="return validatePost()" enctype="multipart/form-data">
+                <h2>Make Post</h2>
+                <hr>
+                <span style="float:right; color:black">
+                <input type="checkbox" id="public" name="public">
+                <label for="public">Public</label>
+                </span>
+                Caption <span class="required" style="display:none;"> *You can't Leave the Caption Empty.</span><br>
+                <textarea rows="6" name="caption"></textarea>
+                <center><img src="" id="preview" style="max-width:580px; display:none;"></center>
+                <div class="createpostbuttons">
+                    <!--<form action="" method="post" enctype="multipart/form-data" id="imageform">-->
+                    <label>
+                        <img src="images/photo.png">
+                        <input type="file" name="fileUpload" id="imagefile">
+                        <!--<input type="submit" style="display:none;">-->
+                    </label>
+                    <input type="submit" value="Post" name="post">
+                    <!--</form>-->
+                </div>
+            </form>
+        </div>
+        <h1>News Feed</h1>
+		<?php 
+        // Public Posts Union Friends' Private Posts
+		
+		$sql = "SELECT newsfeed.post_caption, newsfeed.post_time, newsfeed.post_public, useraccount.first_name,
+		useraccount.last_name, useraccount.user_ID, useraccount.sex, newsfeed.post_id
+FROM newsfeed
+JOIN useraccount
+ON newsfeed.post_by = useraccount.user_ID
+WHERE newsfeed.post_public = 'Y' OR useraccount.user_ID = '{$_SESSION['user_id']}'
+
+UNION
+SELECT newsfeed.post_caption, newsfeed.post_time, newsfeed.post_public, useraccount.first_name,
+useraccount.last_name, useraccount.user_ID, useraccount.sex, newsfeed.post_id
+FROM newsfeed
+JOIN useraccount
+ON newsfeed.post_by = useraccount.user_ID
+JOIN (
+	SELECT friends.user_ID1 AS user_ID
+	FROM friends
+	WHERE friends.user_ID2 = '{$_SESSION['user_id']}' AND friends.friends_status = 1
+	UNION
+	SELECT friends.user_ID2 AS user_ID
+	FROM friends
+	WHERE friends.user_ID1 = '{$_SESSION['user_id']}' AND friends.friends_status = 1
+) useraccountfriends
+ON useraccountfriends.user_ID = newsfeed.post_by
+WHERE newsfeed.post_public = 'N'
+ORDER BY post_time DESC";
+
+        $query = mysqli_query($connect, $sql );
+        if(!$query){
+            echo mysqli_error($connect);
+        }
+        if(mysqli_num_rows($query) == 0){
+            echo '<div class="post">';
+            echo 'There are no posts yet to show.';
+            echo '</div>';
+        }
+        else{
+            $width = '40px'; // Profile Image Dimensions
+            $height = '40px';
+            while($rowCount = mysqli_fetch_assoc($query)){
+                include 'post.php';
+                echo '<br>';
+            }
+			
+        }
+        ?>   <br><br><br>
 		</div>
-	</div>
-
-
-  			
-    
-
-   
-    <body>
-
-	<div id="container">
+		<script src="resources/js/jquery.js"></script>
+		<script>
+			// Invoke preview when an image file is choosen.
+			$(document).ready(function(){
+				$('#imagefile').change(function(){
+					preview(this);
+				});
+			});
+			// Preview function
+			function preview(input){
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function (event){
+						$('#preview').attr('src', event.target.result);
+						$('#preview').css('display', 'initial');
+					}
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+			// Form Validation
+			function validatePost(){
+				var required = document.getElementsByClassName("required");
+				var caption = document.getElementsByTagName("textarea")[0].value;
+				required[0].style.display = "none";
+				if(caption == ""){
+					required[0].style.display = "initial";
+					return false;
+				}
+				return true;
+			}
+		</script>
+	</body>
+	</html>
 	
-	<div id="left-nav">
-			
-			<div class="clip1">
-
-			<a href="updatephoto.php" title="Change Profile Picture"><img src="<?php echo $row['profile_picture'] ?>"></a>
-			</div>
-			
-			<div class="user-details">
-				<h3><?php echo $firstname ?>&nbsp;<?php echo $lastname ?></h3>
-				<h2><?php echo $username ?></h2>
-			</div>
-	</div>
-	
-	
-	
-	<div id="right-nav">
-		<h1>Update Status</h1>
-<div>
-		<form method="post" action="post.php" enctype="multipart/form-data">
-			<textarea placeholder="Whats on your mind?" name="content" class="post-text" required></textarea>
-			<input type="file" name="image">
-			<button class="btn-share" name="Submit" value="Log out">Share</button>
-		</form>
-</div>
-
-	</div>
 	<?php
-	include("connect/connection.php");
-			$query=mySQLi_query($connect,"SELECT * from useraccount where user_ID = '$id' order by user_ID DESC");
-			while($row=mySQLi_fetch_array($query)){
-				$id = $row['user_ID'];
-?>	
-<div id="left-nav1">
-			<h2>Personal Info</h2>
-			<table>
-				<tr>
-					<td><label>Username</label></td>
-					<td width="20"></td>
-					<td><b><?php echo $row['username']; ?></b></td>
-				</tr>
-				<tr>
-					<td><label>Birthday</label></td>
-					<td width="20"></td>
-					<td><b><?php echo $row['birthday']; ?></b></td>
-				</tr>
-				<tr>
-					<td><label>Gender</label></td>
-					<td width="20"></td>
-					<td><b><?php echo $row['gender']; ?></b></td>
-				</tr>
-				<tr>
-					<td><label>Contact</label></td>
-					<td width="20"></td>
-					<td><b><?php echo $row['number']; ?></b></td>
-				</tr>
-				<tr>
-					<td><label>Email</label></td>
-					<td width="20"></td>
-					<td><b><?php echo $row['email']; ?></b></td>
-				</tr>
-				<tr>
-					<td><label>Image</label></td>
-					<td width="20"></td>
-					<td><img src="<?php echo $row['profile_picture']; ?>"></td>
-				</tr>
-			</table>
-		</div>
-<?php
-}
-?>
-				
-                                                                                
-
-        
-    </body>
+	if($_SERVER['REQUEST_METHOD'] == 'POST') { // Form is Posted
+		// Assign Variables
+		$caption = $_POST['caption'];
+		if(isset($_POST['public'])) {
+			$public = "Y";
+		} else {
+			$public = "N";
+		}
+		$poster = $_SESSION['user_id'];
+		// Apply Insertion Query
+		$sql = "INSERT INTO newsfeed (post_caption, post_public, post_time, post_by) 
+		VALUES ('$caption', '$public', NOW(), '$poster')";
+		$query = mysqli_query($connect, $sql);
+		// Action on Successful Query
+		if($query){
+			// Upload Post Image If a file was choosen
+			if (!empty($_FILES['fileUpload']['name'])) {
+				echo 'FUUUQ';
+				// Retrieve Post ID
+				$last_id = mysqli_insert_id($connnect);
+				include 'functions/upload.php';
+			}
+			header("location: home.php");
+		}
+	}
+	?>
+	
+</body>
 </html>

@@ -1,3 +1,13 @@
+<?php 
+require 'connect/connection.php';
+session_start();
+if (isset($_SESSION['user_id'])) {
+    header("location:index.php");
+}
+session_destroy();
+session_start();
+ob_start(); 
+?>
 <?php
     include('connect/connection.php');
 
@@ -32,7 +42,7 @@
                
                    
                         <script>
-                                    alert("<?php echo "You have logged in successfully, " . $email . ". Welcome to Kapadyak!"?>");
+                                    alert("<?php echo "Welcome to Kapadyak, " . $email . "!"?>");
                                     window.location.replace('index.php');
                                 </script>
              
