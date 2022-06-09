@@ -1,15 +1,37 @@
-function displayNext() {
-    var layer1 = document.getElementById("register-layer1");
-    var layer2 = document.getElementById("register-layer2");
-    
-    var layer1_display = window.getComputedStyle(layer1).display;
-    var layer2_display = window.getComputedStyle(layer2).display;
+function displaySecond() {
+    const layer1 = document.getElementById("register-layer1");
+    const layer2 = document.getElementById("register-layer2");
+    const layer3 = document.getElementById("register-layer3");
+    const btn1 = document.getElementById("btnStep1");
+    const btn2 = document.getElementById("btnStep2");
+    const btn3 = document.getElementById("btnStep3");
 
-    if(layer1_display != "none" && layer2_display == "none"){
-        layer1.style.display = "none";
-        layer2.style.display = "grid";
-    } else if(layer1_display == "none" && layer2_display != "none"){
-        layer1.style.display = "grid";
-        layer2.style.display = "none";
-    }
+    layer1.style.display = "none";
+    layer2.style.display = "grid";
+    layer3.style.display = "none";
+
+    btn1.style.display = "none";
+    btn2.style.display = "block";
+    btn3.style.display = "none";
   }
+
+function displayThird(){
+    const layer1 = document.getElementById("register-layer1");
+    const layer2 = document.getElementById("register-layer2");
+    const layer3 = document.getElementById("register-layer3");
+    const btn1 = document.getElementById("btnStep1");
+    const btn2 = document.getElementById("btnStep2");
+    const btn3 = document.getElementById("btnStep3");
+
+    layer1.style.display = "none";
+    layer2.style.display = "none";
+    layer3.style.display = "grid";
+
+    btn1.style.display = "none";
+    btn2.style.display = "none";
+    btn3.style.display = "block";
+}
+
+function success(){
+    alert("Registration Success! Proceed to Login");
+}
