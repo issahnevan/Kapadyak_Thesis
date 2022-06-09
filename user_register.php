@@ -109,8 +109,9 @@
                        <div class="div-input"><input type="email" id="Email" name="email" placeholder="Email" required></div>
                        <div class="div-input"><input type="text"  id="Username" name="username" placeholder="Username"required></div>
                        <div class="div-input"><input type="password" id="Password" name="password" placeholder="Password" required></div>
-                       <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" onchange="checkPassword()" required></div>
-                </div>
+                       <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" onblur="checkPassword()" required></div>
+                       <div class="div-inputCB"><input type="checkbox" onclick="showPassword()"> Show Password</div>
+                    </div>
    
                <div class="Layer-div2">
                    <div class="div-input2">

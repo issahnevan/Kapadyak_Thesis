@@ -46,7 +46,21 @@ function checkPassword(){
     if(passval!= "" && confirmpassval != ""){
         if(passval != confirmpassval){
             alert("Passwords does not have the same value!");
+            confirmpass.value = "";
             confirmpass.focus();
         }
+    }
+}
+
+function showPassword(){
+    var passval = document.getElementById("Password");
+    var confirmpassval = document.getElementById("ConfirmPassword");
+
+    if(passval.type === "password"){
+        passval.type = "text";
+        confirmpassval.type = "text";
+    } else {
+        passval.type = "password";
+        confirmpassval.type = "password";
     }
 }
