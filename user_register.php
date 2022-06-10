@@ -25,7 +25,6 @@
             if($rowCount > 0){
                 ?>
                 <script>
-                    checkPassword();
                     alert("User with email already exist!");
                 </script>
                 <?php

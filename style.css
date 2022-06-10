@@ -326,9 +326,9 @@ html, body{
 }
 
 /* =========================== HEADER =============================== */
-img#Logo{
-    max-width: 2%;
-    height: auto;
+.header-logo{
+    width: 100px;
+    height: 50px;
     float: left;
     padding: 5px 5px 0px 5px;
 }
