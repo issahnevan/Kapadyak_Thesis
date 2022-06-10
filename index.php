@@ -29,7 +29,7 @@ ob_start();
 </head>
 <body>
     <div class="container">
-	<?php include 'navbar.php'; ?>
+	<?php include 'Includes/Header.php'; ?>
         <br>
         <div class="createpost">
             <form method="post" action="" onsubmit="return validatePost()" enctype="multipart/form-data">

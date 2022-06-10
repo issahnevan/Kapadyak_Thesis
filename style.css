@@ -212,7 +212,10 @@ html, body{
 .div-input2 > select{
     width: 200px;
 }
-
+.div-inputCB > input{
+    margin: 10px 5px 0 20px;
+    color: rgb(58, 58, 58);
+}
 #register-layer2{
     display: none;
     grid-template-columns: 1fr 1fr;
@@ -323,9 +326,9 @@ html, body{
 }
 
 /* =========================== HEADER =============================== */
-img#Logo{
-    max-width: 2%;
-    height: auto;
+.header-logo{
+    width: 100px;
+    height: 50px;
     float: left;
     padding: 5px 5px 0px 5px;
 }

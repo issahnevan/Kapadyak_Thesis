@@ -25,7 +25,6 @@
             if($rowCount > 0){
                 ?>
                 <script>
-                    checkPassword();
                     alert("User with email already exist!");
                 </script>
                 <?php
@@ -46,17 +45,19 @@
                     $mail->SMTPAuth=true;
                     $mail->SMTPSecure='tls';
     
-                    $mail->Username='kapadyakofficial2022@gmail.com';
-                    $mail->Password='werghdvqduyeudax';
-    
-                    $mail->setFrom('kapadyakofficial2022@gmail.com', 'OTP Verification');
+                    $mail->Username = 'kapadyakofficial2022@gmail.com';
+                    $mail->Password = 'werghdvqduyeudax';
 
+                    $mail->setFrom('kapadyakofficial2022@gmail.com', 'Kapadyak');
                     $mail->addAddress($_POST["email"]);
     
                     $mail->isHTML(true);
-                    $mail->Subject="Your verify code";
-                    $mail->Body="<p>Dear user, </p> <h3>Your verify OTP code is $otp <br></h3>";
-    
+                    $mail->Subject="Email Verification Using OTP";
+                    $mail->Body="<p>We've sent an email to $email.</p><h3>Your OTP code is $otp.<br></h3>
+                    <br><br>
+                    <p>Welcome, $first_name $last_name!</p>
+                    <b>-Kapadyak 2022</b>";
+                    
                             if(!$mail->send()){
                                 ?>
                                     <script>
@@ -109,8 +110,9 @@
                        <div class="div-input"><input type="email" id="Email" name="email" placeholder="Email" required></div>
                        <div class="div-input"><input type="text"  id="Username" name="username" placeholder="Username"required></div>
                        <div class="div-input"><input type="password" id="Password" name="password" placeholder="Password" required></div>
-                       <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" onchange="checkPassword()" required></div>
-                </div>
+                       <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" onblur="checkPassword()" required></div>
+                       <div class="div-inputCB"><input type="checkbox" onclick="showPassword()"> Show Password</div>
+                    </div>
    
                <div class="Layer-div2">
                    <div class="div-input2">
