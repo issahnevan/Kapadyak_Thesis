@@ -1,5 +1,11 @@
 <div class="usernav">
+<?php
+        $sql2 = "SELECT COUNT(*) AS count FROM friends 
+                 WHERE friends.user_ID2 = '{$_SESSION['user_id']}' AND friends.friends_status = 0";
 
+        $query2 = mysqli_query($connect, $sql2);
+        $rowCount = mysqli_fetch_assoc($query2);
+    ?>
     <ul> <!-- Ensure there are no enter escape characters.-->
         <li><a href="requests.php">Friend Requests (<?php ['count'] ?>)</a></li><li><a href="profile.php">Profile</a></li><li><a href="friends.php">Friends</a></li><li><a href="home.php">Home</a></li><li><a href="logout.php">Log Out</a></li>
     </ul>
