@@ -150,7 +150,7 @@ ORDER BY post_time DESC";
 		$poster = $_SESSION['user_id'];
 		// Apply Insertion Query
 		$sql = "INSERT INTO newsfeed (post_caption, post_public, post_time, post_by) 
-		VALUES ('$caption', '$public', NOW(), '$poster')";
+		VALUES ('$caption', '$public', NOW(),'{$_SESSION['user_id']}')";
 		$query = mysqli_query($connect, $sql);
 		// Action on Successful Query
 		if($query){
