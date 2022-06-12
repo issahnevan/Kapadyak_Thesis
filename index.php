@@ -1,19 +1,22 @@
 
 <?php 
-// require 'connect/connection.php';
-// session_start();
-// // Check whether user is logged on or not
-// if (isset($_SESSION['user_id'])) {
-//     header("location:index.php");
-// }
-// $temp = $_SESSION['user_id'];
-// session_destroy();
-// session_start();
-// $_SESSION['user_id'] = $temp;
-// ob_start(); 
-// // Establish Database Connection
+session_start();
 
-// ?>
+if(!isset($_SESSION['SessionEmail'])){
+
+ header('location:login.php?=YouMustLoginFirst');
+ }
+
+// if(isset($_GET['data'])){
+
+//    $data= $_GET['data'];
+//    echo"<script> $data </script>";
+// }
+
+// if(isset($_SESSION['MailingAddress'])){
+//     $MailingAdd = $_SESSION["MailingAddress"];
+//     echo "<script> sessionStorage.setItem('MailingAddress','$MailingAdd');</script>";
+// }
 
 // if(isset( $_SESSION["AccountType"])){
 
@@ -22,6 +25,7 @@
 // }
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +40,17 @@
 </head>
 <body>
     <div class="container">
-	<?php include 'Includes/Sidebar.php'; ?>
+	<?php 
+
+  if(isset($_SESSION['SessionEmail'])){
+    include("Includes/Sidebar.php");
+     include("Includes/header.php");
+
+   }else{
+     header('location:login.php?=YouMustLoginFirst');
+   }
+
+   ?>
 
 </body>
 </html>
