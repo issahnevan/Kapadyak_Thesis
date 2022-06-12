@@ -1,11 +1,10 @@
 <?php 
 require 'connect/connection.php';
 session_start();
-if (isset($_SESSION['user_id'])) {
-    header("location:index.php");
+if (isset($_SESSION['user_ID'])) {
+
 }
-session_destroy();
-session_start();
+
 ob_start(); 
 ?>
 <?php
@@ -29,6 +28,15 @@ ob_start();
                 $fetch = mysqli_fetch_assoc($sql);
                 $hashpassword = $fetch["password"];
               
+            $_SESSION["SessionEmail"] = $fetch['email_address'] ;
+            $_SESSION["SessionUsername"] = $fetch['username'] ;
+            $_SESSION["SessionFirstname"] = $fetch['first_name'] ;
+            $_SESSION["SessionLastname"] = $fetch['last_name'] ;
+            // $_SESSION["AccountType"]= $fetch['AccountType'];
+            // $_SESSION["AccountLevel"] = $fetch['AccountLevel'];
+            // $_SESSION["TransactionsTableName"] = $fetch['TransactionsTableName'];
+            // $_SESSION["InboxTableName"] = $fetch['InboxTableName'];
+            // $_SESSION["MailingAddress"] = $fetch['FileMailingAddress'];
            
             
                  if($fetch["email_status"] == 0){
@@ -94,7 +102,7 @@ ob_start();
                 <div><input class="login-textbox" type="text" name="qwe" placeholder="Email"></div>
                 <div><input class="login-textbox" id="showpass"  type="password" name="password" placeholder="Password"></div>
                 <div><input class="login-checkbox" onclick="myFunction()" type="checkbox"> Show Password</div>
-                <div><input class="login-button" type="submit" name ="loginn" value="Sign In" class="logBtnSubmit"></div>
+                <div><input class="login-button" type="submit" name ="loginn" value="Log In" class="logBtnSubmit"></div>
             <div class="login-create">
             Don't have an account?
             <a href="user_register.php">Create an Account!</a>

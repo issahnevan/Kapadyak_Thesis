@@ -1,33 +1,30 @@
+<?php
+$session_Email = $_SESSION['SessionEmail'];
+$session_Username = $_SESSION['SessionUsername'];
+$session_Firstname = $_SESSION['SessionFirstname'];
+$session_Lastname = $_SESSION['SessionLastname'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home / Kapadyak</title>
 </head>
 <body>
-     <!-- Nav bar section -->
-            
-     <nav> 
-               <ul id = "navlist">
-                    <a href="index.php"><img id="Logo" src="Images/logo.png"></a>
 
-                    <li class= "navElement" id="btnExplore"> <a href = "ServicesOffered.php"> EXPLORE </a> </li>
-                        <li class= "navElement" id="btnBecome"> <a href = "BecomeAFreelancer.php"> BECOME A FREELANCER </a> </li>
-                        <li class= "navElement" id="btnLogin"> <a href = "Login_Index.php"> LOGIN </a> </li>
-                        <li class= "navElement" id="btnAbout"> <a href = "About.php"> ABOUT </a> </li>
-                        
-                    <div id="dropdown" class="navElement">
-                       <button class="btnDrop">&#9776;</button>
-                       <div class="dropdown-content">
-                        <li class= "dropElement" id="dropExplore"> <a href = "ServicesOffered.php"><span> EXPLORE </span></a> </li>
-                        <li class= "dropElement" id="dropBecome"> <a href = "BecomeAFreelancer.php"><span> BECOME A FREELANCER</span> </a> </li>
-                        <li class= "dropElement" id="dropLogin"> <a href = "Login_Index.php"><span> LOGIN </span></a> </li>
-                        <li class= "dropElement" id="dropAbout"> <a href = "About.php"><span style="color:white;">ABOUT </span></a> </li>
-                       </div>
-                    </div>
-                </ul>
-            </nav>
+<nav>
+    <ul id=""><a href="index.php"><img id="" src="Images/Logo.png"></a>
+        <li class="" id="" > <input type="text" id="" placeholder="Search Kapadyak" oninput="searchSuggestionResults()">
+        <div id=""></div>
+        </li>
+        <li class= "" ><input type="button" id="" onclick="showSearchBar()" ></li>
+        <li class="" id=""><a href="#"><?php echo "<h2>$session_Firstname ". "$session_Lastname</h2>";?></a></li>
+        <li class="" id=""><?php echo "<h2>$session_Username</h2>";?></p></li>
+        <li class="" id=""><a href="logout.php">Logout</a></li>
+    </ul>
+</nav>
 </body>
 </html>
