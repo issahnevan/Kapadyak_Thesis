@@ -1,22 +1,19 @@
-<?php
 
- session_start();
-
- if(!isset($_SESSION['SessionEmail'])){
-
-  header('location:login.php?=YouMustLoginFirst');
-  }
-
-if(isset($_GET['data'])){
-
-    $data= $_GET['data'];
-    echo"<script> $data </script>";
-}
-
-// if(isset($_SESSION['MailingAddress'])){
-//     $MailingAdd = $_SESSION["MailingAddress"];
-//     echo "<script> sessionStorage.setItem('MailingAddress','$MailingAdd');</script>";
+<?php 
+// require 'connect/connection.php';
+// session_start();
+// // Check whether user is logged on or not
+// if (isset($_SESSION['user_id'])) {
+//     header("location:index.php");
 // }
+// $temp = $_SESSION['user_id'];
+// session_destroy();
+// session_start();
+// $_SESSION['user_id'] = $temp;
+// ob_start(); 
+// // Establish Database Connection
+
+// ?>
 
 // if(isset( $_SESSION["AccountType"])){
 
@@ -32,17 +29,14 @@ if(isset($_GET['data'])){
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="ICON" type="image/x-icon" href="Images/logo.ico">
+	<link rel="stylesheet" type="text/css" href="resources/css/main.css">
 	<title>Home / Kapadyak</title>
-  <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
-  <link rel="stylesheet" href="Style.css" type="text/css">
 </head>
 <body>
-<?php
-   if(isset($_SESSION['SessionEmail'])){
-      include_once("includes/header.php");
-    }else{
-      header('location:login.php?=YouMustLoginFirst');
-    }
-  ?>
+    <div class="container">
+	<?php include 'Includes/Sidebar.php'; ?>
+
 </body>
 </html>

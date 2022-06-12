@@ -111,7 +111,8 @@
                        <div class="div-input"><input type="text"  id="Username" name="username" placeholder="Username"required></div>
                        <div class="div-input"><input type="password" id="Password" name="password" placeholder="Password" required></div>
                        <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" onblur="checkPassword()" required></div>
-                       <div class="div-inputCB"><input type="checkbox" onclick="showPassword()"> Show Password</div>
+                       <div class="div-inputCB"><input type="checkbox" onclick="showPassword()" id="check_1"> <label for="check_1">Show Password</label></div>
+                      
                     </div>
    
                <div class="Layer-div2">
@@ -125,7 +126,7 @@
                     <div class="div-input2">
                        <input type="date" name="dob" placeholder="Birthday" title="Birthday" required>
                        <select name="sex" required>
-                           <option value="" disabled selected hidden> SEX </option> 
+                            <option value="" disabled selected hidden> SEX </option> 
                            <option value="male"> Male </option>
                            <option value="female"> Female </option>
                        </select>
