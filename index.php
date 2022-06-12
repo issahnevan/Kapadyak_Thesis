@@ -15,14 +15,6 @@
 
 // ?>
 
-// if(isset( $_SESSION["AccountType"])){
-
-// $AccountType = $_SESSION["AccountType"];
-//     echo"<script> sessionStorage.setItem('AccountType','$AccountType')</script>";
-// }
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +29,6 @@
 <body>
     <div class="container">
 	<?php include 'Includes/Sidebar.php'; ?>
-
+	<?php include 'Includes/Header.php'; ?>
 </body>
 </html>
