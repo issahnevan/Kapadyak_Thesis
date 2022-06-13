@@ -88,9 +88,8 @@ ob_start();
     <title>Kapadyak - Log In or Sign up</title>
 </head>
 <body>
-    
-<div class="login-container">
 
+<div class="login-container">
     <div class="login-input">
 
          <form action="#" method="POST" name="loginn">
