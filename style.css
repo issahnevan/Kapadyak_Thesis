@@ -78,12 +78,11 @@ html, body{
 
 .login-checkbox{
     margin: 15px 0 0 60px;
-
 }
 
 .login-button{
     padding: 15px 50px;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
     border: none;
     cursor: pointer;
@@ -103,6 +102,7 @@ html, body{
 .login-create a{
     text-decoration: none;
     color: rgb(185, 17, 17);
+    font-size: 18px;
 }
 /* =========================== User Register =============================== */
 .register-container{
@@ -354,7 +354,7 @@ html, body{
 /* =========================== SIDEBAR =============================== */
 :root{
     font-size: 16px;
-    font-family: 'Open Sans', sans-serif;;
+    font-family: 'Open Sans', sans-serif;
     --text-primary: #b6b6b6;
     --text-secondary: #ececec;
     --text-red: rgb(255, 0, 0);
@@ -601,7 +601,7 @@ header{
 /* Username under Profile pic*/
 .header-links-username{
     font-size: 13px;
-    font-weight: bold;
+    font-weight: 600;
     text-transform: capitalize;
     cursor: pointer;
     color: var(--bg-secondary);
