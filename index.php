@@ -12,7 +12,20 @@ if (!isset($_SESSION['SessionEmail'])) {
 // ob_start(); 
 // // Establish Database Connection
 
-// ?>
+
+// if(isset($_SESSION['MailingAddress'])){
+//     $MailingAdd = $_SESSION["MailingAddress"];
+//     echo "<script> sessionStorage.setItem('MailingAddress','$MailingAdd');</script>";
+// }
+
+
+// if(isset( $_SESSION["AccountType"])){
+
+// $AccountType = $_SESSION["AccountType"];
+//     echo"<script> sessionStorage.setItem('AccountType','$AccountType')</script>";
+// }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,6 +65,7 @@ Maecenas consectetur enim nec imperdiet suscipit. Duis feugiat pretium ex, sed b
 Nulla efficitur auctor diam sed tincidunt. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec at accumsan leo, eu rutrum sapien. Nullam et euismod mi. Donec sodales quam lorem, eu ultricies nisi scelerisque sit amet. Mauris sit amet sollicitudin massa. Vivamus vulputate tellus ultrices ipsum malesuada consequat. Ut et egestas orci, at venenatis neque. Quisque dictum aliquet metus, quis fermentum purus consectetur eget. Nulla sit amet tortor ut arcu vehicula feugiat viverra vel sem. Phasellus convallis, justo et venenatis aliquam, sem massa convallis dolor, in lobortis eros diam vel nibh. Sed dictum lectus nunc, et vestibulum ligula tincidunt a.
 
 Nam at metus consectetur, tincidunt nunc eu, lobortis massa. Duis vitae sem risus. Quisque elementum blandit dignissim. Suspendisse dignissim, lacus in ullamcorper blandit, libero arcu luctus est, id blandit dolor nisl in enim. Vivamus fermentum posuere nisi vel tincidunt. Duis a facilisis arcu, sed porta mauris. Morbi pharetra a augue eu euismod. Quisque id risus nulla. Quisque ac ante nec mi rhoncus auctor. Phasellus facilisis, odio in molestie consequat, diam erat posuere ante, eget euismod nulla est sed augue. Morbi imperdiet pharetra neque, ac tincidunt magna porta quis.
+
 
 Nunc tincidunt, est eu mollis interdum, orci quam finibus enim, ac elementum arcu nibh vitae enim. Aliquam sagittis lectus magna, eu posuere enim sodales sed. Aliquam neque ex, eleifend sed felis eget, egestas luctus metus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer lacinia quam eu massa rhoncus, sed varius risus interdum. Morbi lacinia, odio a bibendum maximus, eros tellus posuere mauris, bibendum vehicula velit velit eget nisl. Sed at lobortis velit, at commodo dui. Mauris elementum dolor ac risus finibus, eget rhoncus risus porta.</p>
 		</div>

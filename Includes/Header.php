@@ -19,6 +19,7 @@ $session_Lastname = $_SESSION['SessionLastname'];
     <title>Home / Kapadyak</title>
 </head>
 <body>
+
     <header>
         <div class="header-logo" id="headerLogo ">
             <a href="#"><img src="Images/logo.png" ></a>
