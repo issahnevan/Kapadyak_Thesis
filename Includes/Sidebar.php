@@ -9,14 +9,23 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
         rel="stylesheet"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="application/javascript">
+        $(document).ready(function(){
+        $('nav ul li a').click(function(){
+            $('ul li a').removeClass("highlight");
+            $(this).addClass("highlight");
+        })
+        });
+    </script>
     <title>Sidebar</title>
 </head>
 <body>
     <nav class="navbar">
         <ul class="navbar-nav">
 <!-- Logo -->
-            <li class="logo noHover">
-                <a href="#" class="nav-link">
+            <li class="logo noHover noFilter">
+                <a href="#" class="nav-link ">
                 <span><img src="Images/logo.png" class="nav-logo"></span>
                 <span class="link-text logo-text">APADYAK</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
@@ -32,7 +41,7 @@
             </li>
 <!-- Newsfeed -->
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link highlight">
                 <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path
@@ -89,6 +98,26 @@
                 </g>
                 </svg>
                 <span class="link-text">Message</span>
+                </a>
+            </li>
+<!-- Status -->
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+                <g class="fa-group">
+                    <path
+                        fill="currentColor"
+                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+                        class="fa-primary"
+                    ></path>
+                    <path
+                        fill="currentColor"
+                        d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z"
+                        class="fa-secondary"
+                    ></path>
+                </g>
+                </svg>
+                <span class="link-text">Status</span>
                 </a>
             </li>
 <!-- Rental -->
