@@ -675,11 +675,13 @@ header{
 }
 
 .feed-card:hover .card-popup{
-    /* transform: scale(1.01) translateY(-3%); */
-    /* box-shadow: 0 0 3px 3px rgb(255, 94, 0); */
+
     bottom: 0;
 }
-    
+.feed-card:hover{
+    /* transform: scale(1.005) translateY(-3%);  */
+    box-shadow: 0 0 3px 3px rgb(255, 94, 0);
+}
 .card-popup{
     z-index: 1;
     position:absolute; 
@@ -697,9 +699,7 @@ header{
     transition: all 0.3s;
 }
 
-
 .card-popup > button{
-
     padding: 1.5em 3.5em;
     outline: none;
     border: none;
@@ -711,7 +711,6 @@ header{
     cursor: pointer;
     transition: 0.4s ease;
 }
-
 
 .feed-card-heading{
     width: 100%;
