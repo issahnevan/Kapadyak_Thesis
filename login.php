@@ -1,7 +1,7 @@
 <?php 
 require 'connect/connection.php';
 session_start();
-if (isset($_SESSION['user_ID'])) {
+if (isset($_SESSION['member_id'])) {
 
 }
 
@@ -21,7 +21,7 @@ ob_start();
             </script>
             <?php
         } else {
-        $sql = mysqli_query($connect, "SELECT * FROM useraccount where email_address = '$email'");
+        $sql = mysqli_query($connect, "SELECT * FROM members where email_address = '$email'");
         $count = mysqli_num_rows($sql);
 
             if($count > 0){
@@ -31,6 +31,7 @@ ob_start();
             $_SESSION["SessionEmail"] = $fetch['email_address'] ;
             $_SESSION["SessionUsername"] = $fetch['username'] ;
             $_SESSION["SessionFirstname"] = $fetch['first_name'] ;
+            $_SESSION["SessionMiddlename"] = $fetch['middle_name'] ;
             $_SESSION["SessionLastname"] = $fetch['last_name'] ;
             // $_SESSION["AccountType"]= $fetch['AccountType'];
             // $_SESSION["AccountLevel"] = $fetch['AccountLevel'];

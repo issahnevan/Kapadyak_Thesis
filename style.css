@@ -1,8 +1,9 @@
-html, body{
+html body{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+
 }
+
 .header{
     grid-area: header;
 }
@@ -341,6 +342,7 @@ html, body{
     grid-area: sidenav;
 }
 .index-header{
+    z-index: 5;
     grid-area: header2; 
     position: sticky;
     background-color: linear-gradient(270deg, rgba(199,13,13,1) 0%, rgba(218,100,17,1) 100%);
@@ -359,7 +361,7 @@ html, body{
     --text-secondary: #ececec;
     --text-red: rgb(255, 0, 0);
     --bg-primary: rgb(75, 75, 75);
-    --bg-secondary: #141418;
+    --bg-secondary: #1b1b1b;
     --gradient: linear-gradient(270deg, rgba(199,13,13,1) 0%, rgba(218,100,17,1) 100%);
     --transition-speed: 300ms;
 }
@@ -385,7 +387,7 @@ body::-webkit-scrollbar-thumb {
     position: sticky;
     top: 4em !important;
     background-color: var(--bg-secondary);
-    overflow: auto;
+    overflow: hidden;
     width: auto;
     height: 90vh;
     transition: width 200ms ease;
@@ -463,7 +465,8 @@ svg{
 }
 
 .fa-tertiary {
-    color: black;
+    color: #575757;
+    
 }
 
 .fa-primary,
@@ -482,7 +485,12 @@ svg{
     width: 100%;
 }
 
-
+.logo span{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* background-color: #fff; */
+}
 .logo svg {
     transform: rotate(0deg);
     transition: var(--transition-speed) ease;
@@ -491,17 +499,17 @@ svg{
 }
 
 .nav-logo{
-    width: 1.6rem;
+    width: 1.8rem;
     display: none;
-    margin:0 0 .4rem 2.5rem;
-
+    margin:0 0 0 3.5rem;
+    filter: none;
 }
 
 .logo-text{
     color: black;
     font-family: 'Arial black';
     font-weight: bolder;
-    font-size: 1.2em
+    font-size: 1.2em;
 }
 
 .navbar:hover .logo svg {
@@ -521,6 +529,7 @@ header > li, a, span, input{
 }
 
 header{
+
     height: 4rem;
     background-color: var(--text-secondary);
     display: flex;
@@ -528,22 +537,24 @@ header{
     justify-content: space-between;
     align-items: center;
 }
-.header-logo{
-
+.header-logo a{
+    display: flex;
+    align-items: center;
 }
 
 .header-logo > a >img{
-    width: 2rem;
-    margin:0 0 .4em 1.5em;
+    width: 1.9rem;
+    margin:-5px 0 0 1em;
 }
 
 .header-logo-text{
     font-size:20px;
     font-family: 'Arial black';
+    margin-left: 2px;
 }
 
 .header-search{
-    margin-left: 5em;
+
 }
 .search {
     display:flex;
@@ -642,6 +653,156 @@ header{
 .profile-menu li a:hover{
     background-color: #ddd;
 }
+
+/* =========================== Index Content =============================== */
+.feed-cards{
+    display: grid;
+    margin: 1rem 1.5rem;
+    padding: 5px;
+    grid-template-columns: repeat(3, minmax(250px, 1fr)); /* see notes below */
+    grid-auto-rows: minmax(240px, auto);
+    grid-gap: 2.5rem;
+    /* overflow: hidden; */
+    border-radius: 1em;
+}
+.feed-card{
+    font-size: 14px;
+    background-color: radial-gradient(#111 50%, #000 100%);
+    border-radius: 1em;
+    box-shadow: 0 0 0 .2px var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
+}
+
+.feed-card:hover .card-popup{
+    /* transform: scale(1.01) translateY(-3%); */
+    /* box-shadow: 0 0 3px 3px rgb(255, 94, 0); */
+    bottom: 0;
+}
+    
+.card-popup{
+    z-index: 1;
+    position:absolute; 
+    bottom: -100%;
+    left: 0;
+    height: 150px;
+    width: 100%;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: #fff;
+    background: rgb(217,102,14);
+    background: linear-gradient(0deg, rgba(217,102,14,.3) 0%, rgba(255,49,49,.3) 100%);
+    transition: all 0.3s;
+}
+
+
+.card-popup > button{
+
+    padding: 1.5em 3.5em;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background: white;
+    color: var(--bg-secondary);
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+
+.feed-card-heading{
+    width: 100%;
+    background-color: var(--bg-primary);
+    text-transform: capitalize;
+    color: white;
+    white-space: nowrap;
+    border-radius: .7em .7em 0 0;
+}
+
+.feed-card-heading table tr th {
+    width: 40px;
+}
+
+.feed-card-heading table, .feed-card-body table{
+    width: 100%;
+}
+
+.card-heading-name{
+    font-weight: bold;
+    font-size: 15px;
+}
+.card-heading-datetime{
+    font-size: 12px;
+    color: #ddd;
+}
+
+.card-heading-buttons{
+    width: 0;
+    place-items: center;
+}
+.card-heading-buttons svg{
+    width: 13px;
+    height: auto;
+}
+.card-heading-buttons a{
+    color: #ddd;
+    font-size: 14px;
+    display: flex;
+    place-items: center;
+    text-transform: capitalize;
+}
+
+.feed-card-body{
+   overflow: hidden;
+   border-radius: 0 0 .7em .7em ;
+   z-index: 0;
+}
+
+.card-body-header > ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 10px 0;
+    background: rgb(255, 255, 255);
+}
+
+.card-body-header > ul > li > svg{
+    width: 20px;
+    height: 20px;
+}
+.card-body-header > ul > li{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+.card-header-count{
+    font-size: 15px;
+}
+.card-body-header a{
+    font-size: 14px;
+    font-weight: bold;
+}
+.card-body-title{
+    z-index: 1;
+    word-wrap: break-word;
+    display: flex;
+    text-transform: uppercase;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    height: 150px;
+    font-size: 25px;    
+    letter-spacing: 2px;
+    font-family: 'Arial black';
+    background-color: rgb(241, 241, 241);
+}
+
 /* =========================== FOOTER =============================== */
 .footer{
     text-align: center;
