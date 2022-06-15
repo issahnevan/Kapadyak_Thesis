@@ -94,7 +94,7 @@ session_start();
    
               <div class="card-body-header"> 
                 <ul> 
-                  <li>
+                  <li title="Comments">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
                       <g class="fa-group">
                         <path
@@ -110,7 +110,7 @@ session_start();
                       (<font color="red"><?php  echo $post_row['threads']; ?></font>)
                     </span>
                   </li>
-                  <li>
+                  <li title="Views">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                       <g class="fa-group">
                         <path
@@ -130,7 +130,7 @@ session_start();
                   </span>
                   </li>
                   
-                  <li>
+                  <li title="Replies">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-reply-fill" viewBox="0 0 16 16">
                       <g class="fa-group">
                         <path
