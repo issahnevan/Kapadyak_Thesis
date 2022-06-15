@@ -12,7 +12,7 @@
         </script>
         <?php
         } else{
-        mysqli_query($connect, "UPDATE useraccount SET email_status = 1 WHERE email_address = '$email'");
+        mysqli_query($connect, "UPDATE members SET email_status = 1 WHERE email_address = '$email'");
         ?>
         <script>
             alert("<?php echo "You have successfully verified your account."?>");

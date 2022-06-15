@@ -22,8 +22,10 @@ $session_Lastname = $_SESSION['SessionLastname'];
 <body>
 
     <header>
-        <div class="header-logo" id="headerLogo ">
-            <a href="index.php"><img src="../Images/logo.png" ></a>
+        <div class="header-logo" id="headerLogo">
+            <a href="#"><img src="Images/logo.png" >
+                <span class="header-logo-text">APADYAK</span>
+            </a>
         </div>
         <div class="header-search">
             <div class="search">

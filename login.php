@@ -31,6 +31,7 @@ ob_start();
             $_SESSION["SessionEmail"] = $fetch['email_address'] ;
             $_SESSION["SessionUsername"] = $fetch['username'] ;
             $_SESSION["SessionFirstname"] = $fetch['first_name'] ;
+            $_SESSION["SessionMiddlename"] = $fetch['middle_name'] ;
             $_SESSION["SessionLastname"] = $fetch['last_name'] ;
             $_SESSION["id"] = $fetch['member_id'] ;
 
