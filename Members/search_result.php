@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+  <title>Search Results | Kapadyak</title>
+</head>
+<body>
+<div class="index-container">
+		<div class="index-sidenav">
+			<?php include '../Includes/Sidebar.php'; ?>
+		</div>
+
+		<div class="index-header">
+			<?php include '../Includes/Header.php'; ?>
+		</div>
+
+		<div class="index-content">
+			<?php include 'inbox_function.php'; ?>
+<?php
+ error_reporting(0);
+  include '../session.php';  
+  include '../dbcon.php';  
+  
+  ?> 
+  <br />
+  <br />
+  <center>
+  <table width="1000"><tr><td>
+	<div class="alert alert-info">
+    
+ 	<table width="1000" border="0">
+     <tr>
+ <td colspan="3">
+<font size="5"> Search Result for:  <?php echo $search=$_POST['search']; ?></font>
+ 
+ </td>
+ </tr>
+  <tr>
+  <td>Search Member Category</td>
+  <td></td>
+  <td>Search Topic Category</td>
+ </tr>
+	<tr>
+    <td>
+        <table>
+
+ <tr>
+ <td>
+ &nbsp;
+ </td>
+ </tr>
+	
+		<tr>
+        
+         <td  width="500">
+           
+           	<?php
+         
+		$query = $conn->query("select * from members where first_name like '%$search%' or last_name like '%$search%' or middle_name like '%$search%' or email_address like '%$search%' or address like '%$search%' or username like '%$search%'") or die(mysql_error());
+		while ($row = $query->fetch()) {
+		  
+		$id = $row['member_id'];
+      
+       
+      
+		?>
+        
+  
+         <table  width="230" border="0">
+        
+         <tr>
+        
+   <td rowspan="2"  ><img src="<?php echo $row['image']; ?>" width="40" height="40" class="img-square" /></td>
+    <td rowspan="2">&nbsp;</td>
+        	<td width="150"><?php echo $row['username']; ?> &nbsp; <a href="compose_msg.php?id=<?php echo $id;  ?>" title="click to send a message to <?php echo $row['first_name']." ".$row['middle_name']." ".$row['last_name']; ?>"><i class="fa fa-comment-o"></i></a></td> 
+ 
+	 <td  rowspan="2" width="5"><?php 
+            
+            if($row['status']=="active"){  
+                ?>
+            <img src="../images/active.png" width="12" height="12" alt="..." class="img-circle">
+                 <?php    
+            }
+            else
+            {
+                ?>
+                <img src="../images/inactive.png" width="12" height="12" alt="..." class="img-circle">
+             <?php    
+            }
+            
+             ?> </td> 
+ 
+	    
+		</tr>
+       
+        
+        <tr>
+        	<td colspan="2"><a href="view_profile.php?id=<?php echo $id; ?>"><?php echo $row['first_name']." ".$row['middle_name']." ".$row['last_name']; ?></a></td> 
+            
+            	 
+        </tr>
+       
+        
+         
+        	</table>
+                <hr />
+               <?php
+               }?>    
+        </td>
+        </tr>
+ 
+ 
+	 
+	</table>
+    </td>
+    
+    
+    
+    
+    
+     <td>&nbsp;</td>
+    
+    
+    
+    
+    
+    
+    <td>
+    
+    
+    
+    
+        <table>
+ 
+ <tr>
+ <td>
+ &nbsp;
+ </td>
+ </tr>
+	
+		<tr>
+  
+         <td  width="500">
+           
+           	<?php
+        
+		$topic_query = $conn->query("select * from post where post_content like '%$search%' or post_title like '%$search%' or topic like '%$search%'") or die(mysql_error());
+		while ($topic_row = $topic_query->fetch()) {
+		  
+		$topic_id = $topic_row['post_id'];
+      
+       
+      
+		?>
+        
+  
+         <table  width="500">
+       
+               <tr>
+        
+   <td>
+    Topic
+   
+   </td>
+   <td>&nbsp;</td>
+   <td>
+  Title
+   
+   </td>
+    <td>&nbsp;</td>
+   <td>
+      Contents
+   </td>
+    <td>&nbsp;</td>
+ <td> </td>
+	    
+		</tr>
+        
+         <tr>
+        
+   <td>
+     <textarea class="form-control" rows="3" readonly="true">  <?php echo $topic_row['topic'];?></textarea>
+   
+
+   
+   </td>
+   <td>&nbsp;</td>
+   <td>
+   <textarea class="form-control" rows="3" readonly="true">  <?php echo $topic_row['post_title'];?></textarea>
+   
+   
+   </td>
+    <td>&nbsp;</td>
+   <td>
+       <textarea class="form-control" rows="3" readonly="true">  <?php echo $topic_row['post_content'];?></textarea>
+   
+   </td>
+    <td>&nbsp;</td>
+ <td>  <a href="add_views.php?id=<?php echo $topic_row['post_id']; ?>">View Topic</a></td>
+	    
+		</tr>
+        
+         
+        	</table>
+                <hr />
+               <?php
+               }?>    
+        </td>
+        </tr>
+
+	
+	 
+	</table>
+    </td>
+    </tr>
+   <tr>
+<td colspan="3">
+<a href="home.php">Back to Home</a>
+</td>
+</tr>
+    </table>
+
+	</div>
+    </td></tr></table>
+    </center>

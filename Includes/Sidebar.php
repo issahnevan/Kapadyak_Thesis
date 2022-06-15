@@ -26,7 +26,7 @@
 <!-- Logo -->
             <li class="logo noHover noFilter">
                 <a href="#" class="nav-link ">
-                <span><img src="Images/logo.png" class="nav-logo"></span>
+                <span><img src="../Images/logo.png" class="nav-logo"></span>
                 <span class="link-text logo-text">APADYAK</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
                     <g class="fa-group">
@@ -41,7 +41,7 @@
             </li>
 <!-- Newsfeed -->
             <li class="nav-item">
-                <a href="#" class="nav-link highlight">
+                <a href="index.php" class="nav-link highlight">
                 <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path
@@ -61,7 +61,7 @@
             </li>
 <!-- Profile -->
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="personal_info_panel.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path
@@ -82,7 +82,7 @@
             </li>
 <!-- Message -->
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="inbox.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path
@@ -122,7 +122,7 @@
             </li>
 <!-- Rental -->
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="feed_rental.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-bicycle" viewBox="0 0 16 16">
                 <path />
                 <g class="fa-group">
@@ -138,7 +138,7 @@
             </li>
 <!-- Pre-loved -->
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="feed_pre.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-bag-heart" viewBox="0 0 16 16">
                 <path  />
                 <g class="fa-group">
@@ -155,7 +155,7 @@
             </li>
 <!-- Event -->
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="feed_events.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path

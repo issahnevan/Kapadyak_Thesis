@@ -1,7 +1,7 @@
 <?php 
 require 'connect/connection.php';
 session_start();
-if (isset($_SESSION['user_ID'])) {
+if (isset($_SESSION['member_id'])) {
 
 }
 
@@ -21,17 +21,19 @@ ob_start();
             </script>
             <?php
         } else {
-        $sql = mysqli_query($connect, "SELECT * FROM useraccount where email_address = '$email'");
+        $sql = mysqli_query($connect, "SELECT * FROM members where email_address = '$email'");
         $count = mysqli_num_rows($sql);
 
             if($count > 0){
                 $fetch = mysqli_fetch_assoc($sql);
                 $hashpassword = $fetch["password"];
-              
+   
             $_SESSION["SessionEmail"] = $fetch['email_address'] ;
             $_SESSION["SessionUsername"] = $fetch['username'] ;
             $_SESSION["SessionFirstname"] = $fetch['first_name'] ;
             $_SESSION["SessionLastname"] = $fetch['last_name'] ;
+            $_SESSION["id"] = $fetch['member_id'] ;
+
             // $_SESSION["AccountType"]= $fetch['AccountType'];
             // $_SESSION["AccountLevel"] = $fetch['AccountLevel'];
             // $_SESSION["TransactionsTableName"] = $fetch['TransactionsTableName'];
@@ -50,8 +52,11 @@ ob_start();
                
                    
                         <script>
+                            
                                     alert("<?php echo "Welcome to Kapadyak, " . $email . "!"?>");
-                                    window.location.replace('index.php');
+               
+                                    window.location.replace('members/index.php');
+                       
                                 </script>
              
                     <?php
@@ -85,11 +90,12 @@ ob_start();
     <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
     <link rel="stylesheet" href="Style.css" type="text/css">
     <script src="Scripts/showpassword.js"> </script>
-    <title>Kapadyak - Log In or Sign up</title>
+    <title>Kapadyak | Log In or Sign up</title>
 </head>
 <body>
-
+    
 <div class="login-container">
+
     <div class="login-input">
 
          <form action="#" method="POST" name="loginn">

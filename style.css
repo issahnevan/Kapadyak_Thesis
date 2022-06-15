@@ -385,7 +385,7 @@ body::-webkit-scrollbar-thumb {
     position: sticky;
     top: 4em !important;
     background-color: var(--bg-secondary);
-    overflow: auto;
+    overflow: hidden;
     width: auto;
     height: 90vh;
     transition: width 200ms ease;

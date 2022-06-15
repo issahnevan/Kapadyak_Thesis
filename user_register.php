@@ -18,7 +18,7 @@
         $contact_number = $_POST["contact_number"];
         $address = $_POST["address"];
 
-        $check_query = mysqli_query($connect, "SELECT * FROM useraccount where email_address ='$email'");
+        $check_query = mysqli_query($connect, "SELECT * FROM members where email_address ='$email'");
         $rowCount = mysqli_num_rows($check_query);
 
         if(!empty($email) && !empty($password)){
@@ -31,7 +31,7 @@
             }else{
                 $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-                $result = mysqli_query($connect, "INSERT INTO useraccount (email_address, username, password, confirm_password, first_name, middle_name, last_name, dob, sex, contact_number, address, email_status) VALUES ('$email', '$username', '$password_hash', '$confirm_password', '$first_name', '$middle_name', '$last_name', '$dob', '$sex', '$contact_number', '$address', 0)");    
+                $result = mysqli_query($connect, "INSERT INTO members (email_address, username, password, confirm_password, first_name, middle_name, last_name, dob, sex, contact_number, address, image, online_status, topic_Ctr, threads_ctr, replies_ctr, email_status) VALUES ('$email', '$username', '$password_hash', '$confirm_password', '$first_name', '$middle_name', '$last_name', '$dob', '$sex', '$contact_number', '$address', 0)");    
                 if($result){
                     $otp = rand(100000,999999);
                     $_SESSION['otp'] = $otp;
