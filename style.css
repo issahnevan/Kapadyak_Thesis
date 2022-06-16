@@ -699,7 +699,7 @@ header{
     transition: all 0.3s;
 }
 
-.card-popup > button{
+.card-popup > a{
     padding: 1.5em 3.5em;
     outline: none;
     border: none;
@@ -724,7 +724,10 @@ header{
 .feed-card-heading table tr th {
     width: 40px;
 }
-
+.feed-card-heading table tr th img{
+    border-radius: 50%;
+    border: 2px solid white;
+}
 .feed-card-heading table, .feed-card-body table{
     width: 100%;
 }

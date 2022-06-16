@@ -1,3 +1,6 @@
+
+<?php  include '../session.php';
+ include '../dbcon.php';	 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +23,6 @@
 
 		<div class="index-content">
     <center><a href="poster.php"><h1>RENTAL<br>Add Post</h1></a>
-		<?php include '../members/feed.php';?>	  
 <table border="0" width="845"><tr><td></td></tr></table>
      
  
@@ -28,7 +30,8 @@
 error_reporting(0);
 
 $conn = new PDO('mysql:host=localhost;dbname=db_kapadyak', 'root', '');
-include('session.php');
+include('../session.php');
+
   ?>
 
 	<div class="jumbotron  alert-info">

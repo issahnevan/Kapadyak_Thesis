@@ -86,7 +86,7 @@
 		while ($sndrrow = $sndrquery->fetch())
          { 
             $ppiicc=$sndrrow['image'];
-		  $sendby=$sndrrow['first_name']." ".$sndrrow['middle_name']." ".$sndrrow['last_name']." ( ".$sndrrow['access']." )";
+		  $sendby=$sndrrow['first_name']." ".$sndrrow['middle_name']." ".$sndrrow['last_name']."";
    
 		}
 	  

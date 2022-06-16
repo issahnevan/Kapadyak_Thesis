@@ -1,3 +1,9 @@
+<?php
+ error_reporting(0);
+  include '../session.php';  
+  include '../dbcon.php';  
+  
+  ?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,12 +26,7 @@
 
 		<div class="index-content">
 			<?php include 'inbox_function.php'; ?>
-<?php
- error_reporting(0);
-  include '../session.php';  
-  include '../dbcon.php';  
-  
-  ?> 
+
   <br />
   <br />
   <center>

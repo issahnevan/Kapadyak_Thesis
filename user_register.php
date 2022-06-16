@@ -45,8 +45,8 @@
                     $mail->SMTPAuth=true;
                     $mail->SMTPSecure='tls';
     
-                    $mail->Username = 'kapadyakofficial2022@gmail.com';
-                    $mail->Password = 'werghdvqduyeudax';
+                    $mail->Username = 'aspirasneilanthonyc@gmail.com';
+                    $mail->Password = 'mfaejscvevhrobsa';
 
                     $mail->setFrom('kapadyakofficial2022@gmail.com', 'Kapadyak');
                     $mail->addAddress($_POST["email"]);
@@ -90,7 +90,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
     <link rel="stylesheet" href="style.css" type="text/css">
-    <script src="Scripts/layerDisplay.js" type="text/javascript"> </script>
+    <script src="../Scripts/layerDisplay.js" type="text/javascript"> </script>
     <title>Sign Up for Kapadyak</title>
 </head>
 <body>

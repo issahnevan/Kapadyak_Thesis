@@ -165,7 +165,7 @@ $('#load_tweets3').load('navbar.php') ;
                                </td>
                                 </tr>
                                 </table>
-                <div class="pull-left"> <h2>&nbsp;&nbsp;&nbsp;&nbsp;Threads</h2> </div> 
+                <div class="pull-left"> <h2>&nbsp;&nbsp;&nbsp;&nbsp;Add a Comment</h2> </div> 
                            
                                 <center>
 				                <table>
@@ -233,7 +233,7 @@ $('#load_tweets3').load('navbar.php') ;
                                     <table border="0"  width="670">
                                     <tr>
                                     <td>
-                                    <?php if($cimg=="../comment_images")
+                                    <?php if($cimg=="../comment_images/")
                                     { ?>   
                                     <div class="col-md-12">
                                     

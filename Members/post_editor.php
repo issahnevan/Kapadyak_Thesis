@@ -118,7 +118,7 @@ include '../session.php';
                         	?>
                             
 							<script>
-								window.location = 'home.php';
+								window.location = 'index.php';
 							</script>	
 							<?php
                             	}

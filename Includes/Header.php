@@ -4,7 +4,11 @@ $session_Username = $_SESSION['SessionUsername'];
 $session_Firstname = $_SESSION['SessionFirstname'];
 $session_Lastname = $_SESSION['SessionLastname'];
 ?> -->
-                                 
+
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,13 +27,14 @@ $session_Lastname = $_SESSION['SessionLastname'];
 
     <header>
         <div class="header-logo" id="headerLogo">
-            <a href="#"><img src="Images/logo.png" >
+            <a href="index.php"><img src="../Images/logo.png" >
                 <span class="header-logo-text">APADYAK</span>
             </a>
         </div>
         <div class="header-search">
-            <div class="search">
+           
                 <form action="search_result.php" method="post">
+                <div class="search">
                 <input type="text" name="search" class="searchTerm" placeholder="Search Kapadyak" oninput="searchSuggestionResults()" required>
                 <button type="submit" class="searchButton">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -41,13 +46,10 @@ $session_Lastname = $_SESSION['SessionLastname'];
         </div>
         <div class="header-links">
             <span class="profile-username" onclick="showMenu()">
-              <img src=" <?php 
-                                 if($access=="Admin")
-                                 {
-                                    echo  "../images/logo_forum.png";
-                                 }
-                                 else
-                                 {echo  $post_row['image'];}?>" alt="Profile">
+              <img src=" <?php if($access=="Admin"){echo  "../images/logo_forum.png";}else{echo  $post_row['image'];}?>" width="40" height="40" alt="..." class="img-square">
+
+
+
                 <span class="header-links-username"><?php echo "$session_Username";?></span>
             </span>
             <div class="profile-main" id="profile">

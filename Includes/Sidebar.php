@@ -26,7 +26,7 @@
 <!-- Logo -->
             <li class="logo noHover noFilter">
                 <a href="#" class="nav-link ">
-                <span><img src="Images/logo.png" class="nav-logo"></span>
+                <span><img src="../Images/logo.png" class="nav-logo"></span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
                     <g class="fa-group">
                     <path

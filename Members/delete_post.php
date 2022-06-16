@@ -41,7 +41,7 @@ Are you sure you want to delete this Post?
 <tr>
 <td width="300">
 <button class="btn btn-danger" name="delete" ><li class="fa fa-trash-o"></li> Delete</button>
- &nbsp;<a href="home.php" class="btn btn-default"  >Cancel</a>
+ &nbsp;<a href="index.php" class="btn btn-default"  >Cancel</a>
 </td>
 <td></td>
 </tr>
@@ -60,5 +60,8 @@ Are you sure you want to delete this Post?
 								$conn->query("delete  from post where post_id = '$del_id'");
 					
                     ?>
+					<script>
+					window.location('index.php');
+							</script>
 	
                      <?php   }		?>

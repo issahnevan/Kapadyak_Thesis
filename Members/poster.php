@@ -39,17 +39,7 @@ if (!isset($_SESSION['SessionEmail'])) {
 	      <div class="">
 		    <div class="">
         <div class="">
-        <form method="post" action="search_result.php">
-          <table>
-          <tr>
-            <td><input type="text" name="search" class="form-control" placeholder="Search . ." required></td>
-                  <td>&nbsp;</td>
-                  <td>
-                  <button type="submit" class="btn btn-info"><li class="fa fa-search"></li> Search</button>
-                  </td>
-                  </tr></table>
-                  
-                   </form>
+     
                   <hr />
                <div id="load_tweets2"> 
   
@@ -128,8 +118,8 @@ if (!isset($_SESSION['SessionEmail'])) {
                                 $image_name = addslashes($_FILES['image']['name']);
                                 $image_size = getimagesize($_FILES['image']['tmp_name']);
 
-                                move_uploaded_file($_FILES["image"]["tmp_name"], "post_images/" . $_FILES["image"]["name"]);
-                                $location = "post_images/" . $_FILES["image"]["name"];
+                                move_uploaded_file($_FILES["image"]["tmp_name"], "../post_images/" . $_FILES["image"]["name"]);
+                                $location = "../post_images/" . $_FILES["image"]["name"];
 						 
                                 $topic = $_POST['topic'];
 							 	$post_title = $_POST['post_title'];
@@ -155,7 +145,7 @@ if (!isset($_SESSION['SessionEmail'])) {
                         	?>
                             
 							<script>
-								window.location = 'home.php';
+								window.location = 'index.php';
 							</script>	
 							<?php
                             	}
@@ -164,7 +154,7 @@ if (!isset($_SESSION['SessionEmail'])) {
                            	?>
                             
 							<script>
-								window.location = 'preloved.php';
+								window.location = 'feed_pre.php';
 							</script>	
 							<?php 
                         }
@@ -173,7 +163,7 @@ if (!isset($_SESSION['SessionEmail'])) {
                            	?>
                             
 							<script>
-								window.location = 'rental.php';
+								window.location = 'feed_rental.php';
 							</script>	
 							<?php 
                         }
@@ -182,7 +172,7 @@ if (!isset($_SESSION['SessionEmail'])) {
                           	?>
                             
 							<script>
-								window.location = 'events.php';
+								window.location = 'feed_events.php';
 							</script>	
 							
 							<?php  

@@ -30,7 +30,7 @@ if (!isset($_SESSION['SessionEmail'])) {
 
 		<div class="index-content">
 		<center><a href="poster.php"><h1>HOMEPAGE<br>Add Post</h1></a>
-		<?php include '../members/feed.php';?>	
+		<?php include 'feed.php';?>	
 		</div>
 	</div>	
 </body>

@@ -1,5 +1,6 @@
 <?php
- include('../session.php');
+ include '../session.php';
+ include '../dbcon.php';	 
  ?>
 
 <!DOCTYPE html>
@@ -22,8 +23,7 @@
 
 		<div class="index-content">
 		<center><a href="poster.php"><h1>EVENT PAGE<br>Add Post</h1></a>
-		<?php include '../members/feed.php';?>	
-		</div>
+
 
 <table border="0" width="845"><tr><td></td></tr></table>
      
@@ -148,4 +148,4 @@ include('../session.php');
 
 								<?php } ?> 
                
- 
+                </div>
