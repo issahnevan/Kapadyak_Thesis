@@ -1,7 +1,7 @@
 html body{
     margin: 0;
     padding: 0;
-
+    box-sizing: border-box;
 }
 
 .header{
@@ -664,6 +664,7 @@ header{
     grid-gap: 2.5rem;
     /* overflow: hidden; */
     border-radius: 1em;
+    position: relative;
 }
 .feed-card{
     font-size: 14px;
@@ -804,7 +805,182 @@ header{
     font-family: 'Arial black';
     background-color: rgb(241, 241, 241);
 }
+/* =========================== Add post button ============================ */
+.add-post-button {
+    z-index: 5;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 81, 0);
+    filter: opacity(.7);
+    cursor: pointer;
+    border: 2px solid orangered;
+    border-radius: 50%;
+    /* Mittig */
+    bottom: 6%;
+    right: 2%;
+  }
+  
+.add-post-button:after {
+    content: '';
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 4px;
+    width: 50%;
+    background: rgb(255, 255, 255);
+    top: 50%;
+    left: 50%;
+}
+  
+.add-post-button:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(255, 255, 255);
+    height: 50%;
+    width: 4px;
+}
+  
+  
+.add-post-button:hover {
+    background-color: rgb(255, 81, 0);
+    filter: opacity(1);
+    transform: scale(1.1);
+    transition: all 0.2s ease-in;
+}
+  /* =========================== ADD POST ============================ */
 
+.add-post{
+    z-index: 10;
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height:100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0, .5);
+    box-sizing: border-box;
+}
+.add-post-form{
+    height:auto;
+    width: auto;
+    color: black;
+    background-color: white;
+    border-radius: 1em;
+    position: relative;
+}
+.add-post-form form{
+    padding: 30px;
+}
+.add-post-form > form > input{
+    border-radius: .2em;
+    padding: 7px 10px;
+    margin: 5px 0;
+    width: 200px;
+    border: 1px solid #111;
+    border-radius: 0.25rem;
+    border: 1px solid rgb(173, 173, 173);
+}
+.add-post-form > form > textarea{
+    border-radius: .2em;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 17px;
+    width: 300px;
+    height: 80px;
+    border: 1px solid #111;
+    border-radius: 0.25rem;
+    border: 1px solid rgb(173, 173, 173);
+    resize: none;
+}
+.add-form-title{
+    border-radius: .5em .5em 0 0;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background: rgb(217,102,14);
+    background: linear-gradient(90deg, rgb(226, 118, 35) 0%, rgba(255,49,49) 100%);
+    padding: 10px 0;
+    width: 100%;
+}
+
+.add-form-subtitles{
+    font-weight: bold;
+}
+
+.image-upload{
+    width: auto;
+    padding: 20px;
+    border: 2px dashed rgb(158, 158, 158);
+}
+
+.image-upload input{
+    display: none;
+}
+.image-upload label{
+    display: block;
+    margin: auto;
+    width: 70%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.image-preview img{
+    width: 190px;
+    height: 80px;
+    margin: 10px auto 0 auto;
+    display: none;
+    object-fit: cover;
+    object-position: center;
+}
+.post-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.post-button > button{
+    font-size: 15px;
+    padding: 10px 30px;
+    margin-top: 10px;
+    cursor:pointer;
+    border-radius: .25em;
+    border: 1px solid #ddd;
+    background-color: orangered;
+    color: white;
+    font-weight: bold;
+}
+.close-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.close-button button{
+    font-size: 20px;
+    padding: 0;
+    text-align: center;
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.add-post .pop{
+    display: flex;
+}
 /* =========================== FOOTER =============================== */
 .footer{
     text-align: center;

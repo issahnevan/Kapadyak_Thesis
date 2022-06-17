@@ -1,6 +1,11 @@
 <?php
 include("connect/connection.php");
-session_start();
+
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
+
 if (!isset($_SESSION['id']) || ($_SESSION['id'] == '')) {
 header('location:../login.php?=Error');
 }
