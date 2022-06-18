@@ -26,7 +26,7 @@ if (!isset($_SESSION['SessionEmail'])) {
 <div class="close-button" onclick="hideAddPost()"><button>&times;</button></div>
 <div class="add-form-title">CREATE POST</div>
 <form method="post" enctype="multipart/form-data">
-  <!-- <div>Category:</div>
+  <div class="add-form-subtitles">Category:</div>
     <div> 
         <select name="topic" class="form-control">
           <option>FEED</option>
@@ -34,7 +34,7 @@ if (!isset($_SESSION['SessionEmail'])) {
           <option>RENTAL</option>
           <option>EVENTS</option>
         </select>
-    </div> -->
+    </div>
     <div class="add-form-subtitles">Title: </div>
         <input type="text" name="post_title" class="form-control" required>
     <div class="add-form-subtitles">Description:</div>
