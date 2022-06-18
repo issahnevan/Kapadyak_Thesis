@@ -61,7 +61,7 @@ Are you sure you want to delete this Post?
 					
                     ?>
 					<script>
-					window.location('index.php');
+			 window.location = 'index.php?id=<?php echo $del_id;?>';
 							</script>
 	
                      <?php   }		?>

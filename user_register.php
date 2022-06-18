@@ -1,25 +1,24 @@
 <?php session_start(); ?>
 <?php
     include('connect/connection.php');
-    ?>
+?>
  
-    <?php
+<?php
+if(isset($_POST["register"])){
+    $email = $_POST["email"];
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $confirm_password = $_POST["confirm_password"];
+    $first_name = $_POST["first_name"];
+    $middle_name = $_POST["middle_name"];
+    $last_name = $_POST["last_name"];
+    $dob = $_POST["dob"];
+    $sex = $_POST["sex"];
+    $contact_number = $_POST["contact_number"];
+    $address = $_POST["address"];
 
-    if(isset($_POST["register"])){
-        $email = $_POST["email"];
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        $confirm_password = $_POST["confirm_password"];
-        $first_name = $_POST["first_name"];
-        $middle_name = $_POST["middle_name"];
-        $last_name = $_POST["last_name"];
-        $dob = $_POST["dob"];
-        $sex = $_POST["sex"];
-        $contact_number = $_POST["contact_number"];
-        $address = $_POST["address"];
-
-        $check_query = mysqli_query($connect, "SELECT * FROM members where email_address ='$email'");
-        $rowCount = mysqli_num_rows($check_query);
+    $check_query = mysqli_query($connect, "SELECT * FROM members where email_address ='$email'");
+    $rowCount = mysqli_num_rows($check_query);
 
         if(!empty($email) && !empty($password)){
             if($rowCount > 0){
@@ -30,8 +29,8 @@
                 <?php
             }else{
                 $password_hash = password_hash($password, PASSWORD_BCRYPT);
-
                 $result = mysqli_query($connect, "INSERT INTO members (email_address, username, password, confirm_password, first_name, middle_name, last_name, dob, sex, contact_number, address, image, online_status, topic_Ctr, threads_ctr, replies_ctr, email_status) VALUES ('$email', '$username', '$password_hash', '$confirm_password', '$first_name', '$middle_name', '$last_name', '$dob', '$sex', '$contact_number', '$address', 0)");    
+                
                 if($result){
                     $otp = rand(100000,999999);
                     $_SESSION['otp'] = $otp;
@@ -58,27 +57,26 @@
                     <p>Welcome, $first_name $last_name!</p>
                     <b>-Kapadyak 2022</b>";
                     
-                            if(!$mail->send()){
-                                ?>
-                                    <script>
-                                        alert("<?php echo "Register Failed, Invalid Email "?>");
-                                    </script>
-                                <?php
-                            }else{
-                                ?>
-                                <script>
-                                    alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
-                                    window.onload = function() {
-                                    displaySecond();
-                                    } 
-                                </script>
-                                <?php
-                            }
+                    if(!$mail->send()){
+                    ?>
+                        <script>
+                            alert("<?php echo "Register Failed, Invalid Email "?>");
+                        </script>
+                    <?php
+                    }else{
+                    ?>
+                        <script>
+                            alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
+                            window.onload = function() {
+                            displaySecond();
+                        } 
+                        </script>
+                    <?php
+                    }
                 }
             }
         }
     }
-
 ?>
 
 

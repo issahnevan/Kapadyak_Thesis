@@ -8,78 +8,62 @@ if (isset($_SESSION['member_id'])) {
 ob_start(); 
 ?>
 <?php
-    include('connect/connection.php');
-
+include('connect/connection.php');
     if(isset($_POST["loginn"])){
         $email = mysqli_real_escape_string($connect, trim($_POST['qwe']));
         $password = trim($_POST['password']);
-
-        if(empty($email) && empty($password)){
-            ?>
+        
+        if(empty($email) && empty($password)){      
+        ?>
             <script>
                 alert("Please enter email or password! ");
             </script>
-            <?php
+        <?php
         } else {
-        $sql = mysqli_query($connect, "SELECT * FROM members where email_address = '$email'");
-        $count = mysqli_num_rows($sql);
+            $sql = mysqli_query($connect, "SELECT * FROM members where email_address = '$email'");
+            $count = mysqli_num_rows($sql);
 
-            if($count > 0){
-                $fetch = mysqli_fetch_assoc($sql);
-                $hashpassword = $fetch["password"];
+                if ($count > 0) {
+                    $fetch = mysqli_fetch_assoc($sql);
+                    $hashpassword = $fetch["password"];
    
-            $_SESSION["SessionEmail"] = $fetch['email_address'] ;
-            $_SESSION["SessionUsername"] = $fetch['username'] ;
-            $_SESSION["SessionFirstname"] = $fetch['first_name'] ;
-            $_SESSION["SessionMiddlename"] = $fetch['middle_name'] ;
-            $_SESSION["SessionLastname"] = $fetch['last_name'] ;
-            $_SESSION["id"] = $fetch['member_id'] ;
-
-            // $_SESSION["AccountType"]= $fetch['AccountType'];
-            // $_SESSION["AccountLevel"] = $fetch['AccountLevel'];
-            // $_SESSION["TransactionsTableName"] = $fetch['TransactionsTableName'];
-            // $_SESSION["InboxTableName"] = $fetch['InboxTableName'];
-            // $_SESSION["MailingAddress"] = $fetch['FileMailingAddress'];
-           
+                    $_SESSION["SessionEmail"] = $fetch['email_address'] ;
+                    $_SESSION["SessionUsername"] = $fetch['username'] ;
+                    $_SESSION["SessionFirstname"] = $fetch['first_name'] ;
+                    $_SESSION["SessionMiddlename"] = $fetch['middle_name'] ;
+                    $_SESSION["SessionLastname"] = $fetch['last_name'] ;
+                    $_SESSION["id"] = $fetch['member_id'] ;
             
-                 if($fetch["email_status"] == 0){
+                    if($fetch["email_status"] == 0){
                     ?>
-                    <script>
-                        alert("Please verify your email first upon logging-in.");
-                    </script>
-                    <?php
-                }else if(password_verify($password, $hashpassword)){
-                    ?>
-               
-                   
                         <script>
-                            
-                                    alert("<?php echo "Welcome to Kapadyak, " . $email . "!"?>");
-               
-                                    window.location.replace('members/index.php');
-                       
-                                </script>
-             
+                            alert("Please verify your email first upon logging-in.");
+                        </script>
                     <?php
-                }else{
+                    } else if(password_verify($password, $hashpassword)) {
+                        $sql = mysqli_query($connect, "update members set online_status = 'active' where email_address = '$email'");
                     ?>
-                    <script>
-                        alert("You have entered wrong email or password.");
-                    </script>
+                        <script>
+                            alert("<?php echo "Welcome to Kapadyak, " . $email . "!"?>");
+                            window.location.replace('members/index.php');
+                        </script>
                     <?php
-                }
+                    } else {
+                    ?>
+                        <script>
+                            alert("You have entered wrong email or password.");
+                        </script>
+                    <?php
+                    }
             } else {
-                ?>
+            ?>
                 <script>
-                        alert("Email not found or not verified!");
-                    </script>
-                    <?php
+                    alert("Email not found or not verified!");
+                </script>
+            <?php
             }
-                    
-     }
-      
+        } 
     }
-     
 ?>
 
 <!DOCTYPE html>
@@ -110,8 +94,11 @@ ob_start();
                 <div><input class="login-checkbox" onclick="myFunction()" type="checkbox"> Show Password</div>
                 <div><input class="login-button" type="submit" name ="loginn" value="Log In" class="logBtnSubmit"></div>
             <div class="login-create">
+            <a href="reset_password.php">Forgot Password?</a><br><br>
             Don't have an account?
+      
             <a href="user_register.php">Create an Account!</a>
+          
         </div>
         </form>
     </div>

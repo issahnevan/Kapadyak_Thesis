@@ -75,7 +75,7 @@
 		while ($sndrrow = $sndrquery->fetch())
          { 
             $ppiicc="../images/logo_forum.png";
-		  $sendby=$sndrrow['fname']." ".$sndrrow['mname']." ".$sndrrow['lname']." ( Admin )";
+		  $sendby=$sndrrow['fname']." ".$sndrrow['mname']." ".$sndrrow['lname']." (ADMIN)";
    
 		}
 	      

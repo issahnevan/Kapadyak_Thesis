@@ -58,6 +58,59 @@
                 <span class="link-text">Newsfeed</span>
                 </a>
             </li>
+<!-- Rental -->
+<li class="nav-item">
+                <a href="feed_rental.php" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-bicycle" viewBox="0 0 16 16">
+                <path />
+                <g class="fa-group">
+                    <path
+                        fill="currentColor"
+                        d="M4 4.5a.5.5 0 0 1 .5-.5H6a.5.5 0 0 1 0 1v.5h4.14l.386-1.158A.5.5 0 0 1 11 4h1a.5.5 0 0 1 0 1h-.64l-.311.935.807 1.29a3 3 0 1 1-.848.53l-.508-.812-2.076 3.322A.5.5 0 0 1 8 10.5H5.959a3 3 0 1 1-1.815-3.274L5 5.856V5h-.5a.5.5 0 0 1-.5-.5zm1.5 2.443-.508.814c.5.444.85 1.054.967 1.743h1.139L5.5 6.943zM8 9.057 9.598 6.5H6.402L8 9.057zM4.937 9.5a1.997 1.997 0 0 0-.487-.877l-.548.877h1.035zM3.603 8.092A2 2 0 1 0 4.937 10.5H3a.5.5 0 0 1-.424-.765l1.027-1.643zm7.947.53a2 2 0 1 0 .848-.53l1.026 1.643a.5.5 0 1 1-.848.53L11.55 8.623z"
+                        class="fa-primary"
+                    ></path>
+                </g>
+                </svg>
+                <span class="link-text">Rental</span>
+                </a>
+            </li>
+<!-- Event -->
+<li class="nav-item">
+                <a href="feed_events.php" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+                <g class="fa-group">
+                    <path
+                        fill="currentColor"
+                        d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"
+                        class="fa-secondary"
+                    ></path>
+                    <path
+                        fill="currentColor"
+                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
+                        class="fa-primary"
+                    ></path>
+                </g>
+                </svg>
+                <span class="link-text">Event</span>
+                </a>
+            </li>
+<!-- Pre-loved -->
+            <li class="nav-item">
+                <a href="feed_pre.php" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-bag-heart" viewBox="0 0 16 16">
+                <path  />
+                <g class="fa-group">
+                    <path
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5Zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0ZM14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1ZM8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"
+                        class="fa-primary"
+                    ></path>
+                </g>
+                </svg>
+                <span class="link-text">Pre-loved</span>
+                </a>
+            </li>
 <!-- Profile -->
             <li class="nav-item">
                 <a href="personal_info_panel.php" class="nav-link">
@@ -101,7 +154,7 @@
             </li>
 <!-- Status -->
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="member.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path
@@ -116,60 +169,7 @@
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Status</span>
-                </a>
-            </li>
-<!-- Rental -->
-            <li class="nav-item">
-                <a href="feed_rental.php" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-bicycle" viewBox="0 0 16 16">
-                <path />
-                <g class="fa-group">
-                    <path
-                        fill="currentColor"
-                        d="M4 4.5a.5.5 0 0 1 .5-.5H6a.5.5 0 0 1 0 1v.5h4.14l.386-1.158A.5.5 0 0 1 11 4h1a.5.5 0 0 1 0 1h-.64l-.311.935.807 1.29a3 3 0 1 1-.848.53l-.508-.812-2.076 3.322A.5.5 0 0 1 8 10.5H5.959a3 3 0 1 1-1.815-3.274L5 5.856V5h-.5a.5.5 0 0 1-.5-.5zm1.5 2.443-.508.814c.5.444.85 1.054.967 1.743h1.139L5.5 6.943zM8 9.057 9.598 6.5H6.402L8 9.057zM4.937 9.5a1.997 1.997 0 0 0-.487-.877l-.548.877h1.035zM3.603 8.092A2 2 0 1 0 4.937 10.5H3a.5.5 0 0 1-.424-.765l1.027-1.643zm7.947.53a2 2 0 1 0 .848-.53l1.026 1.643a.5.5 0 1 1-.848.53L11.55 8.623z"
-                        class="fa-primary"
-                    ></path>
-                </g>
-                </svg>
-                <span class="link-text">Rental</span>
-                </a>
-            </li>
-<!-- Pre-loved -->
-            <li class="nav-item">
-                <a href="feed_pre.php" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-bag-heart" viewBox="0 0 16 16">
-                <path  />
-                <g class="fa-group">
-                    <path
-                        fill="currentColor"
-                        fill-rule="evenodd"
-                        d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5Zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0ZM14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1ZM8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"
-                        class="fa-primary"
-                    ></path>
-                </g>
-                </svg>
-                <span class="link-text">Pre-loved</span>
-                </a>
-            </li>
-<!-- Event -->
-            <li class="nav-item">
-                <a href="feed_events.php" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
-                <g class="fa-group">
-                    <path
-                        fill="currentColor"
-                        d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"
-                        class="fa-secondary"
-                    ></path>
-                    <path
-                        fill="currentColor"
-                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
-                        class="fa-primary"
-                    ></path>
-                </g>
-                </svg>
-                <span class="link-text">Event</span>
+                <span class="link-text">Online</span>
                 </a>
             </li>
 <!-- Gallery -->

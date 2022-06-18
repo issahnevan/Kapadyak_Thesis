@@ -35,18 +35,7 @@ if (!isset($_SESSION['SessionEmail'])) {
       <table>
       <tr>
         <td>
-        <div class="">
-	      <div class="">
-		    <div class="">
-        <div class="">
-     
-                  <hr />
-               <div id="load_tweets2"> 
-  
-       </div>
-       </div>
-       </div>
-			<div class="col-md-9">
+       
           
 						<div class="jumbotron alert-info">
 									 

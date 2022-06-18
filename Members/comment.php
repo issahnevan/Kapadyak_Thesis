@@ -1,6 +1,8 @@
 <?php 
 include('../dbcon.php');
 include '../session.php';
+date_default_timezone_set('Asia/Manila'); 
+
 ?>
 
 
@@ -19,21 +21,6 @@ include '../session.php';
  
 <script type="text/javascript" src="jquery-1.10.2.js"></script>
 <script type="text/javascript">
- 
-var auto_refresh = setInterval(
-function ()
-{
-$('#load_tweets2').load('sidebar.php') ;
-}, 10000); //refresh div every 10000 milliseconds or 10 seconds
-
- 
-
-
-var auto_refresh = setInterval(
-function ()
-{
-$('#load_tweets3').load('navbar.php') ;
-}, 10000); //refresh div every 10000 milliseconds or 10 seconds
 
 </script>
 
@@ -92,7 +79,7 @@ $('#load_tweets3').load('navbar.php') ;
                             $pmem_query = $conn->query("select * from user where user_id='$mmmmm'");
                             while($pmem_row = $pmem_query->fetch())
                             {
-                            $pmimg="../logo_forum.png";
+                            $pmimg="../images/logo_forum.png";
                             $pmname=$pmem_row['fname']." ".$pmem_row['mname']." ".$pmem_row['lname']." - Admin";
                             } 
                                  
@@ -142,7 +129,7 @@ $('#load_tweets3').load('navbar.php') ;
                                         <div class="panel-body">
                                         
                                       
-                                        <?php if($post_row['post_image']=="post_images"){  ?>
+                                        <?php if($post_row['post_image']=="../post_images/"){  ?>
                                             <div class="col-md-12">
                                         <textarea class="form-control" rows="4" readonly="true"><?php  echo nl2br($post_row['post_content']); ?></textarea>  </div> 
                                         </div>
@@ -183,7 +170,7 @@ $('#load_tweets3').load('navbar.php') ;
                                     $cmem_query = $conn->query("select * from user where user_id='$cm_id'");
 				                    while($cmem_row = $cmem_query->fetch())
                                     {
-				                    $cpics ="../Images/ss.png";
+				                    $cpics ="../Images/logo_forum.png";
                                     $cmname =$cmem_row['fname']." ".$cmem_row['mname']." ".$cmem_row['lname']." - Admin";
                                     }
                                 }
@@ -233,7 +220,7 @@ $('#load_tweets3').load('navbar.php') ;
                                     <table border="0"  width="670">
                                     <tr>
                                     <td>
-                                    <?php if($cimg=="../comment_images/")
+                                    <?php if($cimg=="../../comment_images/")
                                     { ?>   
                                     <div class="col-md-12">
                                     
@@ -271,7 +258,7 @@ $('#load_tweets3').load('navbar.php') ;
                                     $rmem_query = $conn->query("select * from user where user_id='$rm_id'");
                     				while($rmem_row = $rmem_query->fetch())
                                     {
-                    				$rpics ="../images/ss.png";
+                    				$rpics ="../images/logo_forum.png";
                                     $rmname =$rmem_row['fname']." ".$rmem_row['mname']." ".$rmem_row['lname']." - Admin";
                                     }
                                     }
@@ -415,21 +402,9 @@ $('#load_tweets3').load('navbar.php') ;
                 <tr>
                 <td><button type="submit" name="comment" class="btn btn-info pull-right">Post Thread</button> </td>
                 <td>&nbsp;</td>
-                <td>
-                <?php if($ttttt=="WINDOWS"){ ?><a href="home.php" class="btn btn-default pull-right">Back</a> <?php } ?>
-                 <?php if($ttttt=="MAC"){ ?><a href="mac.php" class="btn btn-default pull-right">Back</a> <?php } ?>
-                  <?php if($ttttt=="LINUX"){ ?><a href="linux.php" class="btn btn-default pull-right">Back</a> <?php } ?>
-                   <?php if($ttttt=="ANDROID"){ ?><a href="android.php" class="btn btn-default pull-right">Back</a> <?php } ?>
-                    <?php if($ttttt=="PROGRAMMING"){ ?><a href="program.php" class="btn btn-default pull-right">Back</a> <?php } ?>
-                     <?php if($ttttt=="HARDWARE"){ ?><a href="hardware.php" class="btn btn-default pull-right">Back</a> <?php } ?>
+   
                 
-                
-                 </td></tr></table>
-                       
-               
-              
-                </form>
-                    </td></tr></table>
+            
                        
                 </center>
                  <!-- check -->
@@ -490,8 +465,8 @@ $('#load_tweets3').load('navbar.php') ;
                 $image_name = addslashes($_FILES['image']['name']);
                 $image_size = getimagesize($_FILES['image']['tmp_name']);
 
-                move_uploaded_file($_FILES["image"]["tmp_name"], "../comment_images" . $_FILES["image"]["name"]);
-                $location = "../comment_images" . $_FILES["image"]["name"];
+                move_uploaded_file($_FILES["image"]["tmp_name"], "../comment_images/" . $_FILES["image"]["name"]);
+                $location = "../comment_images/" . $_FILES["image"]["name"];
 						 
 				$topic = $_POST['topic'];
 				$post_idx = $_POST['post_id'];
