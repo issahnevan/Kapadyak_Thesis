@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start();?>
 <?php
     include('connect/connection.php');
     ?>
@@ -31,7 +31,7 @@
             }else{
                 $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-                $result = mysqli_query($connect, "INSERT INTO members (email_address, username, password, confirm_password, first_name, middle_name, last_name, dob, sex, contact_number, address, image, online_status, topic_Ctr, threads_ctr, replies_ctr, email_status) VALUES ('$email', '$username', '$password_hash', '$confirm_password', '$first_name', '$middle_name', '$last_name', '$dob', '$sex', '$contact_number', '$address', 0)");    
+                $result = mysqli_query($connect, "INSERT INTO members (email_address, username, password, confirm_password, first_name, middle_name, last_name, dob, sex, contact_number, address, email_status) VALUES ('$email', '$username', '$password_hash', '$confirm_password', '$first_name', '$middle_name', '$last_name', '$dob', '$sex', '$contact_number', '$address', 0)");    
                 if($result){
                     $otp = rand(100000,999999);
                     $_SESSION['otp'] = $otp;
@@ -90,7 +90,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
     <link rel="stylesheet" href="style.css" type="text/css">
-    <script src="../Scripts/layerDisplay.js" type="text/javascript"> </script>
+    <script src="Scripts/layerDisplay.js" type="text/javascript"> </script>
     <title>Sign Up for Kapadyak</title>
 </head>
 <body>

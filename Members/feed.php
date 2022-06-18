@@ -4,11 +4,11 @@ error_reporting(0);
 $conn = new PDO('mysql:host=localhost;dbname=db_kapadyak', 'root', '');
 include('../session.php');
 
-session_start();
 ?>
 
 
 <div class="feed-cards">
+
 <?php  
     $post_query = $conn->query("select * from post LEFT JOIN members on post.member_id = members.member_id where topic='FEED' order by post_id DESC");
     while($post_row = $post_query->fetch()){
@@ -144,7 +144,9 @@ session_start();
     </div>
               
   </div>
-
-
+  
 <?php } ?> 
+
+
 </div>
+
