@@ -13,6 +13,7 @@ $conn->query("update  members set image = '$location' where member_id  = '$id2' 
 ?>
  
 <script>
+alert("Profile Picture updated succesfully!")
 window.location = "personal_info_panel.php";  
 </script>
 
