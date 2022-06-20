@@ -1,5 +1,5 @@
 <?php 
-require 'dbcon.php';
+
  session_start();
 if (isset($_SESSION['user_id'])) {
 
@@ -37,7 +37,7 @@ ob_start();
 					$userSelect =  mysqli_query($connect, "SELECT * FROM user");
 					$fetch2 = mysqli_fetch_assoc($userSelect);
 
-					$_SESSION['Session_ID']=$fetch['user_id'];
+					$_SESSION['Session_ID']=$fetch2['user_id'];
 
                     mysqli_query($connect, "UPDATE user SET status = 'active' where user_id = '$userid'");
 					// $conn->query("update user set status = 'active'  where user_id = '$user'");
@@ -47,8 +47,8 @@ ob_start();
 
 					?>
 					<script>
-							alert("<?php echo "Welcome to Kapadyak, " . $user . "!"?>");
-							window.location.replace('admin_forum/home.php');
+							alert("<?php echo "Welcome Admin, " . $user . "!"?>");
+							window.location.replace('home.php');
 					</script>
 		 
 				<?php
@@ -85,7 +85,7 @@ ob_start();
     <link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
     <link rel="stylesheet" href="../Style.css" type="text/css">
     <script src="../Scripts/showpassword.js"> </script>
-    <title>Admin - Log In or Sign up</title>
+    <title>Admin | Log In </title>
 </head>
 <body>
     
@@ -95,9 +95,9 @@ ob_start();
 
          <form action="#" method="POST" name="loginn">
                 <img src="../Images/logo.png" class="login-logo2">
-                <div class="login-title">APADYAK<br><center>(Admin)</div>
+                <div class="login-title">ADMIN  <br><center></div>
                 <div class="login-text">Ride with us, enthusiast.</div>
-                <div><input class="login-textbox" type="text" name="qwe" placeholder="Admin Username"></div>
+                <div><input class="login-textbox" type="text" name="qwe" placeholder="Administrator"></div>
                 <div><input class="login-textbox" id="showpass"  type="password" name="password" placeholder="Password"></div>
                 <div><input class="login-checkbox" onclick="myFunction()" type="checkbox"> Show Password</div>
                 <div><input class="login-button" type="submit" name ="loginn" value="Log In " class="logBtnSubmit"></div>

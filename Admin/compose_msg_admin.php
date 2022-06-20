@@ -1,18 +1,19 @@
 <?php  
-include '../dbcon.php';
-include('../session.php');
+include 'dbcon.php';
+include('session.php');
 ?>
 
 <?php
-
+ 
  
   $recep_id=$_GET['id'];
   
-  	$query = $conn->query("select * from members where member_id='$recep_id'") or die(mysql_error());
+  	$query = $conn->query("select * from user where user_id='$recep_id'") or die(mysql_error());
 		while ($row = $query->fetch()) 
         {
-           $to_id = $row['member_id'];
-		  $recep_name=$row['first_name']." ".$row['middle_name']." ".$row['last_name'];
+           $to_id = $row['user_id'];
+            $recep_access= "Admin";
+		  $recep_name=$row['fname']." ".$row['mname']." ".$row['lname']." - ".$recep_access;
           
 		}
   ?>
@@ -27,7 +28,7 @@ include('../session.php');
 			<div class="modal-body">
 				 <form role="form" class="login_form" method="post" action="send_msg.php?id=<?php echo $recep_id; ?>" enctype="multipart/form-data">
                  
- 
+  
                  <table border="0" width="530"><tr>
                  <td >
               	    

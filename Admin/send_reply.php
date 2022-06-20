@@ -1,5 +1,5 @@
-<?php include ('../dbcon.php');?>
-<?php include ('../session.php'); ?>
+<?php include ('dbcon.php');?>
+<?php include ('session.php'); ?>
 <?php date_default_timezone_set('Asia/Manila');?>
 
 	<?php
@@ -10,7 +10,7 @@
                                 $image_name = addslashes($_FILES['image']['name']);
                                 $image_size = getimagesize($_FILES['image']['tmp_name']);
 
-                                move_uploaded_file($_FILES["image"]["tmp_name"], "../../msg_images/" . $_FILES["image"]["name"]);
+                                move_uploaded_file($_FILES["image"]["tmp_name"], "../msg_images/" . $_FILES["image"]["name"]);
                                 
                                 $location = "../msg_images/" . $_FILES["image"]["name"];
 							 	$subject = $_POST['subject'];

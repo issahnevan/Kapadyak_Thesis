@@ -1,8 +1,38 @@
 
-  <?php  include('dbcon.php');  ?>
+  <?php  
+  include('dbcon.php'); 
+  include ('session.php');
+   ?>
  <?php $get_id=$_GET['id']; ?>
  
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="../../Scripts/index.js"></script>
+	<link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Home | Admin</title>
+</head>
+<body>
+    <div class="add-post" id="addPost">
+		<div class="add-post-form">
+		<?php include 'poster.php';?>
+		</div>
+	</div>
+    <div class="index-container">
+		<div class="index-sidenav">
+			<?php include 'Sidebar.php'; ?>
+		</div>
 
+		<div class="index-header">
+			<?php include 'Header.php'; ?>
+		</div>
+
+		<div class="index-content">
+		
 
 <center>
   <table>
@@ -26,7 +56,7 @@
 		?>
 						<div class="jumbotron alert-info">
 										<ul class="nav nav-tabs">
-										<li class="active"><a href="#"><?php echo $row['first_name']."'s"; ?> Personal Information</a></li>
+							<a href="#"><?php echo $row['first_name']."'s"; ?> Personal Information</a></li>
 									  
 										</ul>
                                         
@@ -129,6 +159,7 @@
 			</div>
 			<div class="col-md-1"></div>
 		</div>
-
+</div><br>
+<a href ="data.php">Back to Members</a> 
   </body>
 </html>

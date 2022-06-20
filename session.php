@@ -7,7 +7,7 @@ if(!isset($_SESSION))
 } 
 
 if (!isset($_SESSION['id']) || ($_SESSION['id'] == '')) {
-header('location:../login.php?=Error');
+header('location:login.php?=Error');
 }
 
 $id = $_SESSION['id'];

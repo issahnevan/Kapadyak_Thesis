@@ -1,6 +1,6 @@
 <?php
-include '../dbcon.php';
-include '../session.php';
+include 'dbcon.php';
+include 'session.php';
 
 $del_msg=$_GET['id'];
 

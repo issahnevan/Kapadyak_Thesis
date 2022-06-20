@@ -202,7 +202,7 @@ date_default_timezone_set('Asia/Manila');
                                         { 
                                         ?>
                                         <td >&nbsp;</td>
-                                        <td width="5"><a href="del_comment.php?comment_id=<?php echo $ccccc;?>&post_id=<?php echo $get_id; ?>"><i class="fa fa-trash-o"></i></a></td>
+                                        <td width="5"><a href="del_comment.php?comment_id=<?php echo $ccccc;?>&post_id=<?php echo $get_id; ?>">Delete<i class="fa fa-trash-o"></i></a></td>
                                         <?php 
                                         } 
                                         else   

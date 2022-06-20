@@ -41,7 +41,7 @@ if (!isset($_SESSION['SessionEmail'])) {
         <textarea name="post_content" class="form-control" rows="12" required></textarea>
 
             <div class="image-upload" title="Upload FIle">
-                <input type="file" id="image1" name="image" accept="image/*" onchange="showImage(event);" required>
+                <input type="file" id="image1" name="image" accept="image/*" onchange="showImage(event);">
                 <label for="image1">Upload Image</label>
               <div class="image-preview">
                 <img id="image1-preview">
@@ -62,6 +62,7 @@ if (!isset($_SESSION['SessionEmail'])) {
         $image_size = getimagesize($_FILES['image']['tmp_name']);
 
         move_uploaded_file($_FILES["image"]["tmp_name"], "../post_images/" . $_FILES["image"]["name"]);
+        
         $location = "../post_images/" . $_FILES["image"]["name"];
 
         $topic = $_POST['topic'];
@@ -107,23 +108,62 @@ if (!isset($_SESSION['SessionEmail'])) {
         }
         elseif($topic=="EVENTS")
         {
-        ?>
-
-        <script>
-        window.location = 'feed_events.php';
-        </script>	
-
-        <?php  
-        }
-
-        } ?>
-  </div>      
-
-
- 
-  </body>
-</html>
-    
+        
+          ?>
+          <?php
+              include('../connect/connection.php');
+          
+          
+                              require "../Mail/phpmailer/PHPMailerAutoload.php";
+                              $mail = new PHPMailer;
+              
+                              $mail->isSMTP();
+                              $mail->Host='smtp.gmail.com';
+                              $mail->Port=587;
+                              $mail->SMTPAuth=true;
+                              $mail->SMTPSecure='tls';
+              
+                              $mail->Username = 'teamkapadyak2022@gmail.com';
+                              $mail->Password = 'hsqqhqktekjzabfj';
+          
+                              $mail->setFrom('teamkapadyak2022@gmail.com', 'Kapadyak');
+                              $check_query = mysqli_query($connect, "SELECT * FROM members where email_status = '1'");
+                              $rowCount = mysqli_num_rows($check_query);
+                              if($rowCount>0){
+                              
+                                      while($x=mysqli_fetch_assoc($check_query)){
+          
+                                          $mail->addBCC($x['email_address']);
+          
+                                      }
+                                  $mail->isHTML(true);
+                                  $mail->Subject="New Event is Upcoming";
+                                  $mail->Body="<p>Kindly check out the new post on your event page.<br></h3>
+                                  <br><br>
+                                  <b>The Kapadyak Team</b>";
+                                  if($mail->send()){
+                                      echo "Success";
+                                  }
+                                  else 
+                                  echo "failed";
+                              }
+                              else{
+                                  echo "no data found";
+                              }
+                              ?>
+                        <script>
+                          window.location = 'feed_events.php';
+                        </script>	
+                        
+                        <?php  
+                                  }
+                                      
+                                       } ?>
+            
+            </div>
+            
+               
+          </div>
     
     
     

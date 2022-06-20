@@ -2,10 +2,34 @@
   <?php  include('../session.php');  ?>
  <?php $get_id=$_GET['id']; ?>
  
+ 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<title>Rental | Kapadyak</title>
 </head>
-  <body id="home">
+<body>
+  <!-- floating add post  -->
+	<div class="add-post" id="addPost">
+		<div class="add-post-form">
+		<?php include 'poster.php';?>
+		</div>
+	</div>
+    <div class="index-container">
+		<div class="index-sidenav">
+			<?php include '../Includes/Sidebar.php'; ?>
+		</div>
+
+		<div class="index-header">
+			<?php include '../Includes/Header.php'; ?>
+		</div>
+
+		<div class="index-content">
 
 <center>
   <table>
@@ -18,19 +42,7 @@
 		 
 			<div class="col-md-3">
             	<div class="alert alert-info">
-             <form method="post" action="search_result.php">
-                
-                  <table><tr>
-                  <td>
-                  <input type="text" name="search" class="form-control" placeholder="Search . ." required> 
-                  </td>
-                  <td>&nbsp;</td>
-                  <td>
-                  <button type="submit" class="btn btn-info"><li class="fa fa-search"></li> Search</button>
-                  </td>
-                  </tr></table>
-                  
-                   </form>
+            
                   <hr />
                <div id="load_tweets2"> 
        </div>
@@ -130,12 +142,26 @@
            <td>
            	<label class="block">Sex: <?php echo $row['sex']; ?></label>
            </td> 
+
+           
             </tr>
              
-            
+            <td>
+           	<label class="block">Upload Photos:</label>
+           </td>
              
             </table>
-			
+            <?php
+
+$query = $conn->query("select * from photos where member_id='$get_id'");
+while($row = $query->fetch()){
+$id = $row['photos_id'];
+?>
+          <div class="col-md-2 col-sm-3 text-center">
+      <img class="photo" src="<?php echo $row['location']; ?>" width="160" height="150">
+      <hr>
+          </div>
+      <?php } ?>
 
 			
 			</div>

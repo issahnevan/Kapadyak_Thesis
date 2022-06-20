@@ -1,24 +1,25 @@
 <?php session_start();?>
 <?php
     include('connect/connection.php');
-?>
+    ?>
  
-<?php
-if(isset($_POST["register"])){
-    $email = $_POST["email"];
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $confirm_password = $_POST["confirm_password"];
-    $first_name = $_POST["first_name"];
-    $middle_name = $_POST["middle_name"];
-    $last_name = $_POST["last_name"];
-    $dob = $_POST["dob"];
-    $sex = $_POST["sex"];
-    $contact_number = $_POST["contact_number"];
-    $address = $_POST["address"];
+    <?php
 
-    $check_query = mysqli_query($connect, "SELECT * FROM members where email_address ='$email'");
-    $rowCount = mysqli_num_rows($check_query);
+    if(isset($_POST["register"])){
+        $email = $_POST["email"];
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $confirm_password = $_POST["confirm_password"];
+        $first_name = $_POST["first_name"];
+        $middle_name = $_POST["middle_name"];
+        $last_name = $_POST["last_name"];
+        $dob = $_POST["dob"];
+        $sex = $_POST["sex"];
+        $contact_number = $_POST["contact_number"];
+        $address = $_POST["address"];
+
+        $check_query = mysqli_query($connect, "SELECT * FROM members where email_address ='$email'");
+        $rowCount = mysqli_num_rows($check_query);
 
         if(!empty($email) && !empty($password)){
             if($rowCount > 0){
@@ -28,13 +29,19 @@ if(isset($_POST["register"])){
                 </script>
                 <?php
             }else{
-                $password_hash = password_hash($password, PASSWORD_BCRYPT);
-
-                $result = mysqli_query($connect, "INSERT INTO members (email_address, username, password, confirm_password, first_name, middle_name, last_name, dob, sex, contact_number, address, email_status) VALUES ('$email', '$username', '$password_hash', '$confirm_password', '$first_name', '$middle_name', '$last_name', '$dob', '$sex', '$contact_number', '$address', 0)");    
-                if($result){
                     $otp = rand(100000,999999);
                     $_SESSION['otp'] = $otp;
                     $_SESSION['mail'] = $email;
+                    $_SESSION['username'] = $username;
+                    $_SESSION['password'] = $password;
+                    $_SESSION['confirm_password'] = $confirm_password;
+                    $_SESSION['first_name'] = $first_name;
+                    $_SESSION['middle_name'] = $middle_name;
+                    $_SESSION['last_name'] = $last_name;
+                    $_SESSION['dob'] = $dob;
+                    $_SESSION['sex'] = $sex;
+                    $_SESSION['contact_number'] = $contact_number;
+                    $_SESSION['address'] = $address;
                     require "Mail/phpmailer/PHPMailerAutoload.php";
                     $mail = new PHPMailer;
     
@@ -44,39 +51,40 @@ if(isset($_POST["register"])){
                     $mail->SMTPAuth=true;
                     $mail->SMTPSecure='tls';
     
-                    $mail->Username = 'aspirasneilanthonyc@gmail.com';
-                    $mail->Password = 'mfaejscvevhrobsa';
+                    $mail->Username = 'teamkapadyak2022@gmail.com';
+                    $mail->Password = 'hsqqhqktekjzabfj';
 
-                    $mail->setFrom('kapadyakofficial2022@gmail.com', 'Kapadyak');
+                    $mail->setFrom('teamkapadyak2022@gmail.com', 'Kapadyak');
                     $mail->addAddress($_POST["email"]);
     
                     $mail->isHTML(true);
                     $mail->Subject="Email Verification Using OTP";
-                    $mail->Body="<p>We've sent an email to $email.</p><h3>Your OTP code is $otp.<br></h3>
+                    $mail->Body="<p>Thankyou for joining Kapadyak! <br> To finish setting up, we've sent an email to $email.</p><h3><br>Your OTP code is $otp.<br></h3>
                     <br><br>
                     <p>Welcome, $first_name $last_name!</p>
-                    <b>-Kapadyak 2022</b>";
+                    <b>The Kapadyak Team</b>";
                     
-                    if(!$mail->send()){
-                    ?>
-                        <script>
-                            alert("<?php echo "Register Failed, Invalid Email "?>");
-                        </script>
-                    <?php
-                    }else{
-                    ?>
-                        <script>
-                            alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
-                            window.onload = function() {
-                            displaySecond();
-                        } 
-                        </script>
-                    <?php
-                    }
+                            if(!$mail->send()){
+                                ?>
+                                    <script>
+                                        alert("<?php echo "Invalid e-mail, please try again."?>");
+                                    </script>
+                                <?php
+                            }else{
+                                ?>
+                                <script>
+                                    alert("<?php echo "Register successfully, OTP sent to " . $email ."!"?>");
+                                    window.onload = function() {
+                                    displaySecond();
+                                    } 
+                                </script>
+                                <?php
+                            }
                 }
             }
         }
-    }
+    
+
 ?>
 
 
@@ -124,7 +132,7 @@ if(isset($_POST["register"])){
                     <div class="div-input2">
                        <input type="date" name="dob" placeholder="Birthday" title="Birthday" required>
                        <select name="sex" required>
-                            <option value="" disabled selected hidden> SEX </option> 
+                            <option value="" disabled selected hidden> Sex </option> 
                            <option value="male"> Male </option>
                            <option value="female"> Female </option>
                        </select>
@@ -168,6 +176,7 @@ if(isset($_POST["register"])){
             <div class="nextBtn" id="btnStep3"><input type="submit" value="Sign Up" class="Next"></div>
         </form>
         </div>
+       
 </div>
 
 </body>

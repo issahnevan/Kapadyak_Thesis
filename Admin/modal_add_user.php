@@ -63,18 +63,18 @@ if($repassword==$password)
  
 $conn->query("insert into user (fname,lname,mname,username,password) values('$firstname','$lastname','$middlename','$username','$password')");
   ?>
-                                   	<script>
-						 alert('Successfully Added');
+                           	  	<script>
+						 alert('You have successfully created an admin account.');
                        	window.location = 'admin_user.php';
-							</script>	
+							</script>
                                    <?php  
 }
 else
 {
  ?>
                                    	<script>
-						 alert('Password did not match! try again.');
-                       	window.location = 'admin_user.php';
+						 alert('Password did not match, try again.');
+                       	window.location = 'modal_add_user.php';
 							</script>	
                                    <?php 
  

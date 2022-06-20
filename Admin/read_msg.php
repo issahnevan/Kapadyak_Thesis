@@ -1,10 +1,11 @@
-<?php
- include('../session.php');
-  include('../dbcon.php'); 
 
-$query = $conn->query("select * from members where member_id = '$id2'");
-			$row = $query->fetch();
-		?>
+<?php include ('dbcon.php');?>
+<?php include ('session.php'); ?>
+<?php date_default_timezone_set('Asia/Manila');?>
+
+<?php
+$msg_id=$_GET['id'];
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,27 +14,19 @@ $query = $conn->query("select * from members where member_id = '$id2'");
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
-	<link rel="stylesheet" type="text/css" href="../style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-  <script src="../Scripts/index.js"></script>
-	<title>Profile | Kapadyak</title> 
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Message | Admin</title>
 </head>
 <body>
-<div class="add-post" id="addPost">
-		<div class="add-post-form">
-		<div class="close-button" onclick="hideAddPost()"><button>&times;</button></div>
-		<?php include 'change_profile_picture_modal.php';?>
-		</div>
-</div>
-<div class="index-container">
+    <div class="index-container">
 		<div class="index-sidenav">
-    <!DOCTYPE html>
+		<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
         rel="stylesheet"
@@ -69,7 +62,7 @@ $query = $conn->query("select * from members where member_id = '$id2'");
             </li>
 <!-- Newsfeed -->
             <li class="nav-item">
-                <a href="index.php" class="nav-link">
+                <a href="home.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path
@@ -84,7 +77,7 @@ $query = $conn->query("select * from members where member_id = '$id2'");
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Newsfeed</span>
+                <span class="link-text">Manage Newsfeed</span>
                 </a>
             </li>
 <!-- Rental -->
@@ -100,7 +93,7 @@ $query = $conn->query("select * from members where member_id = '$id2'");
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Rental</span>
+                <span class="link-text">Manage Rental</span>
                 </a>
             </li>
 <!-- Event -->
@@ -120,7 +113,7 @@ $query = $conn->query("select * from members where member_id = '$id2'");
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Event</span>
+                <span class="link-text">Manage Event</span>
                 </a>
             </li>
 <!-- Pre-loved -->
@@ -137,33 +130,13 @@ $query = $conn->query("select * from members where member_id = '$id2'");
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Pre-loved</span>
+                <span class="link-text">Manage Pre-loved</span>
                 </a>
             </li>
-<!-- Profile -->
-            <li class="nav-item">
-                <a href="personal_info_panel.php" class="nav-link highlight">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                <g class="fa-group">
-                    <path
-                        fill="currentColor"
-                        d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
-                        class="fa-secondary"
-                    ></path>
-                    <path
-                        fill="currentColor"
-                        fill-rule="evenodd" 
-                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-                        class="fa-primary"
-                    ></path>
-                </g>
-                </svg>
-                <span class="link-text">Profile</span>
-                </a>
-            </li>
+
 <!-- Message -->
             <li class="nav-item">
-                <a href="inbox.php" class="nav-link">
+                <a href="inbox.php" class="nav-link highlight">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path
@@ -178,11 +151,11 @@ $query = $conn->query("select * from members where member_id = '$id2'");
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Message</span>
+                <span class="link-text">Admin Messages</span>
                 </a>
             </li>
 <!-- Status -->
-            <li class="nav-item">
+<li class="nav-item">
                 <a href="member.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
                 <g class="fa-group">
@@ -198,91 +171,219 @@ $query = $conn->query("select * from members where member_id = '$id2'");
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Online</span>
+                <span class="link-text">Online Kapadyak </span>
                 </a>
             </li>
-<!-- Gallery -->
-            <li class="nav-item">
-                <a href="gallery.php" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
-                <path />
-                <path />
+
+
+
+<!-- Manage Admin -->
+<li class="nav-item">
+                <a href="admin_user.php" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path
                         fill="currentColor"
-                        d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
+                        d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
                         class="fa-secondary"
                     ></path>
                     <path
                         fill="currentColor"
-                        d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z"
+                        d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z"
                         class="fa-primary"
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Gallery</span>
+                <span class="link-text">Manage Admin</span>
                 </a>
             </li>
-            <li class="nav-item">
-<a href="tips.php" class="nav-link ">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
-<g class="fa-group">
-<path
-  fill="currentColor"
-  d="M0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5A1.5 1.5 0 0 0 0 1.5z"
-  class="fa-secondary"
-></path>
-<path
-  fill="currentColor"
- d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177V10.5z"
-  class="fa-primary"
-></path>
-</g>
-</svg>
-<span class="link-text"> Tips & Tricks</span>
-</a>
-</li>
-</ul>
-</nav>
+            
+            <!-- Manage Member -->
+<li class="nav-item">
+                <a href="data.php" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+                <g class="fa-group">
+                    <path
+                        fill="currentColor"
+                        d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
+                        class="fa-secondary"
+                    ></path>
+                    <path
+                        fill="currentColor"
+                         d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"
+                        class="fa-primary"
+                    ></path>
+                </g>
+                </svg>
+                <span class="link-text">Manage Member</span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
    
 </body>
 </html>		</div>
 
 		<div class="index-header">
-    <?php include '../Includes/Header.php'; ?>
+			<?php include 'Header.php'; ?>
 		</div>
 
-  <div class="index-content">
-    <div class="personal-container">
-    <div class="personal-title">Personal Information</div>
-    <div class="personal-form">
-      <div class="personal-profile" onclick="showAddPost()">					 	
-        <?php include('profile_picture.php'); ?>
-      </div>
-      <div class="personal-update-button">
-            <a href="personal_info_modal.php?id=<?php echo $id2; ?>">
-            <i class="bi bi-pencil"></i> Edit</a>
-        </div>
-      <div class="personal-details">
-        <div class="personal-details-name"><?php echo $row['first_name']." ".$row['middle_name']." ".$row['last_name']; ?></div>
-        <div>@<?php echo $row['username']; ?></div>
-        <div>Date of Birth:<label> <?php echo $row['dob']; ?></label></div>
-        <div>Contact No:<label> <?php echo $row['contact_number']; ?></label></div>
-        <div>Address:<label> <?php echo $row['address']; ?></label></div>
-        <div>Email Address:<label> <?php echo $row['email_address']; ?></label></div>
-        <div>Sex:<label> <?php echo $row['sex']; ?></label></div>
-      </div>
-      <div class="profile-activities">
-      <div class="profile-activities-title">Account Activities</div>
-      <div class="profile-activities-act"><?php include 'account_info_panel.php';?></div>
-      </div>
-      
-    </div>
-    
-    </div>
-    
-  
-</div>
+		<div class="index-content">
 
-</body>
-</html>
+<br />
+<body id="home">
+<center>
+<table><tr><td>
+<div class="alert alert-info">
+
+
+<?php
+ 
+
+$conn->query("update message set status='Read' where message_id='$msg_id'");
+
+$query = $conn->query("select * from message where message_id='$msg_id'") or die(mysql_error());
+while ($row = $query->fetch()) 
+{
+            
+$message_to=$row['member_id'];
+$message_from=$row['sender_id'];
+$message_subject=$row['subject'];
+$recep_access=$row['access'];
+
+}
+            
+            
+$msg_query = $conn->query("select * from message where member_id='$message_to' and sender_id='$message_from' and subject='$message_subject' or member_id='$message_from' and sender_id='$message_to' and subject='$message_subject' order by message_id ASC") or die(mysql_error());
+while ($msg_row = $msg_query->fetch()) 
+{
+$message_content=$msg_row['message_content'];
+$message_image=$msg_row['message_image'];
+$message_tox=$msg_row['member_id'];
+$message_fromx=$msg_row['sender_id'];
+$message_subjectx=$msg_row['subject'];
+$message_date=$msg_row['date_messaged'];
+$accessx=$msg_row['access'];
+              
+                
+if($accessx=="Admin")
+{
+$query = $conn->query("select * from user where user_id='$message_fromx'") or die(mysql_error());
+while ($row = $query->fetch()) 
+{
+$name= $row['fname']." ".$row['mname']." ".$row['lname']." - Admin";
+}  
+}
+else
+{
+$query = $conn->query("select * from members where member_id='$message_fromx'") or die(mysql_error());
+while ($row = $query->fetch()) 
+{
+    $pics=$row['image'];
+$name= $row['first_name']." ".$row['middle_name']." ".$row['last_name']."".$row['access'];
+}  
+}
+?>
+     
+<center>
+<table border="0" width="530">
+<tr>
+<td >
+              	    
+					<div class="form-group">
+						<label for="exampleInputEmail1">From: <?php echo $name; ?></label>
+					</div>
+                       </td> 
+                        
+                      </tr> 
+                    
+                      <tr>
+                
+                      <td >
+					<div class="form-group">
+						<label for="exampleInputPassword1">Subject: <?php echo $message_subject ?></label>
+					</div>
+                   </td>  
+                    
+                      </tr> 
+                     </table>
+                     
+                     
+                     
+                      <table border="0">
+                       <tr>
+                       <td width="530"> 
+				 <div class="panel panel-success">
+                                 <div class="panel-heading">
+                             Message
+                                 </div>
+                                 
+                                 	<div class="panel-body">
+                                    <center>
+                                    <table> 
+                                 <?php if($message_image=="../msg_images/"){}else{ ?> 
+                                 <tr>  
+                                <td>
+                                
+                              
+                                            <img src="<?php echo $message_image; ?>" width="500" height="250" alt="..." class="img-square thumbnail">
+                                                 
+                                             
+                              
+                                </td>
+                                </tr>
+                                <?php } ?>
+                                 <tr>
+                                <td width="700">
+                                  <textarea rows="5" readonly="true" class="form-control"> 	<?php  echo nl2br($message_content); ?></textarea>
+                                  
+                                       
+                      </td> 
+                      </tr></table>
+           </div>
+       </div>
+
+ </td></tr></table> 
+ <hr />              
+              <?php    
+		}
+        
+  ?> 
+ </center>
+  
+		  <form role="form" class="login_form" method="post" action="send_reply.php?id=<?php echo  $message_from; ?>" enctype="multipart/form-data">
+                 
+  	<input name="msg_id" type="hidden"   value="<?php echo $msg_id; ?>"/>
+    	<input name="subject" type="hidden"  value="<?php echo $message_subject; ?>"/>
+                     
+                 <table border="0" width="530"><tr>
+                      <table border="0">
+                       <tr>
+                       <td width="530"> 
+					<div class="form-group">
+						<label for="exampleInputPassword1">Quick Reply</label>
+						 <textarea rows="10" name="msg" class="form-control" id="exampleInputPassword1" spellcheck="true" placeholder="Write your Message here!" required="true"></textarea>
+					</div>
+                      </td>
+                       
+                      </tr>
+                      <tr>
+                      <td>
+                       <input type="file" name="image" title="click to add image to your post" /> <br />
+                  
+                   
+				 <button  class="btn btn-info"  ><i class="fa fa-check-square-o"></i> Send Reply</button>&nbsp; <a href="inbox.php" class="btn btn-default"  >Cancel</a>
+                      </td>
+                      </tr>
+                      
+                      </table>
+                      
+			</form>
+       </div>
+     
+       </td>
+       </tr>
+       </table>
+       
+            </body>

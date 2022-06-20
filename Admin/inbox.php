@@ -1,22 +1,18 @@
-<?php  
- date_default_timezone_set('Asia/Manila'); 
- include '../dbcon.php';	
- include '../session.php';
-  
- ?>
-
+<?php include ('dbcon.php');?>
+<?php include ('session.php'); ?>
+<?php date_default_timezone_set('Asia/Manila');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
-	<link rel="stylesheet" type="text/css" href="../style.css">
-  <title>Messages | Kapadyak</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Message | Admin</title>
 </head>
 <body>
-<div class="index-container">
+    <div class="index-container">
 		<div class="index-sidenav">
 		<!DOCTYPE html>
 <html lang="en">
@@ -24,7 +20,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
         rel="stylesheet"
@@ -60,7 +56,7 @@
             </li>
 <!-- Newsfeed -->
             <li class="nav-item">
-                <a href="index.php" class="nav-link">
+                <a href="home.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path
@@ -75,7 +71,7 @@
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Newsfeed</span>
+                <span class="link-text">Manage Newsfeed</span>
                 </a>
             </li>
 <!-- Rental -->
@@ -91,7 +87,7 @@
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Rental</span>
+                <span class="link-text">Manage Rental</span>
                 </a>
             </li>
 <!-- Event -->
@@ -111,7 +107,7 @@
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Event</span>
+                <span class="link-text">Manage Event</span>
                 </a>
             </li>
 <!-- Pre-loved -->
@@ -128,30 +124,10 @@
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Pre-loved</span>
+                <span class="link-text">Manage Pre-loved</span>
                 </a>
             </li>
-<!-- Profile -->
-            <li class="nav-item">
-                <a href="personal_info_panel.php" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                <g class="fa-group">
-                    <path
-                        fill="currentColor"
-                        d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
-                        class="fa-secondary"
-                    ></path>
-                    <path
-                        fill="currentColor"
-                        fill-rule="evenodd" 
-                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-                        class="fa-primary"
-                    ></path>
-                </g>
-                </svg>
-                <span class="link-text">Profile</span>
-                </a>
-            </li>
+
 <!-- Message -->
             <li class="nav-item">
                 <a href="inbox.php" class="nav-link highlight">
@@ -169,11 +145,11 @@
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Message</span>
+                <span class="link-text">Admin Messages</span>
                 </a>
             </li>
 <!-- Status -->
-            <li class="nav-item">
+<li class="nav-item">
                 <a href="member.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
                 <g class="fa-group">
@@ -189,69 +165,103 @@
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Online</span>
+                <span class="link-text">Online Kapadyak </span>
                 </a>
             </li>
-<!-- Gallery -->
-            <li class="nav-item">
-                <a href="gallery.php" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
-                <path />
-                <path />
+
+
+
+<!-- Manage Admin -->
+<li class="nav-item">
+                <a href="admin_user.php" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path
                         fill="currentColor"
-                        d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
+                        d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
                         class="fa-secondary"
                     ></path>
                     <path
                         fill="currentColor"
-                        d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z"
+                        d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z"
                         class="fa-primary"
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Gallery</span>
+                <span class="link-text">Manage Admin</span>
                 </a>
             </li>
-			</li>
-        
-		<!-- Manage Member -->
-		<li class="nav-item">
-<a href="feed_tip.php" class="nav-link ">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
-<g class="fa-group">
-<path
-  fill="currentColor"
-  d="M0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5A1.5 1.5 0 0 0 0 1.5z"
-  class="fa-secondary"
-></path>
-<path
-  fill="currentColor"
- d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177V10.5z"
-  class="fa-primary"
-></path>
-</g>
-</svg>
-<span class="link-text"> Tips & Tricks</span>
-</a>
-</li>
-</ul>
-</nav>
+            
+            <!-- Manage Member -->
+<li class="nav-item">
+                <a href="data.php" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+                <g class="fa-group">
+                    <path
+                        fill="currentColor"
+                        d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
+                        class="fa-secondary"
+                    ></path>
+                    <path
+                        fill="currentColor"
+                         d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"
+                        class="fa-primary"
+                    ></path>
+                </g>
+                </svg>
+                <span class="link-text">Manage Member</span>
+                </a>
+            </li>
+			<li class="nav-item">
+                <a href="feed_tip.php" class="nav-link ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+                <g class="fa-group">
+                    <path
+                        fill="currentColor"
+                        d="M0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5A1.5 1.5 0 0 0 0 1.5z"
+                        class="fa-secondary"
+                    ></path>
+                    <path
+                        fill="currentColor"
+                       d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177V10.5z"
+                        class="fa-primary"
+                    ></path>
+                </g>
+                </svg>
+                <span class="link-text">Manage Tips</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+     
    
 </body>
 </html>		</div>
 
 		<div class="index-header">
-			
-			<?php include '../Includes/Header.php'; ?>
+			<?php include 'Header.php'; ?>
 		</div>
 
 		<div class="index-content">
-		<Center><h1>Messages</h1>
-			<?php include 'inbox_function.php'; ?>
-		<center><table width="1200" border="0"><tr><td><br><br>
-		<center><table cellpadding="0" cellspacing="0" border="0" class="table table-bordered" id="example" >
+  
+   <center> <table width="1200" border="0"><tr><td>
+  <div class="container-fluid">
+<div class="row">
+  		<div class="col-md-3">
+            	<div class="alert alert-info">
+             
+                  <hr />
+               <div id="load_tweets2"> 
+       </div>
+       </div>
+       </div>
+			<div class="col-md-9">
+   
+ 
+	<div class="alert alert-success"><i class="fa fa-envelope-o"></i> My Inbox  </div>
+ 
+<div class="alert alert-info">
+	<table cellpadding="0" cellspacing="0" border="0" class="table table-bordered" id="example" >
 	
  
 		<thead>
@@ -266,7 +276,7 @@
 		</thead>
 		<tbody>
 		<?php
-		$senderquery = $conn->query("select distinct message_id,sender_id from message where member_id='$id2'") or die(mysql_error());
+		$senderquery = $conn->query("select distinct message_id,sender_id from message where member_id='$session_id'") or die(mysql_error());
 	$num_row = $senderquery->rowcount();
     	if( $num_row <= 0 ) 
         {      
@@ -291,28 +301,27 @@
             $access=$msgrow['access'];
     
     
-  
-			if($access=="Admin")
-			{
-			 $sndrquery = $conn->query("select * from user where user_id='$sssss'") or die(mysql_error());
-				while ($sndrrow = $sndrquery->fetch())
-				 { 
-					$ppiicc="../images/logo_forum.png";
-				  $sendby=$sndrrow['fname']." ".$sndrrow['mname']." ".$sndrrow['lname']." ( ADMIN )";
-		   
-				}
-				  
-      }
-        else
-      {
+    if($access=="Admin")
+    {
+     $sndrquery = $conn->query("select * from user where user_id='$sssss'") or die(mysql_error());
+		while ($sndrrow = $sndrquery->fetch())
+         { 
+            $ppiicc="../images/logo_forum.png";
+		  $sendby=$sndrrow['fname']." ".$sndrrow['mname']." ".$sndrrow['lname']." ( Admin )";
+   
+		}
+	      
+    }
+    else
+    {
          $sndrquery = $conn->query("select * from members where member_id='$sssss'") or die(mysql_error());
 		while ($sndrrow = $sndrquery->fetch())
          { 
             $ppiicc=$sndrrow['image'];
-		  $sendby=$sndrrow['first_name']." ".$sndrrow['middle_name']." ".$sndrrow['last_name']."";
+		  $sendby=$sndrrow['first_name']." ".$sndrrow['middle_name']." ".$sndrrow['last_name']." ( ".$sndrrow['access']." )";
    
 		}
-	  
+		
     }
 		?>
 		<tr>
@@ -368,13 +377,8 @@
 			});
 			</script>
   
-		<a data-placement="top" title="Click to delete meassage" id="delete<?php echo $msg_id; ?>" href="delete_msg.php<?php echo '?id='.$msg_id; ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
-			<script type="text/javascript">
-			$(document).ready(function(){
-				$('#delete<?php echo $msg_id; ?>').tooltip('show');
-				$('#delete<?php echo $msg_id; ?>').tooltip('hide');
-			});
-			</script>
+		<a data-placement="top" title="Click to delete meassage" id="delete<?php echo $msg_id; ?>" href="delete_message.php<?php echo '?id='.$msg_id; ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+		
             
 		</td>
         <?php }  ?>
@@ -383,7 +387,14 @@
 	
 		</tbody>
 	</table>
-		</div>
+
 </div>
-</body>
+</div>
+</td></tr></table>
+  </center>
+   
+  </div>
+ 
+  </body>
+    </div>
 </html>
