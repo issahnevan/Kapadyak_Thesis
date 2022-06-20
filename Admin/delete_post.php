@@ -1,8 +1,6 @@
-<?php    include('../dbcon.php'); ?>
-       <?php    include('../session.php'); ?>
 <?php
-  
-
+	include('dbcon.php');
+	include ('session.php');
 
     $id=$_GET['id'];
    	$post_query = $conn->query("select * from post LEFT JOIN members on post.member_id = members.member_id where post_id='$id'");
@@ -14,8 +12,6 @@
 ?>
 <form target="_self" method="post" action="delete_post.php">
 <input name="del_id" type="hidden" value="<?php  echo $id;  ?>" />
-<input name="member_id" type="hidden" value="<?php  echo $post_row['member_id'];  ?>" />
-
 
 <div class="alert alert-danger">
 <center>
@@ -60,22 +56,12 @@ Are you sure you want to delete this Post?
 							if (isset($_POST['delete'])){
 					  
                          $del_id = $_POST['del_id'];
-                           $member_id = $_POST['member_id'];
-                           $topic = $_POST['topic'];
 					   
-							
+								$conn->query("delete  from post where post_id = '$del_id'");
 					
-                    
-                    	$post_query = $conn->query("select * from members where member_id='$member_id'");
-				while($post_row = $post_query->fetch())
-                {
-                $topic=$post_row['topic_ctr']-1;
-                }
-                $conn->query("update members set topic_ctr='$topic' where member_id='$member_id' ");
-                
-                	$conn->query("delete  from post where post_id = '$del_id'");
                     ?>
-			 <script>
-          window.location = 'home.php?id=<?php echo $del_id;?>';
-                         </script>
+					<script>
+			 window.location = 'home.php?id=<?php echo $del_id;?>';
+							</script>
+	
                      <?php   }		?>

@@ -1,9 +1,9 @@
- 
- 
-     <?php
-     require '../dbcon.php';
-     include '../session.php';
-      ?>
+<?php
+     require 'dbcon.php';
+     include 'session.php';
+     
+?>
+
   <br />
   <br />
   <center>
@@ -52,7 +52,7 @@
     
          <tr>
         
-   <td rowspan="2"  ><img src="<?php echo "../".$row['image']; ?>" width="40" height="40" class="img-square" /></td>
+   <td rowspan="2"  ><img src="<?php echo$row['image']; ?>" width="40" height="40" class="img-square" /></td>
     <td rowspan="2">&nbsp;</td>
         	<td width="150"><?php echo $row['username']." | ".$row['access']; ?> &nbsp; <a href="compose_msg.php?id=<?php echo $id;  ?>" title="click to send a message to <?php echo $row['firstname']." ".$row['middlename']." ".$row['lastname']; ?>"><i class="fa fa-comment-o"></i></a></td> 
  

@@ -31,12 +31,7 @@ date_default_timezone_set('Asia/Manila');
 		</div>
 
 		<div class="index-content">
-        <div class="comment-content">
-            <?php
-            $post_query = $conn->query("select * from post where post_id='$get_id'");
-            while($post_row = $post_query->fetch())
-            {  
-                
+     
             $ppppp=$post_row['post_id'];
             $mmmmm=$post_row['member_id'];
             $ttttt=$post_row['topic'];
@@ -83,7 +78,7 @@ date_default_timezone_set('Asia/Manila');
                     </div>
                 </div>
                <div class="comment-body">
-                    <?php if($post_row['post_image']=="../post_images/"){  ?>
+                     <?php if($post_row['post_image']=="../post_images/"){  ?>
                         <div class="comment-body-text">
                             <?php echo nl2br($post_row['post_content']); ?>
                         </div>

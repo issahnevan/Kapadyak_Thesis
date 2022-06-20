@@ -1,6 +1,5 @@
 <?php
  include('../dbcon.php');
- include('../session.php');
   $recep_id=$_GET['id'];
   	$query = $conn->query("select * from members where member_id='$recep_id'") or die(mysql_error());
 		while ($row = $query->fetch()) 

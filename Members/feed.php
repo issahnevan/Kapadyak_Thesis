@@ -130,7 +130,16 @@ include('../session.php');
                   <span>(<font color="blue"><?php echo $post_row['replies']; ?></font>)</span>
                   </li>
 
-                
+                  <div class="card-body-title">  
+               <?php 
+              if($post_row['post_image']!="../post_images/"){ ?> 
+               <img src="<?php echo $post_row['post_image']?>" alt="..." class="card-picture">
+               <div class="card-title-float"><?php echo $post_row['post_title']; ?></div><?php } 
+               else{
+                echo $post_row['post_title']; 
+              }
+              ?>
+
                 </ul>
               </div>
 

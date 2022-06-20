@@ -92,12 +92,12 @@ include('connect/connection.php');
                 <div><input class="login-textbox" type="text" name="qwe" placeholder="Email"></div>
                 <div><input class="login-textbox" id="showpass"  type="password" name="password" placeholder="Password"></div>
                 <div><input class="login-checkbox" onclick="myFunction()" type="checkbox"> Show Password</div>
-                <div><input class="login-button" type="submit" name ="loginn" value="Log In" class="logBtnSubmit"></div>
+                <div><input class="login-button" type="submit" name ="loginn" value="Log In"></div>
             <div class="login-create">
-            <a href="reset_password.php">Forgot Password?</a><br><br>
+            <a href="reset.php">Forgot Password?</a><br><br>
             Don't have an account?
       
-            <a href="user_register.php">Create an Account!</a>
+            <br><a href="user_register.php">Create an Account!</a>
           
         </div>
         </form>

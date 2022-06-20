@@ -1,89 +1,78 @@
 <?php
-require '../dbcon.php';
-include('../session.php');
+require 'dbcon.php';
+include('session.php');
 ?>
-<?php  date_default_timezone_set('Asia/Manila'); ?>
-<?php $get_id=$_GET['id']; ?>
- 
- 
-<body id="home">
-  
-    <center>
-        <table >
-        <tr>
-        <td>
- 
-            <div class="container-fluid">
-	 
-                <div class="row">
-		 
-         
-         
-         
-                    <div class="col-md-3">
-                    <div class="alert alert-info">
-                    <form method="post" action="search_result.php">
-                
-                    <table>
-                    <tr>
-                    <td>
-                    <input type="text" name="search" class="form-control" placeholder="Search . ." required> 
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>
-                    <button type="submit" class="btn btn-info"><li class="fa fa-search"></li> Search</button>
-                    </td>
-                    </tr></table>
-                    </form>
 
-                    <hr />
-                  
-                    </div>
-                    </div>
-			
-            
-            
-            
-            
-                        <div class="col-md-9">
-                            <div class="jumbotron alert-success">
-  
- 
-                            <?php
-                            $post_query = $conn->query("select * from post where post_id='$get_id'");
-                            while($post_row = $post_query->fetch())
-                            {  
-							 
-                            $ppppp=$post_row['post_id'];
-                            $mmmmm=$post_row['member_id'];
-                            $ttttt=$post_row['topic'];
-                            $views=$post_row['views']+1;
-                            $access=$post_row['access'];
-                            $replies=$post_row['replies'];
-                            $threads=$post_row['threads'];
+<?php  
+date_default_timezone_set('Asia/Manila'); 
+?>
+
+<?php 
+$get_id=$_GET['id']; 
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="../Scripts/index.js"></script>
+	<link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Home | Admin</title>
+</head>
+<body>
+    <div class="add-post" id="addPost">
+		<div class="add-post-form">
+		<?php include 'poster.php';?>
+		</div>
+	</div>
+    <div class="index-container">
+		<div class="index-sidenav">
+			<?php include 'Sidebar.php'; ?>
+		</div>
+
+		<div class="index-header">
+			<?php include 'Header.php'; ?>
+		</div>
+
+		<div class="index-content">
+			<button onclick="showAddPost()">
+				<div class="add-post-button"></div>
+			</button>
+
+<center>
+      
+<?php
+    $post_query = $conn->query("select * from post where post_id='$get_id'");
+    while($post_row = $post_query->fetch())
+    {  
+    $ppppp=$post_row['post_id'];
+    $mmmmm=$post_row['member_id'];
+    $ttttt=$post_row['topic'];
+    $views=$post_row['views']+1;
+    $access=$post_row['access'];
+    $replies=$post_row['replies'];
+    $threads=$post_row['threads'];
                                  
                             	
-                            if($access=="Admin")
-                            {   
-                            $pmem_query = $conn->query("select * from user where user_id='$mmmmm'");
-                            while($pmem_row = $pmem_query->fetch())
-                            {
-                            $pmimg="../../images/logo_forum.png";
-                            $pmname=$pmem_row['fname']." ".$pmem_row['mname']." ".$pmem_row['lname']." - Admin";
-                            } 
+    if($access=="Admin") {   
+    $pmem_query = $conn->query("select * from user where user_id='$mmmmm'");
+    while($pmem_row = $pmem_query->fetch()) {
+        $pmimg="../images/logo_forum.png";
+        $pmname=$pmem_row['fname']." ".$pmem_row['mname']." ".$pmem_row['lname']." - Admin";
+    } 
                                  
-                            }
-                            else
-                            {   
-                            $pmem_query = $conn->query("select * from members where member_id='$mmmmm'");
-                                 
-                            while($pmem_row = $pmem_query->fetch())
-                            {
-                            $pmimg="../".$pmem_row['image'];
-                            $pmname=$pmem_row['first_name']." ".$pmem_row['middle_name']." ".$pmem_row['last_name'];
-                            } 
-                            }
-                            ?>
+    } else {   
+    $pmem_query = $conn->query("select * from members where member_id='$mmmmm'");
+    while ($pmem_row = $pmem_query->fetch()) {
+        $pmimg= $pmem_row['image'];
+        $pmname=$pmem_row['first_name']." ".$pmem_row['middle_name']." ".$pmem_row['last_name'];
+    } 
+        }
+?>
                  
             
 									 
@@ -121,14 +110,14 @@ include('../session.php');
                                         <div class="panel-body">
                                         
                                       
-                                        <?php if($post_row['post_image']=="../../post_images/"){  ?>
+                                        <?php if($post_row['post_image']=="post_images/"){  ?>
                                             <div class="col-md-12">
                                         <textarea class="form-control" rows="4" readonly="true"><?php  echo nl2br($post_row['post_content']); ?></textarea>  </div> 
                                         </div>
                                     <?php    }else{ ?>
                                           <div class="col-md-4">
                                         
-                                        <img src="<?php echo "../".$post_row['post_image']; ?>" width="200" height="200" alt="..." class="img-square thumbnail"/>
+                                        <img src="<?php echo $post_row['post_image']; ?>" width="200" height="200" alt="..." class="img-square thumbnail"/>
                                         
                                         </div>
                                        
@@ -147,7 +136,7 @@ include('../session.php');
                                 </table>
                 
                 
-                <div class="pull-left"> <h2>&nbsp;&nbsp;&nbsp;&nbsp;Threads</h2> </div> 
+                <div class="pull-left"> <h2>&nbsp;&nbsp;&nbsp;&nbsp;Add a Comment </h2> </div> 
                             
                                 <center>
 				                <table>
@@ -165,7 +154,7 @@ include('../session.php');
                                     $cmem_query = $conn->query("select * from user where user_id='$cm_id'");
 				                    while($cmem_row = $cmem_query->fetch())
                                     {
-				                    $cpics ="../../images/logo_forum.png";
+				                    $cpics ="../images/logo_forum.png";
                                     $cmname =$cmem_row['fname']." ".$cmem_row['mname']." ".$cmem_row['lname']." - Admin";
                                     }
                                 }
@@ -174,7 +163,7 @@ include('../session.php');
                                     $cmem_query = $conn->query("select * from members where member_id='$cm_id'");
 				                    while($cmem_row = $cmem_query->fetch())
                                     {
-				                    $cpics ="../".$cmem_row['image'];
+				                    $cpics =$cmem_row['image'];
                                     $cmname =$cmem_row['first_name']." ".$cmem_row['middle_name']." ".$cmem_row['last_name']."   ".$cmem_row['access'];
                                     }
                                 }
@@ -208,7 +197,7 @@ include('../session.php');
                                     <table border="0"  width="670">
                                     <tr>
                                     <td>
-                                    <?php if($cimg=="../../comment_images/")
+                                    <?php if($cimg=="../comment_images/")
                                     { ?>   
                                     <div class="col-md-12">
                                     
@@ -217,7 +206,7 @@ include('../session.php');
                                     </div>                                   
                                     <?php }else{ ?> 
                                     <div class="col-md-4">
-                                    <img src="<?php echo "../".$cimg ?>" width="200" height="200" alt="..." class="img-square thumbnail" />
+                                    <img src="<?php echo $cimg ?>" width="200" height="200" alt="..." class="img-square thumbnail" />
                                     </div>
                                     <div class="col-md-8">
                                  
@@ -246,7 +235,7 @@ include('../session.php');
                                     $rmem_query = $conn->query("select * from user where user_id='$rm_id'");
                     				while($rmem_row = $rmem_query->fetch())
                                     {
-                    				$rpics ="../../images/logo_forum.png";
+                    				$rpics ="../images/logo_forum.png";
                                     $rmname =$rmem_row['fname']." ".$rmem_row['mname']." ".$rmem_row['lname']." - Admin";
                                     }
                                     }
@@ -255,7 +244,7 @@ include('../session.php');
                                     $rmem_query = $conn->query("select * from members where member_id='$rm_id'");
                     				while($rmem_row = $rmem_query->fetch())
                                     {
-                    				$rpics ="../".$rmem_row['image'];
+                    				$rpics = $rmem_row['image'];
                                     $rmname =$rmem_row['first_name']." ".$rmem_row['middle_name']." ".$rmem_row['last_name']." ".$rmem_row['access'];
                                     }
                                     }
@@ -286,7 +275,7 @@ include('../session.php');
                                             <div class="panel-body">
                                                 
                                                 
-                                                <?php if($rimg=="../../repz_images/"){ ?>  
+                                                <?php if($rimg=="../repz_images/"){ ?>  
                                                 <div class="col-md-12">
                                               
                                                  <textarea class="form-control" rows="3" readonly="true"> <?php  echo nl2br($repz_row['reply_content']); ?></textarea>
@@ -294,7 +283,7 @@ include('../session.php');
                                                 </div>
                                                 <?php }else{ ?> 
                                                 <div class="col-md-4">
-                                                <img src="<?php echo "../".$rimg ?>" width="200" height="200" alt="..." class="img-square thumbnail"/>
+                                                <img src="<?php echo $rimg ?>" width="200" height="200" alt="..." class="img-square thumbnail"/>
                                                 </div>
                                                 <div class="col-md-8">
                                                 

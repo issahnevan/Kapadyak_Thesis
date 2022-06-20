@@ -15,8 +15,8 @@ $session_Lastname = $_SESSION['SessionLastname'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../../Scripts/index.js"> </script>
-    <link rel="stylesheet" href="../../style.css">
+    <script src="../Scripts/index.js"> </script>
+    <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
         rel="stylesheet"
@@ -27,7 +27,7 @@ $session_Lastname = $_SESSION['SessionLastname'];
 
     <header>
         <div class="header-logo" id="headerLogo">
-            <a href="home.php"><img src="../../Images/logo.png" >
+            <a href="home.php"><img src="../Images/logo.png" >
                 <span class="header-logo-text">ADMIN</span>
             </a>
         </div>
@@ -46,7 +46,7 @@ $session_Lastname = $_SESSION['SessionLastname'];
         </div>
         <div class="header-links">
             <span class="profile-username" onclick="showMenu()">
-              <img src=" <?php if($access=="Admin"){echo  "../../images/logo_forum.png";}else{echo  $post_row['image'];}?>" width="40" height="40" alt="..." class="img-square">
+              <img src=" <?php if($access=="Admin"){echo  "../images/logo_forum.png";}else{echo  $post_row['image'];}?>" width="40" height="40" alt="..." class="img-square">
 
 
 
@@ -55,7 +55,7 @@ $session_Lastname = $_SESSION['SessionLastname'];
             <div class="profile-main" id="profile">
                 <div class="profile-menu">
                     <ul>
-                        <li><a href="../logout.php">Logout, Admin.</a></li>
+                        <li><a href="logout.php">Logout - Admin.</a></li>
                     <ul>
                 </div>
             </div>

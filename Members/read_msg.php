@@ -60,12 +60,12 @@ $msg_id=$_GET['id'];
   
       if($accessx=="Admin")
       {
-
+        $pics = "../images/logo_forum.png";
         $query = $conn->query("select * from user where user_id='$message_fromx'") or die(mysql_error());
         while ($row = $query->fetch()) 
         {
-          "../images/logo_forum.png";
-          $name= $row['fname']." ".$row['mname']." ".$row['lname']." - Admin";
+          
+          $name= $row['fname']." ".$row['mname']." ".$row['lname']." ( ADMIN )";
         }  
       }
         else

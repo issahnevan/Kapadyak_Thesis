@@ -1,8 +1,8 @@
     
     
      <?php
-     require '../dbcon.php';
-     require '../session.php';
+     require 'dbcon.php';
+     require 'session.php';
     ?>
 
 <?php  date_default_timezone_set('Asia/Manila'); ?>
@@ -21,11 +21,11 @@
 <body>
     <div class="index-container">
 		<div class="index-sidenav">
-			<?php include '../Sidebar.php'; ?>
+			<?php include 'Sidebar.php'; ?>
 		</div>
 
 		<div class="index-header">
-			<?php include '../header.php'; ?>
+			<?php include 'header.php'; ?>
 		</div>
 
 		<div class="index-content">
@@ -49,8 +49,7 @@
      
 
       <br />
-		<h4 class="panel-title">COMPOSE TOPIC ( * is Required ) </h4>
- 
+		
     <br />
   </div>
   <div class="panel-body">
@@ -65,15 +64,8 @@
                          
     <table width="800">
     <td>
-    *Select Topic:<br /><br />
-     <select name="topic" class="form-control">
-    <option>FEED</option>
-      <option>PRE LOVED</option>
-        <option>RENTAL</option>
-          <option>EVENTS</option>
-          <!-- <option>PROGRAMMING</option>
-          <option>HARDWARE</option> -->
-    </select>
+     Tips and Tricks :<br /><br />
+     
     <br />   <tr>
  
     </td>
@@ -90,8 +82,8 @@
                                 <br />
                                   <!-- <input type="url" name="link" class="form-control" placeholder="Enter URL" >
                                   <br /> -->
-                                   Topic Image:<br /><br />
-                                 <input type="file" name="image" title="click to add image to your post" /> 
+
+                               
 							
     </td>
     </tr>
@@ -108,69 +100,32 @@
 							 
                                     
 
-                                $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-                                $image_name = addslashes($_FILES['image']['name']);
-                                $image_size = getimagesize($_FILES['image']['tmp_name']);
-
-                                move_uploaded_file($_FILES["image"]["tmp_name"], "../../post_images/" . $_FILES["image"]["name"]);
-                                $location = "../../post_images/" . $_FILES["image"]["name"];
+                              
 						 
-                                $topic = $_POST['topic'];
+                              
 							 	$post_title = $_POST['post_title'];
 								$post_content = $_POST['post_content'];
 								$date_posted = date('m'.'/'.'d'.'/'.'Y')." | ".date("h:i:sa");
                                
       
-								$conn->query("insert into post (member_id,date_posted,post_content,post_title,post_image,topic,access) values('$session_id','$date_posted','$post_content','$post_title','$location','$topic','Admin')");
-						if($topic=="FEED")
-                        {
-						  
+								$conn->query("insert into post (member_id,date_posted,post_content,post_title,topic,access) values('$session_id','$date_posted','$post_content','$post_title','TIPS','Admin')");
+				
 			 
-                        	?>
-                            
+                        	?>         
 							<script>
-								window.location = 'home.php';
+								 window.location = 'feed_tip.php';
 							</script>	
-							<?php
-                            	}
-                        elseif($topic=="PRE LOVED")
-                        {
-                           	?>
+					
                             
-							<script>
-								window.location = 'feed_pre.php';
-							</script>	
-							<?php 
-                        }
-                        elseif($topic=="RENTAL")
-                        {
-                           	?>
+							
                             
-							<script>
-								window.location = 'feed_rental.php';
-							</script>	
-							<?php 
-                        }
-                       elseif($topic=="EVENTS")
-                        {
-                          	?>
-                            
-							<script>
-								window.location = 'feed_events.php';
-							</script>	
 							
 							<?php  
                         }
                             
-                             } ?>
+                              ?>
 	
-  </div>
-  
-     
-</div>
  
- 
-		</div>
 	</div>
  
   </body>

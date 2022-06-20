@@ -44,9 +44,11 @@ $session_Lastname = $_SESSION['SessionLastname'];
                 </form>
              </div> 
         </div>
+
+
         <div class="header-links">
             <span class="profile-username" onclick="showMenu()">
-              <img src=" <?php if($access=="Admin"){echo  "../images/logo_forum.png";}else{echo  $post_row['image'];}?>" width="40" height="40" alt="..." class="img-square">
+              <img src=" <?php  echo $pics; ?>" >
 
 
 

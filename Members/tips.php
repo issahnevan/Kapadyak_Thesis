@@ -1,10 +1,11 @@
-<?php
- include('../session.php');
-  include('../dbcon.php'); 
+<?php  
+error_reporting(0);
 
-$query = $conn->query("select * from members where member_id = '$id2'");
-			$row = $query->fetch();
-		?>
+$conn = new PDO('mysql:host=localhost;dbname=db_kapadyak', 'root', '');
+include('../session.php');
+
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,20 +15,18 @@ $query = $conn->query("select * from members where member_id = '$id2'");
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
 	<link rel="stylesheet" type="text/css" href="../style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-  <script src="../Scripts/index.js"></script>
-	<title>Profile | Kapadyak</title> 
+	<title>Rental | Kapadyak</title>
 </head>
 <body>
-<div class="add-post" id="addPost">
+  <!-- floating add post  -->
+	<div class="add-post" id="addPost">
 		<div class="add-post-form">
-		<div class="close-button" onclick="hideAddPost()"><button>&times;</button></div>
-		<?php include 'change_profile_picture_modal.php';?>
+		<?php include 'poster.php';?>
 		</div>
-</div>
-<div class="index-container">
+	</div>
+    <div class="index-container">
 		<div class="index-sidenav">
-    <!DOCTYPE html>
+		<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -89,7 +88,7 @@ $query = $conn->query("select * from members where member_id = '$id2'");
             </li>
 <!-- Rental -->
 <li class="nav-item">
-                <a href="feed_rental.php" class="nav-link">
+                <a href="feed_rental.php" class="nav-link ">
                 <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-bicycle" viewBox="0 0 16 16">
                 <path />
                 <g class="fa-group">
@@ -142,7 +141,7 @@ $query = $conn->query("select * from members where member_id = '$id2'");
             </li>
 <!-- Profile -->
             <li class="nav-item">
-                <a href="personal_info_panel.php" class="nav-link highlight">
+                <a href="personal_info_panel.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path
@@ -223,8 +222,11 @@ $query = $conn->query("select * from members where member_id = '$id2'");
                 <span class="link-text">Gallery</span>
                 </a>
             </li>
-            <li class="nav-item">
-<a href="tips.php" class="nav-link ">
+            </li>
+        
+        <!-- Manage Member -->
+        <li class="nav-item">
+<a href="tips.php" class="nav-link highlight ">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
 <g class="fa-group">
 <path
@@ -246,43 +248,70 @@ $query = $conn->query("select * from members where member_id = '$id2'");
 </nav>
    
 </body>
-</html>		</div>
-
-		<div class="index-header">
-    <?php include '../Includes/Header.php'; ?>
+</html>
 		</div>
 
-  <div class="index-content">
-    <div class="personal-container">
-    <div class="personal-title">Personal Information</div>
-    <div class="personal-form">
-      <div class="personal-profile" onclick="showAddPost()">					 	
-        <?php include('profile_picture.php'); ?>
-      </div>
-      <div class="personal-update-button">
-            <a href="personal_info_modal.php?id=<?php echo $id2; ?>">
-            <i class="bi bi-pencil"></i> Edit</a>
-        </div>
-      <div class="personal-details">
-        <div class="personal-details-name"><?php echo $row['first_name']." ".$row['middle_name']." ".$row['last_name']; ?></div>
-        <div>@<?php echo $row['username']; ?></div>
-        <div>Date of Birth:<label> <?php echo $row['dob']; ?></label></div>
-        <div>Contact No:<label> <?php echo $row['contact_number']; ?></label></div>
-        <div>Address:<label> <?php echo $row['address']; ?></label></div>
-        <div>Email Address:<label> <?php echo $row['email_address']; ?></label></div>
-        <div>Sex:<label> <?php echo $row['sex']; ?></label></div>
-      </div>
-      <div class="profile-activities">
-      <div class="profile-activities-title">Account Activities</div>
-      <div class="profile-activities-act"><?php include 'account_info_panel.php';?></div>
-      </div>
-      
-    </div>
-    
-    </div>
-    
-  
-</div>
+		<div class="index-header">
+			<?php include '../Includes/Header.php'; ?>
+		</div>
 
-</body>
-</html>
+		<div class="index-content">
+
+<div class="feed-cards">
+<?php  
+    $post_query = $conn->query("select * from post LEFT JOIN members on post.member_id = members.member_id where topic='TIPS' order by post_id DESC");
+    while($post_row = $post_query->fetch()){
+
+    $ppppp=$post_row['post_id'];
+
+    $access_query = $conn->query("select * from post where post_id='$ppppp'");
+    while($access_row = $access_query->fetch())
+    {
+    $access=$access_row['access'];
+    $user_idx=$access_row['member_id'];
+    }
+?>
+  <div class="feed-card">
+    
+    <div class="feed-card-heading">
+      <table border="0">
+      <tr>
+        <th rowspan="2"> <img src="<?php if($access=="Admin"){echo  "../images/logo_forum.png";}else{echo  $post_row['image'];}?>" width="40" height="40" alt="..." class="img-square"> </th>
+      
+        <td class="card-heading-name">
+          <?php 
+
+          if($access=="Admin")
+          { 
+          $name_query = $conn->query("select * from user where user_id='$user_idx'");
+          while($name_row = $name_query->fetch())
+          {
+          echo $name_row['lname']." ".$name_row['fname']." ".$name_row['mname']." - Admin";
+          }
+
+          }
+        
+          ?>
+        </td>
+        
+      </tr>
+     
+      </table>
+    </div>
+   
+    <div class="feed-card-body">
+
+              <div class="card-body-title">  
+               <?php echo $post_row['post_title']; ?>
+              </div>
+              <div class="card-popup">
+              <a href="tips_byu.php?id=<?php echo $ppppp ?>">View Post</a>
+              </div>
+              
+    </div>
+              
+  </div>
+
+
+<?php } ?> 
+</div>

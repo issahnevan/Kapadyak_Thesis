@@ -1,30 +1,31 @@
-<?php 
-include '../dbcon.php';
-include '../session.php';
-?>
+<?php    include('dbcon.php'); ?>
+<?php    include('session.php'); ?>
 
+    
+ 
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
+     <script src="../../Scripts/index.js"></script>
+	<link rel="ICON" type="image/x-icon" href="../../Images/logo.ico">
 	<link rel="stylesheet" type="text/css" href="../style.css">
-	<title>Messages | Kapadyak</title>
+	<title>Home | Admin</title>
 </head>
 <body>
-    <div class="index-container">
+<div class="index-container">
 		<div class="index-sidenav">
-			<?php include '../Includes/Sidebar.php'; ?>
+			<?php include 'Sidebar.php'; ?>
 		</div>
 
 		<div class="index-header">
-			<?php include '../Includes/Header.php'; ?>
+			<?php include 'Header.php'; ?>
 		</div>
 
-		<div class="index-content">
-
+  <body id="home">
    	<?php   
        
        $get_id=$_GET['id'];
@@ -48,6 +49,14 @@ include '../session.php';
 	 
 		<div class="row">
 		 
+			<div class="col-md-3">
+            	<div class="alert alert-info">
+           
+                  <hr />
+
+
+       </div>
+       </div>
 			<div class="col-md-9">
           
 						<div class="jumbotron alert-info">
@@ -57,7 +66,7 @@ include '../session.php';
   <div class="panel-heading">
 
       <br />
-		<h4 class="panel-title">EDIT TOPIC ( * is Required ) </h4>
+		
  
     <br />
   </div>
@@ -69,13 +78,12 @@ include '../session.php';
     <tr>
     <td>
     *Select Topic:<br /><br />
-     <select name="topic" class="form-control">
-     <option><?php echo $topic; ?></option>
-    <option>FEED</option>
-      <option>PRE LOVED</option>
-        <option>RENTAL</option>
-          <option>EVENTS</option>
-    </select>
+		<select name="topic" class="form-control">
+		<option><?php echo $topic; ?></option>
+		<option>RENTAL</option>
+		<option>EVENTS</option>
+			<option>PRE LOVED</option>
+		</select>
     <br />
     </td>
     <td width="600"> </td>
@@ -89,7 +97,8 @@ include '../session.php';
                                 *Topic Content:<br /><br />
 								<textarea name="post_content" class="form-control" rows="12" placeholder="Contents" required><?php echo $post_content; ?></textarea>
                                 <br />
-                          
+                                  <!-- <input type="url" name="link" class="form-control" placeholder="Enter URL" >
+                                  <br /> -->
                                   
     </td>
     </tr>
@@ -104,7 +113,7 @@ include '../session.php';
 							if (isset($_POST['edit'])){
 							 
                                     
-  						 $id = $_POST['id'];
+   $id = $_POST['id'];
                          $topic = $_POST['topic'];
 							 	$post_title = $_POST['post_title'] ;
 								$post_content = $_POST['post_content'];
@@ -118,19 +127,10 @@ include '../session.php';
                         	?>
                             
 							<script>
-								window.location = 'index.php';
+								window.location = 'home.php';
 							</script>	
 							<?php
                             	}
-                        elseif($topic=="PRE LOVED")
-                        {
-                           	?>
-                            
-							<script>
-								window.location = 'feed_pre.php';
-							</script>	
-							<?php 
-                        }
                         elseif($topic=="RENTAL")
                         {
                            	?>
@@ -140,12 +140,21 @@ include '../session.php';
 							</script>	
 							<?php 
                         }
+                        elseif($topic=="PRE LOVED")
+                        {
+                           	?>
+                            
+							<script>
+								window.location = 'feed_pre.php';
+							</script>	
+							<?php 
+                        }
                         else
                         {
                           	?>
                             
 							<script>
-								window.location = 'evnts.php';
+								window.location = 'feed_events.php';
 							</script>	
 							<?php  
                         }
