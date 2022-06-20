@@ -135,7 +135,15 @@ include('../session.php');
               </div>
 
               <div class="card-body-title">  
-               <?php echo $post_row['post_title']; ?>
+               <?php 
+              if($post_row['post_image']!="../post_images/"){ ?> 
+               <img src="<?php echo $post_row['post_image']?>" alt="..." class="card-picture">
+               <div class="card-title-float"><?php echo $post_row['post_title']; ?></div><?php } 
+               else{
+                echo $post_row['post_title']; 
+              }
+              ?>
+              
               </div>
               <div class="card-popup">
               <a href="add_views.php?id=<?php echo $ppppp ?>">View Post</a>

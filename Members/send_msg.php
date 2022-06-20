@@ -8,10 +8,9 @@
       $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
       $image_name = addslashes($_FILES['image']['name']);
       $image_size = getimagesize($_FILES['image']['tmp_name']);
-      
-      
+      }  
       move_uploaded_file($_FILES["image"]["tmp_name"], "../msg_images/" . $_FILES["image"]["name"]);
-      }              
+            
       $location = "../msg_images/" . $_FILES["image"]["name"];
       $subject = $_POST['subject'];
       $msg = $_POST['msg'];

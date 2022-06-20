@@ -41,7 +41,7 @@ if (!isset($_SESSION['SessionEmail'])) {
         <textarea name="post_content" class="form-control" rows="12" required></textarea>
 
             <div class="image-upload" title="Upload FIle">
-                <input type="file" id="image1" name="image" accept="image/*" onchange="showImage(event);" required>
+                <input type="file" id="image1" name="image" accept="image/*" onchange="showImage(event);">
                 <label for="image1">Upload Image</label>
               <div class="image-preview">
                 <img id="image1-preview">

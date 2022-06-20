@@ -1,4 +1,5 @@
 <?php
+ date_default_timezone_set('Asia/Manila'); 
 include '../dbcon.php';	 
 include '../session.php';
 
@@ -13,9 +14,11 @@ $msg_id=$_GET['id'];
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
 	<link rel="stylesheet" type="text/css" href="../style.css">
+  <script src="../Script/index.js"></script>
 	<title>Messages | Kapadyak</title>
 </head>
 <body>
+
   <div class="index-container">
 		<div class="index-sidenav">
 			<?php include '../Includes/Sidebar.php'; ?>
@@ -26,9 +29,14 @@ $msg_id=$_GET['id'];
 		</div>
 
 		<div class="index-content">
-		<center><h1>MESSAGES</h1>
+		<div class="message-container">
+    <h1>MESSAGE</h1>
+			<div class="chatbox">
+				<div class="col-1">
+
     
     <?php
+    
       $conn->query("update message set status='Read' where message_id='$msg_id'");
       $query = $conn->query("select * from message where message_id='$msg_id'") or die(mysql_error());
         while ($row = $query->fetch()) 
@@ -39,7 +47,7 @@ $msg_id=$_GET['id'];
           $recep_access=$row['access'];
         }
             
-        $msg_query = $conn->query("select * from message where member_id='$message_to' and sender_id='$message_from' and subject='$message_subject' or member_id='$message_from' and sender_id='$message_to' and subject='$message_subject' order by message_id ASC") or die(mysql_error());
+        $msg_query = $conn->query("select * from message where member_id='$message_to' and sender_id='$message_from' and subject='$message_subject' order by message_id ASC") or die(mysql_error());
         while ($msg_row = $msg_query->fetch()) 
         {
           $message_content=$msg_row['message_content'];
@@ -71,51 +79,108 @@ $msg_id=$_GET['id'];
     }
     ?>
 
-    <div class="">
-    
-      <img src="<?php  echo $pics; ?>" width="35" height="35" alt="..." class="img-square"/>
-			<label for="exampleInputEmail1">From: <?php echo $name; ?></label>
-		</div>
-              
-		<div class="">
-			<label for="exampleInputPassword1">Subject: <?php echo $message_subject ?></label>
-		</div>
-   
-    <div class="">
-      Message
-    </div>                       
-    <div class="panel-body">
-      <?php if($message_image=="../msg_images/"){}else{ ?> 
-        <img src="<?php echo $message_image; ?>" width="500" height="250" alt="..." class="img-square thumbnail">
-      <?php } ?>
-        <textarea rows="5" readonly="true" class="form-control"> 	<?php  echo nl2br($message_content); ?></textarea>
-    </div>
+<div class="msg-row">
+					<img src="<?php echo $pics; ?>" alt="" class="msg-img">
+						<div class="msg-text">
+							<h2><?php echo $name; ?></h2>
+							<div><?php echo $message_subject; ?></div>
+							<div><?php echo $message_date; ?></div> 	
+              <p><?php echo $message_content;  ?></p>
+              <div class="msg-text-image">
+                <?php if($message_image=="../msg_images/"){}else{ ?> 
+                  <img src="<?php echo $message_image; ?>"alt="...">
+                <?php } ?>
+              </div>
+            </div>
+					</div>
 
     <?php    
 		}
     ?> 
 
-    <div class="">
+<?php
+      $conn->query("update message set status='Read' where message_id='$msg_id'");
+      $query = $conn->query("select * from message where message_id='$msg_id'") or die(mysql_error());
+        while ($row = $query->fetch()) 
+        {
+          $message_to=$row['member_id'];
+          $message_from=$row['sender_id'];
+          $message_subject=$row['subject'];
+          $recep_access=$row['access'];
+        }
+            
+        $msg_query = $conn->query("select * from message where member_id='$message_from' and sender_id='$message_to' and subject='$message_subject' order by message_id ASC") or die(mysql_error());
+        while ($msg_row = $msg_query->fetch()) 
+        {
+          $message_content=$msg_row['message_content'];
+          $message_image=$msg_row['message_image'];
+          $message_tox=$msg_row['member_id'];
+          $message_fromx=$msg_row['sender_id'];
+          $message_subjectx=$msg_row['subject'];
+          $message_date=$msg_row['date_messaged'];
+          $accessx=$msg_row['access'];
+  
+      if($accessx=="Admin")
+      {
 
-		  <form role="form" class="login_form" method="post" action="send_reply.php?id=<?php echo  $message_from; ?>" enctype="multipart/form-data">
+        $query = $conn->query("select * from user where user_id='$message_fromx'") or die(mysql_error());
+        while ($row = $query->fetch()) 
+        {
+          "../images/logo_forum.png";
+          $name= $row['fname']." ".$row['mname']." ".$row['lname']." - Admin";
+        }  
+      }
+        else
+      {
+        $query = $conn->query("select * from members where member_id='$message_fromx'") or die(mysql_error());
+        while ($row = $query->fetch()) 
+        {
+          "../".$pics=$row['image'];
+          $name= $row['first_name']." ".$row['middle_name']." ".$row['last_name'];
+      }  
+    }
+    ?>
+
+	<div class="msg-row msg-row2">
+  <div class="msg-text">
+							<h2><?php echo $name; ?></h2>
+							<div><?php echo $message_subject; ?></div>
+							<div><?php echo $message_date; ?></div> 	
+              <p><?php echo $message_content;  ?></p>
+              <div class="msg-text-image">
+                <?php if($message_image=="../msg_images/"){}else{ ?> 
+                  <img src="<?php echo $message_image; ?>">
+                <?php } ?>
+              </div>
+            </div>
+            <img src="<?php echo $pics; ?>" alt="" class="msg-img">
+					</div>
+    <?php    
+		}
+    ?> 
+
+ <form role="form" class="login_form" method="post" action="send_reply.php?id=<?php echo  $message_from; ?>" enctype="multipart/form-data">
         <input name="msg_id" type="hidden"   value="<?php echo $msg_id; ?>"/>
         <input name="subject" type="hidden"  value="<?php echo $message_subject; ?>"/>
                      
-        <div class="">
-	      	<br><label for="exampleInputPassword1">Quick Reply</label><br>
-		      <textarea rows="10" name="msg" class="form-control" id="exampleInputPassword1" spellcheck="true" placeholder="Write your Message here!" required="true"></textarea>
-		    </div>
-    
-        <div class=""> 
-          
-          <input type="file" name="image" title="click to add image to your post" /> <br />
-        </div>             
-    
-        <div class="">
-		      <button  class="btn btn-info"  ><i class="fa fa-check-square-o"></i> Send Reply</button>&nbsp;<br> 
-          <a href="inbox.php" class="btn btn-default"  >Cancel</a>
+        <div class="col-1-inputs">
+		    <input type="text"name="msg" id="col-1-inputs1" placeholder="Write your Message here!" required>
+        <input type="file" name="image" id="col-1-inputs2" title="click to add image to your post" />       
+        </div>
+
+        <div class="col-1-buttons">
+          <input type="submit" value="Send Reply">
+          <input type="button" value="Cancel" onclick="javascript:location.href='inbox.php'">
         </div>
       </form>
+      <div class="col-2">	
+					<?php include('member_online.php')?>
+				</div>
+      </div>
+		</div>  
     </div>
+</div>
+</div>
+
 </body>
 </html>

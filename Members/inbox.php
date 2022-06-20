@@ -26,23 +26,13 @@
 		</div>
 
 		<div class="index-content">
-		<Center><h1>Messages</h1>
-			<?php include 'inbox_function.php'; ?>
-		<center><table width="1200" border="0"><tr><td><br><br>
-		<center><table cellpadding="0" cellspacing="0" border="0" class="table table-bordered" id="example" >
-	
- 
-		<thead>
-		<tr>
-         
-            	<th>Sender</th>
-            	<th>Date</th>
-                <th>Message</th>
-            	<th>Status</th>
-		 	 <th>Actions</th>
-		</tr>
-		</thead>
-		<tbody>
+		<div class="message-container">
+			<h1>MESSAGE</h1>
+			<div class="chatbox">
+				<div class="col-1">
+
+		<?php include 'inbox_function.php'; ?>
+            
 		<?php
 		$senderquery = $conn->query("select distinct message_id,sender_id from message where member_id='$id2'") or die(mysql_error());
 	$num_row = $senderquery->rowcount();
@@ -75,7 +65,7 @@
 		while ($sndrrow = $sndrquery->fetch())
          { 
             $ppiicc="../images/logo_forum.png";
-		  $sendby=$sndrrow['fname']." ".$sndrrow['mname']." ".$sndrrow['lname']." (ADMIN)";
+		  $fullname=$sndrrow['fname']." ".$sndrrow['mname']." ".$sndrrow['lname']." (ADMIN)";
    
 		}
 	      
@@ -86,81 +76,64 @@
 		while ($sndrrow = $sndrquery->fetch())
          { 
             $ppiicc=$sndrrow['image'];
-		  $sendby=$sndrrow['first_name']." ".$sndrrow['middle_name']." ".$sndrrow['last_name']."";
+		  $fullname=$sndrrow['first_name']." ".$sndrrow['middle_name']." ".$sndrrow['last_name']."";
    
 		}
 	  
     }
 		?>
-		<tr>
-         
-            	<td >
-                <table>
-                
-                <tr>
-                <td>
-                  <img src="<?php echo $ppiicc; ?>" width="35" height="35" alt="..." class="img-square"/>
-                </td>
-                <td>
-                &nbsp;
-                </td>
-                <td>
-                  <?php echo $sendby; ?><br />
-                    Subject: <?php echo $subject; ?>
-                </td>
-                </tr>
-                </table>
-             
-                 
-                 
-                 </td> 
-         
-            	<td width="10"><?php echo $msgrow['date_messaged']; ?></td> 
-                
-                <td> <input class="form-control" id="exampleInputEmail1" value="<?php echo $msgrow['message_content']; ?>" readonly="true" /></td>
-                
-	 <td> <?php echo   $msgrow['status'];  ?>  </td> 
-         <?php if($msgrow['status']=="Unread"){ ?>
-            
-            	<td class="empty" width="100">
-        	<a data-placement="top" title="Click to read & reply meassage" id="view<?php echo $msg_id; ?>" href="read_msg.php<?php echo '?id='.$msg_id; ?>" class="btn btn-info"><i class="fa fa-list-alt"></i> Read</a>
-			<script type="text/javascript">
-			$(document).ready(function(){
-				$('#view<?php echo $msg_id; ?>').tooltip('show');
-				$('#view<?php echo $msg_id; ?>').tooltip('hide');
-			});
-			</script>
   
-	
-		</td>
-            
-            
-        <?php }else{  ?>
-	 	<td class="empty" width="185">
-        	<a data-placement="top" title="Click to read & reply meassage" id="view<?php echo $msg_id; ?>" href="read_msg.php<?php echo '?id='.$msg_id; ?>" class="btn btn-info"><i class="fa fa-list-alt"></i> Read</a>
-			<script type="text/javascript">
-			$(document).ready(function(){
-				$('#view<?php echo $msg_id; ?>').tooltip('show');
-				$('#view<?php echo $msg_id; ?>').tooltip('hide');
-			});
-			</script>
-  
-		<a data-placement="top" title="Click to delete meassage" id="delete<?php echo $msg_id; ?>" href="delete_msg.php<?php echo '?id='.$msg_id; ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
-			<script type="text/javascript">
-			$(document).ready(function(){
-				$('#delete<?php echo $msg_id; ?>').tooltip('show');
-				$('#delete<?php echo $msg_id; ?>').tooltip('hide');
-			});
-			</script>
-            
-		</td>
-        <?php }  ?>
-		</tr>
+					<div class="msg-row">
+					<img src="<?php echo $ppiicc; ?>" alt="" class="msg-img">
+						<div class="msg-text">
+							<h2><?php echo $fullname; ?></h2>
+							<div><?php echo $subject; ?></div>
+							<div><?php echo $msgrow['date_messaged']; ?></div> 	
+							<div><?php echo $msgrow['status'];  ?></div>
+							<div class="msg-buttons">
+								
+								<?php if($msgrow['status']=="Unread"){ ?>
+			
+								<a data-placement="top" title="Click to read & reply meassage" id="view<?php echo $msg_id; ?>" href="read_msg.php<?php echo '?id='.$msg_id; ?>" class="btn btn-info"><i class="fa fa-list-alt"></i> Read</a>
+								<script type="text/javascript">
+								$(document).ready(function(){
+								$('#view<?php echo $msg_id; ?>').tooltip('show');
+								$('#view<?php echo $msg_id; ?>').tooltip('hide');
+								});
+								</script>
+
+								<?php }else{  ?>
+								<div>
+								<a data-placement="top" title="Click to read & reply meassage" id="view<?php echo $msg_id; ?>" href="read_msg.php<?php echo '?id='.$msg_id; ?>" class="btn btn-info"><i class="fa fa-list-alt"></i> Read</a>
+								<script type="text/javascript">
+								$(document).ready(function(){
+								$('#view<?php echo $msg_id; ?>').tooltip('show');
+								$('#view<?php echo $msg_id; ?>').tooltip('hide');
+								});
+								</script>
+
+								<a data-placement="top" title="Click to delete meassage" id="delete<?php echo $msg_id; ?>" href="delete_msg.php<?php echo '?id='.$msg_id; ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+								<script type="text/javascript">
+								$(document).ready(function(){
+								$('#delete<?php echo $msg_id; ?>').tooltip('show');
+								$('#delete<?php echo $msg_id; ?>').tooltip('hide');
+								});
+								</script>
+
+								</div>
+								<?php }  ?>
+							</div>
+						</div>
+					</div>
 	<?php } } ?>    
-	
-		</tbody>
-	</table>
+				
+				</div>
+				<div class="col-2">	
+					<?php include('member_online.php')?>
+				</div>
+			</div>
 		</div>
+	</div>
 </div>
 </body>
 </html>

@@ -40,7 +40,7 @@
             </li>
 <!-- Newsfeed -->
             <li class="nav-item">
-                <a href="index.php" class="nav-link highlight">
+                <a href="index.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path
