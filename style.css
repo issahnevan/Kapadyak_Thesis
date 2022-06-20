@@ -1324,7 +1324,7 @@ header{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(124, 124, 124);
+    background-color: rgba(124, 124, 124, 0.5);
 }
 .comment-container{
     width: 100vh;
