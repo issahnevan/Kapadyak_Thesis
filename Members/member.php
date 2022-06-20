@@ -1,4 +1,4 @@
- <?php
+<?php
  error_reporting(0);
  include '../dbcon.php';
  include '../session.php';
@@ -10,6 +10,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <title>Events | Kapadyak</title>
+</head>
+<body>
   <title>Online | Kapadyak</title>
 </head>
 <body>
@@ -239,12 +244,9 @@
 </body>
 </html>		</div>
 
-		<div class="index-header">
-			<?php include '../Includes/Header.php'; ?>
-		</div>
-
-		<div class="index-content">
-		<center><a href="poster.php"><h1>EVENT PAGE<br>Add Post</h1></a>
+        <div class="member-online-content">
+   
+      
  	<table cellpadding="0" cellspacing="0" border="0" class="table table-bordered" id="example"  >
 	
  
@@ -253,7 +255,7 @@
  
  
 	<tr>
-<td>
+<td>  <h1>Members</h1>
    Forum Administrators :
                   <hr />
 	<?php
@@ -369,8 +371,7 @@
              ?> </td> 
  
 	    
-		</tr>
-       
+		</tr>   
         
         <tr>
         	<td colspan="2"><a href="view_profile.php?id=<?php echo $id; ?>"><?php echo $row['first_name']." ".$row['middle_name']." ".$row['last_name']; ?></a></td> 
@@ -390,4 +391,4 @@
 	
 	 
 	</table>
- 
+    </div>

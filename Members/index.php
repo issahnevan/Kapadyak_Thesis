@@ -261,10 +261,10 @@ if (!isset($_SESSION['SessionEmail'])) {
 
 		<div class="index-content">
 			<?php include 'feed.php';?>	
-
 			<button onclick="showAddPost()">
 				<div class="add-post-button"></div>
 			</button>
+      </div>
 		</div>
 		
 	</div>	

@@ -1,7 +1,6 @@
 <?php
  include('../dbcon.php');
   $recep_id=$_GET['id'];
-  
   	$query = $conn->query("select * from members where member_id='$recep_id'") or die(mysql_error());
 		while ($row = $query->fetch()) 
         {
@@ -10,66 +9,56 @@
           
 		}
   ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <script type="text/javascript">
+      function showAddPost(){
+          document.getElementById("addPost").style.display = "flex";
+      }
+    window.onload = load;
+    </script>
+  <title>Document</title>
+</head>
+<body onload="showAddPost();">
+<div class="add-post" id="addPost">
+		<div class="add-post-form">
+		<div class="close-button" onclick="location.href='inbox.php'"><button>&times;</button></div>
 
-  <body id="home">
-  	<div class="modal-dialog">
-    <div class="modal-content">
-			<div class="modal-header">
-				<a type="button" class="close" href="member.php" aria-hidden="true">&times;</a>
-				<h4 class="modal-title" id="myModalLabel">Compose Message</h4>
-			</div>
-			<div class="modal-body">
+
+  
+    <div class="add-form-title">CREATE POST</div>
 				 <form role="form" class="login_form" method="post" action="send_msg.php?id=<?php echo $recep_id; ?>" enctype="multipart/form-data">
-                 
- 
-                 <table border="0" width="530"><tr>
-                 <td >
-              	    
-					<div class="form-group">
-						<label for="exampleInputEmail1">To</label>
-						<input name="recep_name" type="text" class="form-control" id="exampleInputEmail1"  value="<?php echo $recep_name; ?>" readonly>
-					</div>
-                       </td> 
-                        
-                      </tr> 
-                      <tr>
-                 
-                        <td>&nbsp;</td>
-                        
-                      </tr> 
-                      <tr>
-                
-                      <td >
-					<div class="form-group">
-						<label for="exampleInputPassword1">Subject</label>
+
+          <div class="add-form-subtitles">Title: </div>
+						<input name="recep_name" type="text" class="form-control" id="exampleInputEmail1"  value="<?php echo $recep_name; ?>" >
+					
+						<div class="add-form-subtitles">Subject:</div>
 						<input name="subject" type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Subject"  required>
-					</div>
-                   </td>  
-                    
-                      </tr> 
-                     </table>
-                     
-                     
-                     
-                      <table border="0">
-                       <tr>
-                       <td width="530"> 
-					<div class="form-group">
-						<label for="exampleInputPassword1">Message</label>
-						 <textarea rows="10" name="msg" class="form-control" id="exampleInputPassword1" spellcheck="true" placeholder="Write your Message here!" required="true"></textarea>
-					</div>
-                      </td> 
-                      </tr></table>
-                       <input type="file" name="image" title="click to add image to your post" /> <br />
+
+          <div class="add-form-subtitles">Message:</div>
+					<textarea rows="10" name="msg" class="form-control" id="exampleInputPassword1" spellcheck="true" placeholder="Write your Message here!" required="true"></textarea>       
+             
+          <div class="image-upload" title="Upload FIle">
+                <input type="file" id="image1" name="image" accept="image/*" onchange="showImage(event);">
+                <label for="image1">Upload Image</label>
+              <div class="image-preview">
+                <img id="image1-preview">
+              </div>
+            </div>
                   
                    
-				 <button  class="btn btn-info"  ><i class="fa fa-check-square-o"></i> Send</button>
+            <div class="post-button">
+
+<button type="submit" name="post">Send</button>
+</div>
 			</form>
-            
-            
-            
-			</div>
-		 
-			</div>
-			</div>
-            </body>
+
+		</div>
+	</div>
+</body>
+</html>    
