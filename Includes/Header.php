@@ -3,10 +3,15 @@ $session_Email = $_SESSION['SessionEmail'];
 $session_Username = $_SESSION['SessionUsername'];
 $session_Firstname = $_SESSION['SessionFirstname'];
 $session_Lastname = $_SESSION['SessionLastname'];
+$session_memberID =  $_SESSION['id'];
 ?> -->
 
 <?php
-
+ $image_query = $conn->query("select * from members where member_id='$session_memberID'");
+ while($image_row = $image_query->fetch())
+ {
+ $memberImage=$image_row['image'];
+ }
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +53,7 @@ $session_Lastname = $_SESSION['SessionLastname'];
 
         <div class="header-links">
             <span class="profile-username" onclick="showMenu()">
-              <img src=" <?php  echo $pics; ?>" >
+              <img src=" <?php  echo $memberImage; ?>" class="img-square" >
 
 
 

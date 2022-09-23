@@ -27,8 +27,19 @@ include('../session.php');
     <div class="feed-card-heading">
       <table border="0">
       <tr>
-        <th rowspan="2"> <img src="<?php if($access=="Admin"){echo  "../images/logo_forum.png";}else{echo  $post_row['image'];}?>" width="40" height="40" alt="..." class="img-square"> </th>
-      
+        <th rowspan="2"> 
+          <img src="
+            <?php if($access=="Admin"){echo  "../images/logo_forum.png";}else{
+            $getImage = $post_row['image'];
+            if($getImage == ""){
+              echo "../Images/default-profile.png";
+            } else{
+              echo $post_row['image'];
+            }
+          }
+            ?>
+          " class="img-square"> </th>
+        
         <td class="card-heading-name">
           <?php 
 
@@ -129,16 +140,6 @@ include('../session.php');
                     </svg>
                   <span>(<font color="blue"><?php echo $post_row['replies']; ?></font>)</span>
                   </li>
-
-                  <div class="card-body-title">  
-               <?php 
-              if($post_row['post_image']!="../post_images/"){ ?> 
-               <img src="<?php echo $post_row['post_image']?>" alt="..." class="card-picture">
-               <div class="card-title-float"><?php echo $post_row['post_title']; ?></div><?php } 
-               else{
-                echo $post_row['post_title']; 
-              }
-              ?>
 
                 </ul>
               </div>
