@@ -1,6 +1,6 @@
 function showMenu() {
 	document.getElementById("profile").classList.toggle("active");
-  }
+}
 
 function showImage(event){
     if(event.target.files.length > 0){
@@ -11,13 +11,9 @@ function showImage(event){
 
     } 
 }
-
-function showAddPost(){
-    document.getElementById("addPost").style.display = "flex";
+function showAddPost() {
+	document.getElementById("addPost").classList.toggle("active");
 }
-function hideAddPost(){
-    document.getElementById("addPost").style.display = "none";
+function hideAddPost() {
+	document.getElementById("addPost").classList.remove("active");
 }
-
-
-        
