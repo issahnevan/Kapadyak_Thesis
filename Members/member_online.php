@@ -127,7 +127,7 @@
     <td rowspan="2">&nbsp;</td>
         	<td width="197"><?php echo $row['username']." | ".$row['access']; ?> &nbsp;  
        
-                <span onclick="showAddPost();"class="sendMessageBtn">
+                <span class="sendMessageBtn">
                     <a href="inbox.php?id=<?php echo $id; ?>" title="click to send a message to <?php echo $row['first_name']." ".$row['middle_name']." ".$row['last_name']; ?>">
                         <li>Message</li>    
                         <i class="fa fa-comment-o"></i>

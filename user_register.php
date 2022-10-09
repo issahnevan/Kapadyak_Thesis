@@ -96,7 +96,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
     <link rel="stylesheet" href="style.css" type="text/css">
-    <script src="Scripts/layerDisplay.js" type="text/javascript"> </script>
+    <script src="https://kit.fontawesome.com/1c2c2462bf.js" crossorigin="anonymous"></script>
+
     <title>Sign Up for Kapadyak</title>
 </head>
 <body>
@@ -113,30 +114,74 @@
                <div class="Layer-Title">Step 1 of 3</div>
                <div class="Layer-div1">
                <form action="#" method="POST">
-                       <div class="div-input"><input type="email" id="Email" name="email" placeholder="Email" required></div>
-                       <div class="div-input"><input type="text"  id="Username" name="username" placeholder="Username"required></div>
-                       <div class="div-input"><input type="password" id="Password" name="password" placeholder="Password" required></div>
-                       <div class="div-input"><input type="password" id="ConfirmPassword" name="confirm_password" placeholder="Confirm Password" onblur="checkPassword()" required></div>
-                       <div class="div-inputCB"><input type="checkbox" onclick="showPassword()" id="check_1"> <label for="check_1">Show Password</label></div>
-                      
+                       <div class="div-input"><input type="email" id="Email" name="email" onblur="ValidateEmail(this)"required><label class="input-label">Email</label></div>
+                       <div class="div-input"><input type="text"  id="Username" name="username" required><label class="input-label">Username</label></div>
+                       <div class="div-input div-input-pass">
+                            <input type="password" id="password" name="password"required>
+                            <label class="input-label">Password</label>
+                            <span class="show-pass" onclick="showPassword()">
+                                <i class="far fa-eye" onclick="myFunction(this)"></i>
+                            </span>
+                        </div>
+                       <div class="div-input div-input-pass">
+                            <input type="password" id="confirmPassword" name="confirm_password" onblur="checkPassword()" required>
+                            <label class="input-label">Confirm Password</label>
+                            <span class="show-pass" onclick="showConfirmPassword()">
+                                <i class="far fa-eye" onclick="myFunction(this)"></i>
+                            </span>
+                        </div>
+                       
+                       <script src="Scripts/layerDisplay.js" type="text/javascript"> </script>
+                        <div class="progress">
+                                <div id="password-strength" 
+                                    class="progress-bar"
+                                    style="width:0%">
+                                </div>
+                            </div>
+                       <div class="div-pass-checklist">
+                            <ul class="list-unstyled">
+                                <li class="">
+                                    <span class="low-upper-case">
+                                        <i class="fas fa-circle"></i>
+                                        &nbsp;Lowercase &amp; Uppercase
+                                    </span>
+                                </li>
+                                <li class="">
+                                    <span class="one-number">
+                                        <i class="fas fa-circle" aria-hidden="true"></i>
+                                        &nbsp;Number (0-9)
+                                    </span> 
+                                </li>
+                                <li class="">
+                                    <span class="one-special-char">
+                                        <i class="fas fa-circle" aria-hidden="true"></i>
+                                        &nbsp;Special Character (!@#$%^&*)
+                                    </span>
+                                </li>
+                                <li class="">
+                                    <span class="eight-character">
+                                        <i class="fas fa-circle" aria-hidden="true"></i>
+                                        &nbsp;Atleast 8 Character
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-   
+                    <script src="Scripts/passStrength.js"> </script>
                <div class="Layer-div2">
-                   <div class="div-input2">
-                       <input type="text" name="first_name" id="Fname" placeholder="First Name" required> 
-                       <input type="text" name="middle_name" id="Mname" placeholder="Middle Name"required>
-                       <input type="text" name="last_name" id="Lname" placeholder="Last Name" required></div> 
-                    <div class="div-input2">
-                       <input type="text" name="contact_number" placeholder="Contact Number" required>
-                       <input type="text" name="address" placeholder="Address" required></div> 
-                    <div class="div-input2">
-                       <input type="date" name="dob" placeholder="Birthday" title="Birthday" required>
+                <div class="div-input2 divFname"><input type="text" name="first_name" required> <label class="input-label">First Name</label></div>
+                <div class="div-input2 divMname"><input type="text" name="middle_name" required><label class="input-label">Middle Name</label></div>
+                <div class="div-input2 divLname"><input type="text" name="last_name" required> <label class="input-label">Last Name</label></div>
+                <div class="div-input2 divNumber"><input type="text" name="contact_number" required><label class="input-label">Contact Number</label></div> 
+                <div class="div-input2 divAddress"><input type="text" name="address" required><label class="input-label">Address</label></div> 
+                <div class="div-input2 divBday"><input type="date" name="dob" title="Birthday" required></div> 
+                    <div class="div-input2 divSex" >
                        <select name="sex" required>
                             <option value="" disabled selected hidden> Sex </option> 
                            <option value="male"> Male </option>
                            <option value="female"> Female </option>
                        </select>
-                    </div>                
+                    </div>   
                </div>
             </div>
             <div class="nextBtn" id="btnStep1"><input type="submit" value="Continue &#8594" name="register" class="Next" ></div>
@@ -176,7 +221,7 @@
             <div class="nextBtn" id="btnStep3"><input type="submit" value="Sign Up" class="Next"></div>
         </form>
         </div>
-       
+      
 </div>
 
 </body>

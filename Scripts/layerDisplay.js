@@ -37,11 +37,11 @@ function success(){
 }
 
 function checkPassword(){
-    const pass = document.getElementById("Password");
-    const confirmpass = document.getElementById("ConfirmPassword");
+    const pass = document.getElementById("password");
+    const confirmpass = document.getElementById("confirmPassword");
 
-    var passval = document.getElementById("Password").value;
-    var confirmpassval = document.getElementById("ConfirmPassword").value;
+    var passval = document.getElementById("password").value;
+    var confirmpassval = document.getElementById("confirmPassword").value;
 
     if(passval!= "" && confirmpassval != ""){
         if(passval != confirmpassval){
@@ -53,14 +53,36 @@ function checkPassword(){
 }
 
 function showPassword(){
-    var passval = document.getElementById("Password");
-    var confirmpassval = document.getElementById("ConfirmPassword");
+    var passval = document.getElementById("password");
 
     if(passval.type === "password"){
         passval.type = "text";
-        confirmpassval.type = "text";
     } else {
         passval.type = "password";
+    }
+}
+
+function showConfirmPassword(){
+    var confirmpassval = document.getElementById("confirmPassword");
+
+    if(confirmpassval.type === "password"){
+        confirmpassval.type = "text";
+    } else {
         confirmpassval.type = "password";
+    }
+}
+
+function ValidateEmail(inputText)
+{
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(inputText.value.match(mailformat)){
+        return true;
+    }
+    else{
+        alert("You have entered an invalid email address!");
+        setTimeout(function(){
+            document.getElementById("Email").focus();
+        },0);
+        return false;
     }
 }
