@@ -6,6 +6,7 @@ let number = document.querySelector(".one-number i");
 let specialChar = document.querySelector(".one-special-char i");
 let eightChar = document.querySelector(".eight-character i");
 
+
 password.addEventListener("keyup", function(){
     let pass = document.getElementById("password").value;
     checkStrength(pass);
@@ -81,5 +82,25 @@ function checkStrength(password) {
         passwordStrength.classList.remove('progress-bar-danger');
         passwordStrength.classList.add('progress-bar-success');
         passwordStrength.style = 'width: 100%';
+    }
+}
+
+
+
+function ValidateEmail(inputText)
+{
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(inputText.value.match(mailformat)){
+        return true;
+    }
+    else{
+        if(inputText.value != ""){
+        alert("You have entered an invalid email address!");
+        setTimeout(function(){
+            document.getElementById("Email").focus();
+        },0);
+        return false;
+        }
+        return true;
     }
 }

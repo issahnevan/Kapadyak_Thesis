@@ -39,17 +39,27 @@ function success(){
 function checkPassword(){
     const pass = document.getElementById("password");
     const confirmpass = document.getElementById("confirmPassword");
+    const passwordStrength = document.getElementById("password-strength");
 
     var passval = document.getElementById("password").value;
     var confirmpassval = document.getElementById("confirmPassword").value;
 
     if(passval!= "" && confirmpassval != ""){
         if(passval != confirmpassval){
-            alert("Passwords does not have the same value!");
+            alert("Password does not match!");
             confirmpass.value = "";
             confirmpass.focus();
         }
+        else if(passwordStrength.style.width != "100%"){
+            alert("Password must meet complexity requirements!");
+            confirmpass.value = ""; 
+            pass.focus();
+        }
     }
+}
+
+function showChecklist(){
+    document.getElementById("progress-req").style.display = "block";
 }
 
 function showPassword(){
@@ -69,20 +79,5 @@ function showConfirmPassword(){
         confirmpassval.type = "text";
     } else {
         confirmpassval.type = "password";
-    }
-}
-
-function ValidateEmail(inputText)
-{
-    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if(inputText.value.match(mailformat)){
-        return true;
-    }
-    else{
-        alert("You have entered an invalid email address!");
-        setTimeout(function(){
-            document.getElementById("Email").focus();
-        },0);
-        return false;
     }
 }

@@ -291,6 +291,11 @@ html body{
     top: 37%;
     right: 10%;
 }
+.div-progress-requirements{
+    display: none;
+    /* background-color: #000; */
+    margin: 20px 0 0 0;
+}
 .progress {
     height: 5px;
     width: 280px;
@@ -317,7 +322,8 @@ html body{
 }
 
 .fa-circle{
-    font-size: 6px;  
+    font-size: 9px;  
+    /* color: #e90f10; */
 }
 .fa-check{
     color: #02b502;
@@ -1151,7 +1157,7 @@ header{
 }
 .personal-profile{
     grid-area: profile;
-
+    cursor: pointer;
 }
 .personal-profile img{
     height: 250px;
@@ -1160,6 +1166,7 @@ header{
     object-fit: cover;
     object-position: center;
     z-index: -2;
+  
 }
 
 .personal-update-button a{

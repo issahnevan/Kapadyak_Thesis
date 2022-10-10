@@ -117,14 +117,14 @@
                        <div class="div-input"><input type="email" id="Email" name="email" onblur="ValidateEmail(this)"required><label class="input-label">Email</label></div>
                        <div class="div-input"><input type="text"  id="Username" name="username" required><label class="input-label">Username</label></div>
                        <div class="div-input div-input-pass">
-                            <input type="password" id="password" name="password"required>
+                            <input type="password" id="password" name="password" onfocus="showChecklist();" required>
                             <label class="input-label">Password</label>
                             <span class="show-pass" onclick="showPassword()">
                                 <i class="far fa-eye" onclick="myFunction(this)"></i>
                             </span>
                         </div>
                        <div class="div-input div-input-pass">
-                            <input type="password" id="confirmPassword" name="confirm_password" onblur="checkPassword()" required>
+                            <input type="password" id="confirmPassword" name="confirm_password" onblur="checkPassword();" required>
                             <label class="input-label">Confirm Password</label>
                             <span class="show-pass" onclick="showConfirmPassword()">
                                 <i class="far fa-eye" onclick="myFunction(this)"></i>
@@ -132,13 +132,14 @@
                         </div>
                        
                        <script src="Scripts/layerDisplay.js" type="text/javascript"> </script>
+                       <div class="div-progress-requirements" id="progress-req">
                         <div class="progress">
                                 <div id="password-strength" 
                                     class="progress-bar"
                                     style="width:0%">
                                 </div>
-                            </div>
-                       <div class="div-pass-checklist">
+                        </div>
+                        <div class="div-pass-checklist">
                             <ul class="list-unstyled">
                                 <li class="">
                                     <span class="low-upper-case">
@@ -167,6 +168,7 @@
                             </ul>
                         </div>
                     </div>
+                </div>
                     <script src="Scripts/passStrength.js"> </script>
                <div class="Layer-div2">
                 <div class="div-input2 divFname"><input type="text" name="first_name" required> <label class="input-label">First Name</label></div>
