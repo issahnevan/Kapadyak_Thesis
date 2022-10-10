@@ -37,15 +37,15 @@ function success(){
 }
 
 function checkPassword(){
-    const pass = document.getElementById("password");
-    const confirmpass = document.getElementById("confirmPassword");
-    const passwordStrength = document.getElementById("password-strength");
+    var pass = document.getElementById("password");
+    var confirmpass = document.getElementById("confirmPassword");
+    var passwordStrength = document.getElementById("password-strength");
 
     var passval = document.getElementById("password").value;
     var confirmpassval = document.getElementById("confirmPassword").value;
 
-    if(passval!= "" && confirmpassval != ""){
-        if(passval != confirmpassval){
+    if(confirmpass.value != ""){
+        if(pass.value != confirmpass.value){
             alert("Password does not match!");
             confirmpass.value = "";
             confirmpass.focus();
@@ -54,7 +54,12 @@ function checkPassword(){
             alert("Password must meet complexity requirements!");
             confirmpass.value = ""; 
             pass.focus();
-        }
+        } 
+    } else{
+        alert("Password must not be empty!");
+        setTimeout(function(){
+            confirmpass.focus();
+        },0);
     }
 }
 
@@ -79,5 +84,17 @@ function showConfirmPassword(){
         confirmpassval.type = "text";
     } else {
         confirmpassval.type = "password";
+    }
+}
+
+function showBothPassword(){
+    var passval = document.getElementById("password");
+    var confirmpassval = document.getElementById("confirmPassword");
+    if(passval.type === "password"){
+        passval.type = "text";
+        confirmpassval.type = "text";
+    } else {
+        confirmpassval.type = "password";
+        passval.type = "password";
     }
 }

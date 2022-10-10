@@ -11,6 +11,72 @@ html body{
 .footer{
     grid-area: footer;
 }
+.reset-container{
+    /* position: relative; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .2fr 1fr .08fr ;
+    height: 100vh;
+    grid-template-areas:
+    'rtitle' 
+    'rinput'
+    'footer';
+}
+.reset-input{
+    grid-area: rinput;
+    background-color: rgb(255, 255, 255);
+    font-family:'Arial';
+    display:flex;
+    /* place-items: center; */
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+.reset-logotitle{
+    grid-area: rtitle;
+    font-size: 70px;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    font-family:'Arial Black';
+    margin: 50px 0 0 40px;
+}
+.reset-logotitle > img{
+    height: 80px;
+    margin: 0 0 -2px -20px;
+    z-index: 1;
+}
+.reset-title{
+    font-size: 35px;
+    font-family:'Arial';
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    color: rgb(255, 145, 0);
+}
+.reset-subtitle{
+    font-size: 20px;
+    margin: 10px 0;
+}
+.reset-input > input{
+    font-size: 20px;
+    padding: 8px 20px;
+    border-radius: .2em;
+    border-color:rgb(255, 145, 0);
+}
+.reset-button{
+    text-align: center;
+    margin: 20px 0;
+    
+}
+.reset-button > button{
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: .5em;
+    padding: 10px 20px;
+    background-color: rgba(252,176,69,1);
+    color: rgb(0, 0, 0);
+}
 /* =========================== LOGIN =============================== */
 .login-container{
     position: relative;
@@ -1021,6 +1087,7 @@ header{
 .add-post-form form{
     padding: 30px;
 }
+
 .add-post-form > form > input{
     border-radius: .2em;
     padding: 7px 10px;
@@ -1107,6 +1174,7 @@ header{
     color: white;
     font-weight: bold;
 }
+
 .close-button{
     position: absolute;
     top: 10px;
@@ -1126,6 +1194,44 @@ header{
 }
 .add-post .pop{
     display: flex;
+}
+.forgot-button > button{
+    margin: 10px 0;
+    background-color: rgba(252,176,69,1);
+    color: rgb(0, 0, 0);
+    width: 100%;
+}
+.forgot-form-title{
+    border-radius: .1em .1em 0 0;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    background: rgb(199,13,13);
+    background: linear-gradient(270deg, rgba(199,13,13,.8) 0%, rgba(251,104,0,.8) 100%);
+    padding: 20px 0 10px 0;
+    width: 100%;
+}
+.forgot-post-form > form{
+    padding: 20px 60px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.forgot-post-form{
+    border-radius: .3em .3em .3em .3em;
+    text-align: center;
+}
+.forgot-form-subtitles{
+    text-align: center;
+    font-size: 22px;
+    padding: 10px 0;
+}
+.forgot-post-form > form > input{
+    padding: 10px 20px;
+    margin: 5px 0;
+    width: 230px;
+    border: 1px solid #111;
+    border-radius: 0.3rem;
+    border: 1px solid rgb(173, 173, 173);
 }
 /* =========================== PERSONAL INFO PANEL =============================== */
 .personal-container{

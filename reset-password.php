@@ -1,14 +1,15 @@
 <html>
     <head>
-        <title>Reset Password</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
     </head>
     <body>
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
+    <div class="reset-container">
+        <div class="reset-logotitle"><img src="Images/logo.png" class="login-logo2">APADYAK</div>
+            <div class="reset-input">
                     <?php
                     include('connect/connection.php');
                     if (isset($_GET["key"]) && isset($_GET["email"]) && isset($_GET["action"]) && ($_GET["action"] == "reset") && !isset($_POST["action"])) {
@@ -17,7 +18,7 @@
                         $curDate = date("Y-m-d H:i:s");
                         $error = "";
 
-                        $query = mysqli_query($connect, "SELECT * FROM `password_reset_temp` WHERE `key`='$key' and `email_address`='$email'");
+                        $query = mysqli_query($connect, "SELECT * FROM `password_reset_temp` WHERE `key1`='$key' and `email_address`='$email'");
                         $row = mysqli_num_rows($query);
                         if ($row == "") {
                             $error .= '<h2>Invalid Link</h2>';
@@ -26,24 +27,58 @@
                             $expDate = $row['expDate'];
                             if ($expDate >= $curDate) {
                                 ?> 
-                                <h2>Reset Password</h2>   
+                                
+                               
                                 <form method="post" action="" name="update">
-
+                                <div class="reset-title">Reset Password</div>   
                                     <input type="hidden" name="action" value="update" class="form-control"/>
 
-
-                                    <div class="form-group">
-                                        <label><strong>Enter New Password:</strong></label>
-                                        <input type="password"  name="pass1" value="update" class="form-control"/>
+                                    <div class="reset-subtitle"> Enter New Password:</div>
+                                    <div class="reset-input"><input type="password" id="password" name="pass1" onfocus="showChecklist();" required/></div>                                   
+                                    <div class="reset-subtitle">Re-Enter New Password:</div>
+                                    <div class="reset-input"><input type="password" id="confirmPassword2" name="pass2" onblur="checkPassword();" required/></div> 
+                                    <div><input class="login-checkbox" onclick="showBothPassword()" type="checkbox"> Show Password</div>
+                                    <script src="Scripts/layerDisplay.js"> </script>
+                                    <div class="div-progress-requirements" id="progress-req">
+                                    <div class="progress">
+                                            <div id="password-strength" 
+                                                class="progress-bar"
+                                                style="width:0%">
+                                            </div>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label><strong>Re-Enter New Password:</strong></label>
-                                        <input type="password"  name="pass2" value="update" class="form-control"/>
+                                    <div class="div-pass-checklist">
+                                        <ul class="list-unstyled">
+                                            <li class="">
+                                                <span class="low-upper-case">
+                                                    <i class="fas fa-circle"></i>
+                                                    &nbsp;Lowercase &amp; Uppercase
+                                                </span>
+                                            </li>
+                                            <li class="">
+                                                <span class="one-number">
+                                                    <i class="fas fa-circle" aria-hidden="true"></i>
+                                                    &nbsp;Number (0-9)
+                                                </span> 
+                                            </li>
+                                            <li class="">
+                                                <span class="one-special-char">
+                                                    <i class="fas fa-circle" aria-hidden="true"></i>
+                                                    &nbsp;Special Character (!@#$%^&*)
+                                                </span>
+                                            </li>
+                                            <li class="">
+                                                <span class="eight-character">
+                                                    <i class="fas fa-circle" aria-hidden="true"></i>
+                                                    &nbsp;Atleast 8 Character
+                                                </span>
+                                            </li>
+                                        </ul>
                                     </div>
+                                </div>
+                                <script src="Scripts/passStrength.js"> </script>
                                     <input type="hidden" name="email" value="<?php echo $email; ?>"/>
-                                    <div class="form-group">
-                                        <input type="submit" id="reset" value="Reset Password"  class="btn btn-primary"/>
+                                    <div class="reset-button">
+                                        <button type="submit" id="reset">Reset Password</button>
                                     </div>
 
                                 </form>
@@ -64,14 +99,7 @@
                         $pass2 = mysqli_real_escape_string($connect, $_POST["pass2"]);
                         $email = $_POST["email"];
                         $curDate = date("Y-m-d H:i:s");
-                        if ($pass1 != $pass2) {
-                            $error .= "<p>Password do not match, both password should be same.<br /><br /></p>";
-                        }
-                        if ($error != "") {
-                            echo $error;
-                        } else {
-
-                            $pass1 = password_hash($pass1, PASSWORD_BCRYPT);
+                              $pass1 = password_hash($pass1, PASSWORD_BCRYPT);
                             mysqli_query($connect, "UPDATE members SET password = '".$pass1."', confirm_password = '".$pass1."' WHERE email_address = '" .$email."'");
                             // UPDATE members SET email_status = 1 WHERE email_address = '$email'
 
@@ -79,14 +107,12 @@
 
                             echo '<div class="error"><p>Congratulations! Your password has been updated successfully.</p>';
                         }
-                    }
+                    
                     ?>
-
                 </div>
-                <div class="col-md-4"></div>
-            </div>
+                <div class="footer">
+                    <?php include_once('Includes/Footer.php')?>
+                </div>
         </div>
-
-
     </body>
 </html>
