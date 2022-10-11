@@ -8,7 +8,7 @@
     </head>
     <body>
     <div class="reset-container">
-        <div class="reset-logotitle"><img src="Images/logo.png" class="login-logo2">APADYAK</div>
+    <a href="login.php" title="Go back to login"><div class="reset-logotitle"><img src="Images/logo.png" class="login-logo2">APADYAK</div></a>
             <div class="reset-input">
                     <?php
                     include('connect/connection.php');
@@ -29,14 +29,14 @@
                                 ?> 
                                 
                                
-                                <form method="post" action="" name="update">
+                                <form method="post" action="#" name="update">
                                 <div class="reset-title">Reset Password</div>   
                                     <input type="hidden" name="action" value="update" class="form-control"/>
 
                                     <div class="reset-subtitle"> Enter New Password:</div>
                                     <div class="reset-input"><input type="password" id="password" name="pass1" onfocus="showChecklist();" required/></div>                                   
                                     <div class="reset-subtitle">Re-Enter New Password:</div>
-                                    <div class="reset-input"><input type="password" id="confirmPassword2" name="pass2" onblur="checkPassword();" required/></div> 
+                                    <div class="reset-input"><input type="password" id="confirmPassword" name="pass2" onblur="checkPassword();" required/></div> 
                                     <div><input class="login-checkbox" onclick="showBothPassword()" type="checkbox"> Show Password</div>
                                     <script src="Scripts/layerDisplay.js"> </script>
                                     <div class="div-progress-requirements" id="progress-req">
@@ -105,7 +105,7 @@
 
                             mysqli_query($connect, "DELETE FROM `password_reset_temp` WHERE `email_address` = '$email'");
 
-                            echo '<div class="error"><p>Congratulations! Your password has been updated successfully.</p>';
+                            echo '<div class="error"><h2>Congratulations! Your password has been updated successfully.</h2></div>';
                         }
                     
                     ?>

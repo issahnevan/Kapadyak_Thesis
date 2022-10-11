@@ -44,7 +44,7 @@ function checkPassword(){
     var passval = document.getElementById("password").value;
     var confirmpassval = document.getElementById("confirmPassword").value;
 
-    if(confirmpass.value != ""){
+    if(pass.value!="" && confirmpass.value != ""){
         if(pass.value != confirmpass.value){
             alert("Password does not match!");
             confirmpass.value = "";
@@ -55,12 +55,7 @@ function checkPassword(){
             confirmpass.value = ""; 
             pass.focus();
         } 
-    } else{
-        alert("Password must not be empty!");
-        setTimeout(function(){
-            confirmpass.focus();
-        },0);
-    }
+    } 
 }
 
 function showChecklist(){

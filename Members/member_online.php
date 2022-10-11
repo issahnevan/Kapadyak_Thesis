@@ -123,7 +123,17 @@
          
          <tr>
   
-   <td rowspan="2"><img src="<?php echo $row['image']; ?>" width="25" height="35" class="img-square" /></td>
+   <td rowspan="2"><img src="
+            <?php if($access=="Admin"){echo  "../images/logo_forum.png";}else{
+            $getImage = $row['image'];
+            if($getImage == ""){
+              echo "../Images/default-profile.png";
+            } else{
+              echo $row['image'];
+            }
+          }
+            ?>
+          " width="25" height="35" class="img-square" /></td>
     <td rowspan="2">&nbsp;</td>
         	<td width="197"><?php echo $row['username']." | ".$row['access']; ?> &nbsp;  
        

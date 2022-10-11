@@ -297,7 +297,11 @@
          $sndrquery = $conn->query("select * from members where member_id='$sssss'") or die(mysql_error());
 		while ($sndrrow = $sndrquery->fetch())
          { 
-            $ppiicc=$sndrrow['image'];
+            if($ppiicc == ""){
+                $ppiicc = "../Images/default-profile.png";
+            } else{
+                $ppiicc=$sndrrow['image'];
+            }
 		  $fullname=$sndrrow['first_name']." ".$sndrrow['middle_name']." ".$sndrrow['last_name']."";
    
 		}

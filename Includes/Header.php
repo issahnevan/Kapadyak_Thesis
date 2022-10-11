@@ -10,7 +10,11 @@ $session_memberID =  $_SESSION['id'];
  $image_query = $conn->query("select * from members where member_id='$session_memberID'");
  while($image_row = $image_query->fetch())
  {
- $memberImage=$image_row['image'];
+ if($image_row['image'] == ""){
+    $memberImage = "../Images/default-profile.png";
+} else{
+    $memberImage=$image_row['image'];
+}
  }
 ?>
 

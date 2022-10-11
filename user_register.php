@@ -176,7 +176,24 @@
                 <div class="div-input2 divLname"><input type="text" name="last_name" required> <label class="input-label">Last Name</label></div>
                 <div class="div-input2 divNumber"><input type="text" name="contact_number" required><label class="input-label">Contact Number</label></div> 
                 <div class="div-input2 divAddress"><input type="text" name="address" required><label class="input-label">Address</label></div> 
-                <div class="div-input2 divBday"><input type="date" name="dob" title="Birthday" required></div> 
+                <div class="div-input2 divBday"><input type="date" id="datefield" min='1900-01-01' max='2000-13-13' name="dob" title="Birthday" required></div> 
+                <script>
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth() + 1; //January is 0!
+                    var yyyy = today.getFullYear();
+
+                    if (dd < 10) {
+                    dd = '0' + dd;
+                    }
+
+                    if (mm < 10) {
+                    mm = '0' + mm;
+                    } 
+                        
+                    today = yyyy + '-' + mm + '-' + dd;
+                    document.getElementById("datefield").setAttribute("max", today);
+                </script>
                     <div class="div-input2 divSex" >
                        <select name="sex" required>
                             <option value="" disabled selected hidden> Sex </option> 
