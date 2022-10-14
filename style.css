@@ -941,7 +941,16 @@ header{
     place-items: center;
     text-transform: capitalize;
 }
-
+.edit-delete-button{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+    margin-right: 5px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
 .feed-card-body{
    overflow: hidden;
    border-radius: 0 0 .7em .7em ;
@@ -1057,7 +1066,7 @@ header{
 }
   /* =========================== ADD POST ============================ */
 
-.add-post{
+.add-post, .edit-post, .delete-post{
     z-index: 10;
     position: fixed;
     display: none;
@@ -1067,7 +1076,6 @@ header{
     height:100%;
     width: 100%;
     background-color: rgb(0, 0, 0, .5);
-    box-sizing: border-box;
 }
 .add-post.active{
     display: flex;
@@ -1076,6 +1084,19 @@ header{
     display: none;
 }
 
+.edit-post.active{
+    display: flex;
+}
+.edit-post.inactive{
+    display: none;
+}
+
+.delete-post.active{
+    display: flex;
+}
+.delete-post.inactive{
+    display: none;
+}
 .add-post-form{
     height:auto;
     width: auto;

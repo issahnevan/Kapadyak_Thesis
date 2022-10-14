@@ -2,66 +2,69 @@
 	include('../dbcon.php');
 	include ('../session.php');
 
-    $id=$_GET['id'];
+	if(isset($_POST['delete-post'])){
+		?>
+		<script>
+			showDeletePost();
+		</script>
+		<?php
+	}
+	$id = $_POST["getid"];
    	$post_query = $conn->query("select * from post LEFT JOIN members on post.member_id = members.member_id where post_id='$id'");
-									while($post_row = $post_query->fetch())
-                                    {
-									   
-								
-    
+	while($post_row = $post_query->fetch())
+	{
+
 ?>
-<form target="_self" method="post" action="delete_post.php">
-<input name="del_id" type="hidden" value="<?php  echo $id;  ?>" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<script src="../Scripts/index.js"></script>
+</head>
+<body>
 
-<div class="alert alert-danger">
-<center>
-<table width="600" border="0">
-<tr>
-<td  >
-<div class="alert alert-info">
- <font size="5">
- <center>
- CONFIRMATION </center></font> </div>
-</td><td></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<tr>
-<td colspan="2">
- <font size="5">
-Are you sure you want to delete this Post?
- </font>
-</td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<tr><td> <font size="4"><?php echo "Posted by: ".$post_row['first_name']." ".$post_row['middle_name']." ".$post_row['last_name'];?> </font></td>
-<td> <font size="4"><?php echo  "Topic: ".$post_row['topic'];?> </font></td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<tr><td> <font size="4"><?php echo   "Topic Title: ".$post_row['post_title'] ;?> </font></td>
-<td> <font size="4"><?php echo  "Date Posted: ".$post_row['date_posted'] ;?> </font></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<tr>
-<td width="300">
-<button class="btn btn-danger" name="delete" ><li class="fa fa-trash-o"></li> Delete</button>
- &nbsp;<a href="index.php" class="btn btn-default"  >Cancel</a>
-</td>
-<td></td>
-</tr>
-
-</table></center>
-</div>
-</form>
+<div class="close-button" onclick="hideDeletePost()"><button>&times;</button></div>
+	<div class="add-form-title">CONFIRMATION</div>
+		<form method="post" enctype="multipart/form-data">
+			<div class="add-form-subtitles">Are you sure you want to delete this Post?</div>
+			<input type="hidden" name="del_id" value="<?php echo $id; ?>" />
+			<div class="add-form-subtitles">
+				<?php echo "Posted by: ";?></div>
+		
+				<?php echo $post_row['first_name']." ".$post_row['middle_name']." ".$post_row['last_name'];?>
+			<div class="add-form-subtitles">
+				<?php echo  "Category: ";?></div>
+				<?php echo $post_row['topic'];?>
+			<div class="add-form-subtitles">
+				<?php echo   "Topic Title:";?></div>
+			 	<?php echo $post_row['post_title'];?>
+			<div class="add-form-subtitles">
+				<?php echo   "Date Posted:";?></div>
+			 	<?php echo $post_row['date_posted'];?>
+			<div>
+				<textarea name="post_content" class="form-control" rows="10" required><?php echo $post_row['post_content']; ?></textarea>
+			</div>
+			<div class="post-button">
+				<button type="submit" name="delete">Delete</button>
+			</div>
+		</form>
 
 
 
-	<?php }
-							if (isset($_POST['delete'])){
-					  
-                         $del_id = $_POST['del_id'];
-					   
-								$conn->query("delete  from post where post_id = '$del_id'");
-					
-                    ?>
-					<script>
-			 window.location = 'index.php?id=<?php echo $del_id;?>';
-							</script>
+
+		<?php 	}
+		if (isset($_POST['delete'])){
+			$del_id = $_POST['del_id'];
+			$conn->query("delete  from post where post_id = '$del_id'");
+			};
+		?>
+			<script>
+			window.location = 'index.php?id=<?php echo $del_id;?>';
+			</script>
 	
-                     <?php   }		?>
+</body>
+</html>
+    

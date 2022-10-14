@@ -29,6 +29,7 @@
 	<title>Messages | Kapadyak</title>
 </head>
 <body>
+
     <!-- floating message post  -->
     <div class="add-post" id="addPost">
 		<div class="add-post-form">
@@ -235,9 +236,7 @@
 </li>
 </ul>
 </nav>
-   
-</body>
-</html>		</div>
+	</div>
 
 		<div class="index-header">
 			
@@ -297,7 +296,7 @@
          $sndrquery = $conn->query("select * from members where member_id='$sssss'") or die(mysql_error());
 		while ($sndrrow = $sndrquery->fetch())
          { 
-            if($ppiicc == ""){
+            if($sndrrow['image'] == ""){
                 $ppiicc = "../Images/default-profile.png";
             } else{
                 $ppiicc=$sndrrow['image'];

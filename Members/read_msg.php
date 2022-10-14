@@ -18,7 +18,6 @@ $msg_id=$_GET['id'];
 	<title>Messages | Kapadyak</title>
 </head>
 <body>
-
   <div class="index-container">
 		<div class="index-sidenav">
 			<?php include '../Includes/Sidebar.php'; ?>
@@ -73,7 +72,11 @@ $msg_id=$_GET['id'];
         $query = $conn->query("select * from members where member_id='$message_fromx'") or die(mysql_error());
         while ($row = $query->fetch()) 
         {
-          "../".$pics=$row['image'];
+          if($row['image'] == ""){
+            $pics = "../Images/default-profile.png";
+          } else{
+            $pics = $row['image'];
+          }
           $name= $row['first_name']." ".$row['middle_name']." ".$row['last_name'];
       }  
     }
@@ -135,7 +138,11 @@ $msg_id=$_GET['id'];
         $query = $conn->query("select * from members where member_id='$message_fromx'") or die(mysql_error());
         while ($row = $query->fetch()) 
         {
-          "../".$pics=$row['image'];
+          if($row['image'] == ""){
+            $pics = "../Images/default-profile.png";
+          } else{
+            $pics = $row['image'];
+          }
           $name= $row['first_name']." ".$row['middle_name']." ".$row['last_name'];
       }  
     }

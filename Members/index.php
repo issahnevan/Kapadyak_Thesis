@@ -37,13 +37,37 @@ if (!isset($_SESSION['SessionEmail'])) {
 	<title>Home | Kapadyak</title>
 </head>
 <body>
-	<!-- floating add post  -->
+    <script type="text/javascript">
+            var auto_refresh = setInterval(
+            function ()
+            {
+            $('.index-content').load('feed.php') ;
+            
+            }, 20000); //refresh div every 20000 milliseconds or 20 seconds
+    </script>
+
+    <!-- floating add post  -->
 	<div class="add-post" id="addPost">
 		<div class="add-post-form">
 		<?php include 'poster.php';?>
 		</div>
 	</div>
-    
+
+    <!-- floating edit post  -->
+	<div class="edit-post" id="editPost">
+		<div class="add-post-form">
+		<?php include 'post_editor.php';?>
+		</div>
+	</div>
+
+    <!-- floating Delete post  -->
+	<div class="delete-post" id="deletePost">
+		<div class="add-post-form">
+		<?php include 'delete_post.php';?>
+		</div>
+	</div>
+
+
 
     <div class="index-container">
 		<div class="index-sidenav">
@@ -262,11 +286,12 @@ if (!isset($_SESSION['SessionEmail'])) {
 
 		<div class="index-content">
 			<?php include 'feed.php';?>	
-			<button onclick="showAddPost()">
-				<div class="add-post-button"></div>
-			</button>
+			
 
         </div>
+        <button onclick="showAddPost()">
+				<div class="add-post-button"></div>
+			</button>
 		</div>
 		
 	</div>	

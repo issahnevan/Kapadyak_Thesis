@@ -17,3 +17,19 @@ function showAddPost() {
 function hideAddPost() {
 	document.getElementById("addPost").classList.remove("active");
 }
+
+function showEditPost() {
+	document.getElementById("editPost").classList.toggle("active");
+}
+function hideEditPost() {
+    window.location.href= 'index.php';
+	document.getElementById("editPost").classList.remove("active");
+}
+function showDeletePost() {
+	document.getElementById("deletePost").classList.toggle("active");
+}
+function hideDeletePost() {
+    window.location.href= 'index.php';
+	document.getElementById("deletePost").classList.remove("active");
+
+}
