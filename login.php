@@ -74,11 +74,15 @@ include('connect/connection.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
     <link rel="stylesheet" href="Style.css" type="text/css">
-    <script src="Scripts/showpassword.js"> </script>
+    <script src="Scripts/layerDisplay.js"> </script>
     <title>Kapadyak | Log In or Sign up</title>
 </head>
 <body>
-    
+    <div class="add-post" id="addPost">
+		<div class="add-post-form forgot-post-form">
+		<?php include 'reset.php';?>
+		</div>
+	</div>
 <div class="login-container">
 
     <div class="login-input">
@@ -90,15 +94,15 @@ include('connect/connection.php');
               
 
                 <div><input class="login-textbox" type="text" name="qwe" placeholder="Email"></div>
-                <div><input class="login-textbox" id="showpass"  type="password" name="password" placeholder="Password"></div>
-                <div><input class="login-checkbox" onclick="myFunction()" type="checkbox"> Show Password</div>
+                <div><input class="login-textbox" id="password"  type="password" name="password" placeholder="Password"></div>
+                <div><input class="login-checkbox" onclick="showPassword()" type="checkbox"> Show Password</div>
                 <div><input class="login-button" type="submit" name ="loginn" value="Log In"></div>
             <div class="login-create">
-            <a href="reset.php">Forgot Password?</a><br><br>
+            <a onclick="showAddPost();">Forgot Password?</a><br><br>
             Don't have an account?
       
             <br><a href="user_register.php">Create an Account!</a>
-          
+            <script src="Scripts/index.js"> </script>
         </div>
         </form>
     </div>

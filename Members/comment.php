@@ -128,8 +128,8 @@ date_default_timezone_set('Asia/Manila');
                     $cmname =$cmem_row['first_name']." ".$cmem_row['middle_name']." ".$cmem_row['last_name'];
                     }
                 }
+          
                 ?>
-
 
             <div class="comment-container">
                 <div class="comment-header">
@@ -143,7 +143,7 @@ date_default_timezone_set('Asia/Manila');
                                 <h1><?php echo $post_row['post_title']; ?></h1>
                             </div>
                         </div>
-                </div>
+                </div>      
                <div class="comment-body">
                     <?php 
                     if($cm_id==$id2 and $access=="Member")

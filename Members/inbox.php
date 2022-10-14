@@ -2,33 +2,16 @@
  date_default_timezone_set('Asia/Manila'); 
  include '../dbcon.php';	
  include '../session.php';
-  
  ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
-	<link rel="stylesheet" type="text/css" href="../style.css">
-  <title>Messages | Kapadyak</title>
-</head>
-<body>
-<div class="index-container">
-		<div class="index-sidenav">
-		<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
-        rel="stylesheet"
-    />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
+	<script src="../Script/index.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="application/javascript">
         $(document).ready(function(){
@@ -38,9 +21,24 @@
         })
         });
     </script>
-    <title>Sidebar</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
+        rel="stylesheet"
+    />
+	<title>Messages | Kapadyak</title>
 </head>
 <body>
+
+    <!-- floating message post  -->
+    <div class="add-post" id="addPost">
+		<div class="add-post-form">
+        <?php include 'compose_msg.php';?>
+		</div>
+	</div>
+<div class="index-container">
+		<div class="index-sidenav">
+
     <nav class="navbar">
         <ul class="navbar-nav">
 <!-- Logo -->
@@ -238,9 +236,7 @@
 </li>
 </ul>
 </nav>
-   
-</body>
-</html>		</div>
+	</div>
 
 		<div class="index-header">
 			
@@ -300,7 +296,11 @@
          $sndrquery = $conn->query("select * from members where member_id='$sssss'") or die(mysql_error());
 		while ($sndrrow = $sndrquery->fetch())
          { 
-            $ppiicc=$sndrrow['image'];
+            if($sndrrow['image'] == ""){
+                $ppiicc = "../Images/default-profile.png";
+            } else{
+                $ppiicc=$sndrrow['image'];
+            }
 		  $fullname=$sndrrow['first_name']." ".$sndrrow['middle_name']." ".$sndrrow['last_name']."";
    
 		}
@@ -353,8 +353,11 @@
 	<?php } } ?>    
 				
 				</div>
+
 				<div class="col-2">	
+                
 					<?php include('member_online.php')?>
+                    
 				</div>
 			</div>
 		</div>

@@ -19,29 +19,6 @@ if (!isset($_SESSION['SessionEmail'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
 	<script src="../Script/index.js"></script>
-	<link rel="stylesheet" type="text/css" href="../style.css">
-	<title>Home | Kapadyak</title>
-</head>
-<body>
-	<!-- floating add post  -->
-	<div class="add-post" id="addPost">
-		<div class="add-post-form">
-		<?php include 'poster.php';?>
-		</div>
-	</div>
-    <div class="index-container">
-		<div class="index-sidenav">
-		<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
-        rel="stylesheet"
-    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="application/javascript">
         $(document).ready(function(){
@@ -51,9 +28,50 @@ if (!isset($_SESSION['SessionEmail'])) {
         })
         });
     </script>
-    <title>Sidebar</title>
+    
+	<link rel="stylesheet" type="text/css" href="../style.css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
+        rel="stylesheet"
+    />
+	<title>Home | Kapadyak</title>
 </head>
 <body>
+    <script type="text/javascript">
+            var auto_refresh = setInterval(
+            function ()
+            {
+            $('.index-content').load('feed.php') ;
+            
+            }, 20000); //refresh div every 20000 milliseconds or 20 seconds
+    </script>
+
+    <!-- floating add post  -->
+	<div class="add-post" id="addPost">
+		<div class="add-post-form">
+		<?php include 'poster.php';?>
+		</div>
+	</div>
+
+    <!-- floating edit post  -->
+	<div class="edit-post" id="editPost">
+		<div class="add-post-form">
+		<?php include 'post_editor.php';?>
+		</div>
+	</div>
+
+    <!-- floating Delete post  -->
+	<div class="delete-post" id="deletePost">
+		<div class="add-post-form">
+		<?php include 'delete_post.php';?>
+		</div>
+	</div>
+
+
+
+    <div class="index-container">
+		<div class="index-sidenav">
+
     <nav class="navbar">
         <ul class="navbar-nav">
 <!-- Logo -->
@@ -165,7 +183,15 @@ if (!isset($_SESSION['SessionEmail'])) {
                 <span class="link-text">Profile</span>
                 </a>
             </li>
-<!-- Message -->
+<!-- Message -->   <?php
+     $mctr=0;
+     $msg_query = $conn->query("select * from message where member_id='$id' and status='Unread' order by message_id ASC");
+                                while($msg_row = $msg_query->fetch())
+                                {
+                                   $mctr=$mctr+1;
+                                }
+                                
+                                   ?>
             <li class="nav-item">
                 <a href="inbox.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
@@ -182,7 +208,7 @@ if (!isset($_SESSION['SessionEmail'])) {
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Message</span>
+                <span class="link-text">Message <?php if($mctr==0){}else{ ?>&nbsp;<span class="link-text-badge"><?php echo $mctr; ?> </span> <?php } ?></span>
                 </a>
             </li>
 <!-- Status -->
@@ -230,30 +256,29 @@ if (!isset($_SESSION['SessionEmail'])) {
 			</li>
         
 		<!-- Manage Member -->
-		<li class="nav-item">
-<a href="tips.php" class="nav-link ">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
-<g class="fa-group">
-<path
-  fill="currentColor"
-  d="M0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5A1.5 1.5 0 0 0 0 1.5z"
-  class="fa-secondary"
-></path>
-<path
-  fill="currentColor"
- d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177V10.5z"
-  class="fa-primary"
-></path>
-</g>
-</svg>
-<span class="link-text"> Tips & Tricks</span>
-</a>
-</li>
-</ul>
-</nav>
-   
-</body>
-</html>		</div>
+            <li class="nav-item">
+                <a href="tips.php" class="nav-link ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+                <g class="fa-group">
+                    <path
+                        fill="currentColor"
+                        d="M0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5A1.5 1.5 0 0 0 0 1.5z"
+                        class="fa-secondary"
+                    ></path>
+                    <path
+                        fill="currentColor"
+                        d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177V10.5z"
+                        class="fa-primary"
+                    ></path>
+                </g>
+                </svg>
+                <span class="link-text"> Tips & Tricks</span>
+                </a>
+            </li>
+    </ul>
+    </nav>
+    
+	</div>
 
 		<div class="index-header">
 			<?php include '../Includes/Header.php'; ?>
@@ -261,10 +286,12 @@ if (!isset($_SESSION['SessionEmail'])) {
 
 		<div class="index-content">
 			<?php include 'feed.php';?>	
-			<button onclick="showAddPost()">
+			
+
+        </div>
+        <button onclick="showAddPost()">
 				<div class="add-post-button"></div>
 			</button>
-      </div>
 		</div>
 		
 	</div>	
