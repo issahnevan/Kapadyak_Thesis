@@ -101,7 +101,7 @@ include('connect/connection.php');
             <a onclick="showAddPost();">Forgot Password?</a><br><br>
             Don't have an account?
       
-            <br><a href="user_register.php">Create an Account!</a>
+            <br><a href="user_register.php">Create an Account</a>
             <script src="Scripts/index.js"> </script>
         </div>
         </form>
