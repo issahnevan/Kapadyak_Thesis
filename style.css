@@ -36,6 +36,11 @@ html body{
     height: 90vh;
     scroll-snap-align: start;
 }
+
+.start-content > section:nth-child(4){
+    height: 60vh;
+    scroll-snap-align: start;
+}
 .start-header{
     grid-area: sheader;
     position: sticky;
@@ -68,9 +73,9 @@ html body{
     font-weight: bold;
 }
 .join-button {
-    background: linear-gradient(-45deg, #ff6601, #fdc673);
+    background: linear-gradient(-45deg, #ff6601, #ffb039);
     background-size: 800% 400%;
-    padding: 1em 2em;
+    padding: 1em 1.5em;
     margin-right: 1.5em;
     display: inline-block;
     border: none;
@@ -79,13 +84,17 @@ html body{
     font-weight: 700;
     color: white;
     transition: all .5s ease-in-out;
-    animation: gradient 10s infinite cubic-bezier(.62, .28, .23, .99) both;
+    animation: gradient 5s infinite cubic-bezier(.62, .28, .23, .99) both;
     cursor: pointer;
    }
-   
+    .join-button > a{
+    font-family: inherit;
+    color: white;
+    }
    .join-button:hover {
     animation: gradient 3s infinite;
     transform: scale(1.05);
+
    }
    
    .join-button:active {
@@ -121,21 +130,30 @@ html body{
     justify-content: center;
     flex-direction: column;
     background-color: #fff;
+    position: relative;
 }
+
+.page-one-logo{
+    position: absolute;
+    top: 8%;
+}
+
 .page-one-title{
+    margin: 50px 0 0 0;
     /* color: rgb(255, 255, 255; */
     color: black;
-    font-size: 60px;
+    font-size: 3.5em;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
     text-transform: uppercase;
-    padding: 0 120px;
+    padding: 0 120px 0 100px;
+    text-align: left;
 }
 .page-one-subtitle{
     color: rgb(39, 38, 38);
     font-size: 25px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 20px 120px;
+    padding: 20px 120px 0 100px;
 }
 .page-one-right{
     grid-area: 1right;
@@ -184,11 +202,10 @@ html body{
     align-items: center;
     flex-direction: column;
     background: rgb(0,0,0);
-    background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(73, 72, 70) 100%);
+    background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(99, 99, 99) 100%);
     position: relative;
     width: 100%;
     z-index: 2;
-    height: 90vh;
 }
 
 .bike{
@@ -218,13 +235,13 @@ html body{
 }
 
 .page-two-subtitle{
-    color: rgb(19, 18, 18);
+    color: rgb(255, 255, 255);
     font-size: 30px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: rgb(199,13,13);
     background: linear-gradient(90deg, rgb(255, 165, 100) 0%, rgb(255, 94, 94) 100%);
-    box-shadow: 0 .3em .5em 0 rgb(187, 187, 187);
-    /* border-radius: 1em; */
+    box-shadow: 0 0 1em 0 rgb(223, 223, 223);
+    border-radius: .1em;
     padding: 10px 20px;
     margin: 10px 0;
     /* width: 100%; */
@@ -287,7 +304,35 @@ html body{
     font-size: 25px;
     padding: 20px 60px;
 }
-  
+.page-four{
+    background-color: rgb(44, 43, 43);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.page-four-content{
+    background-color: rgb(255, 255, 255);
+    height: 300px;
+    width: 800px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: .5em;
+    box-shadow: 0 0 2em 0 #e9e9e9;
+}
+.page-four-title{
+    font-size: 2.5em;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.page-four-subtitle{
+    font-size: 1em;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0 0 30px 0;
+}
 .reset-container{
     /* position: relative; */
     display: grid;
