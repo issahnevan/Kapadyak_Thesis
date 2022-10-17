@@ -19,6 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="ICON" type="image/x-icon" href="Images/logo.ico">
     <link rel="stylesheet" href="Style.css" type="text/css">
+    <script defer src="Scripts/app.js"></script>
     <title>Get Started</title>
 </head>
 <body>
@@ -40,8 +41,8 @@
     <div class="start-content">
         <section class="page-one">
             <div class="page-one-left">
-                <p class="page-one-title">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="page-one-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                <div class="page-one-title">A place to connect with other cyclist enthusiast</div>
+                <div class="page-one-subtitle">Interact and collaborate by expressing your thoughts through creative and engaging discussions.</div >
             </div>
             <div class="page-one-right">
                 <img src="Images/cyclist1.jpg"/>
@@ -50,10 +51,20 @@
             </div>
         </section>
         <section class="page-two">
-            wordwrap
+            <section class="page-two-bike">
+                <img src="Images/cyclist5.png" class="bike">
+            </section>
+            <div class="page-two-title">Rent a bike today</div>
+            <div class="page-two-subtitle">Own a spare bicycle? Get it rented right away by posting it on the platform.</div >
         </section>  
         <section class="page-three">
-            w
+            <div class="page-three-map">
+                <img src="Images/cyclist3.png">
+            </div>
+            <div class="page-three-text">
+            <div class="page-three-title">Track places easily using 2D mapping</div>
+            <div class="page-three-subtitle">Setting the location in posting may benefit other cyclist in finding the location you had been visited.</div >
+            </div>
         </section>
     </div>
     
