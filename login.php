@@ -88,8 +88,10 @@ include('connect/connection.php');
     <div class="login-input">
 
          <form action="#" method="POST" name="loginn">
-                <img src="Images/logo.png" class="login-logo2">
-                <div class="login-title">APADYAK</div>
+                <a href="start.php" title="Go back to start page">
+                    <img src="Images/logo.png" class="login-logo2">
+                    <div class="login-title">APADYAK</div>
+                </a>
                 <div class="login-text">Ride with us, enthusiast.</div>
               
 

@@ -22,14 +22,15 @@ function showEditPost() {
 	document.getElementById("editPost").classList.toggle("active");
 }
 function hideEditPost() {
-    window.location.href= 'index.php';
+    // window.location.href= '#';
 	document.getElementById("editPost").classList.remove("active");
 }
 function showDeletePost() {
 	document.getElementById("deletePost").classList.toggle("active");
 }
 function hideDeletePost() {
-    window.location.href= 'index.php';
+    // window.location.href= '#';
 	document.getElementById("deletePost").classList.remove("active");
 
 }
+

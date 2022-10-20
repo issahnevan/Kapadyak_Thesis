@@ -55,8 +55,8 @@
                             $mail->IsSMTP();
                             $mail->Host = "smtp.gmail.com"; // Enter your host here
                             $mail->SMTPAuth = true;
-                            $mail->Username = 'teamkapadyak2022@gmail.com';
-                    $mail->Password = 'hsqqhqktekjzabfj';
+                            $mail->Username = 'kapadyakofficial2022@gmail.com';
+                            $mail->Password = 'rnmezyfbvgexpzht';
                             $mail->Port = 587;
                             $mail->IsHTML(true);
                             $mail->From = "kapadyakofficial2022@gmail.com";

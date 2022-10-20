@@ -51,10 +51,10 @@
                     $mail->SMTPAuth=true;
                     $mail->SMTPSecure='tls';
     
-                    $mail->Username = 'teamkapadyak2022@gmail.com';
-                    $mail->Password = 'hsqqhqktekjzabfj';
+                    $mail->Username = 'kapadyakofficial2022@gmail.com';
+                    $mail->Password = 'rnmezyfbvgexpzht';
 
-                    $mail->setFrom('teamkapadyak2022@gmail.com', 'Kapadyak');
+                    $mail->setFrom('kapadyakofficial2022@gmail.com', 'Kapadyak');
                     $mail->addAddress($_POST["email"]);
     
                     $mail->isHTML(true);
@@ -103,12 +103,16 @@
 <body>
 
 <div class="register-container">
-        <div class="register-header">
-            <div class="register-HeaderTitle">Create Your Account</div>
+    <div class="register-header">
+        <div class="register-header-logo" id="headerLogo">
+            <a href="start.php"><img src="Images/logo.png" >
+                <span class="start-header-logo-text">APADYAK</span>
+            </a>
         </div>
+        <div class="register-HeaderTitle">Create Your Account</div>
+    </div>
 
     <div class="register-content">
-            
             <div id="register-layer1">
                <div class="Layer-Already">Already have an account? <a href="login.php">Sign-in &#8594</a></div>
                <div class="Layer-Title">Step 1 of 3</div>
@@ -174,9 +178,9 @@
                 <div class="div-input2 divFname"><input type="text" name="first_name" required> <label class="input-label">First Name</label></div>
                 <div class="div-input2 divMname"><input type="text" name="middle_name" required><label class="input-label">Middle Name</label></div>
                 <div class="div-input2 divLname"><input type="text" name="last_name" required> <label class="input-label">Last Name</label></div>
-                <div class="div-input2 divNumber"><input type="text" name="contact_number" required><label class="input-label">Contact Number</label></div> 
-                <div class="div-input2 divAddress"><input type="text" name="address" required><label class="input-label">Address</label></div> 
-                <div class="div-input2 divBday"><input type="date" id="datefield" min='1900-01-01' max='2000-13-13' name="dob" title="Birthday" required></div> 
+                <div class="div-input2 divNumber"><input type="tel" id="contactNumber" name="contact_number" placeholder="09XX-XXX-XXXX" onblur="ValidateNumber(this)" required><label class="input-label">Contact Number</label></div> 
+                <div class="div-input2 divAddress"><input type="text" name="address" id="div-address" required><label class="input-label">Address</label></div> 
+                <div class="div-input2 divBday"><input type="date" id="datefield" min='1900-01-01' name="dob" title="Birthday" required></div> 
                 <script>
                     var today = new Date();
                     var dd = today.getDate();

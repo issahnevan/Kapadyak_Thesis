@@ -104,3 +104,29 @@ function ValidateEmail(inputText)
         return true;
     }
 }
+
+function ValidateNumber(inputText)
+{    
+    var numberFormat = /^\(?([09]\d)\)?(\d{2})[- ]?(\d{3})[- ]?(\d{4})$/;
+    if(inputText.value.match(numberFormat)){
+        return true;
+    }
+    else{
+        if(inputText.value != ""){
+            if(inputText.value.length < 11 ){
+                alert("Contact number must contain 11 numbers!");
+                setTimeout(function(){
+                    document.getElementById("contactNumber").focus();
+                },0);
+                return false;
+            } else if(!inputText.value.match(numberFormat)){
+                alert("Invalid number, try again! \n\nPattern must be: \n09XXXXXXXXX or 09XX-XXX-XXXX");
+                setTimeout(function(){
+                    document.getElementById("contactNumber").focus();
+                },0);
+                return false;
+            }
+        }
+        return true;
+    }
+}

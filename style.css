@@ -329,7 +329,7 @@ html body{
     text-transform: uppercase;
 }
 .page-four-subtitle{
-    font-size: 1em;
+    font-size: 1.1em;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 0 0 30px 0;
 }
@@ -425,8 +425,8 @@ html body{
                 /*Image - right div*/
 .login-logo{
     grid-area: logo; 
-    background: rgb(253,29,29);
-    background: linear-gradient(90deg, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);
+    background: rgb(199,13,13);
+    background: linear-gradient(90deg, rgba(248, 0, 0, 0.7) 0%, rgba(251,104,0, 0.7) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -506,24 +506,47 @@ html body{
     'regHeader'
     'regContent';
 }
+
 .register-header{
     grid-area: regHeader;
-    height:auto;
-    padding: 15px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: rgb(255, 255, 255);
-    background-color: rgb(22, 22, 22);
-    text-align: center;
+    width: 100%;
+    background-color: rgba(255, 255, 255);
+    height: 4rem;
+    box-shadow: 0 .1em .2em 0 rgb(122, 122, 122);
+    position: relative;
+}
+.register-header-logo{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.register-header-logo > a{
+    display: flex;
+    align-items: center;
+}
+.register-header-logo > a > img{
+    width: 2rem;
+    margin:-5px 0 0 1em;
 }
 .register-HeaderTitle{
     font-weight: bold;
-    font-size: 25px;
+    font-size: 2rem;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: default;
+    padding: 15px;
+    color: black;
 }
 
 .register-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     grid-area: regContent;
     background: rgb(199,13,13);
-    background: linear-gradient(180deg, rgba(199,13,13,.6) 0%, rgba(251,104,0,.6) 100%);
+    background: linear-gradient(180deg, rgba(248, 0, 0, 0.5) 0%, rgba(251,104,0, 0.6) 100%);
 }
 
 #register-layer1{
@@ -535,7 +558,7 @@ html body{
     box-shadow: 0 0 0.5em 0em rgb(32, 32, 32);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: auto;
-    margin: 50px 150px 0 150px;
+    /* margin: 50px 150px 0 150px; */
     grid-template-areas: 
     'LTitle already'
     'Ldiv1 Ldiv2';
@@ -543,11 +566,12 @@ html body{
 
 .Layer-div1{
     grid-area: Ldiv1;
-    margin: 50px 0px;
+    padding: 50px 50px;
     align-self: center;
     justify-self: center;
 }
 .Layer-div2{
+    padding: 50px 50px;
     grid-area: Ldiv2;
     align-self: center;
     justify-content: center;
@@ -572,6 +596,14 @@ html body{
 }
 .divNumber{
     grid-area: contact;
+}
+.divNumber > input::placeholder{
+    opacity: 0;
+    font-size: 15px;
+}
+
+.divNumber > input:focus::placeholder{
+    opacity: 1;
 }
 .divAddress{
     grid-area: address;
@@ -612,7 +644,6 @@ html body{
 .div-input, .div-input2{
     position: relative;
 }
-
 .div-input> input,select{
     font-size: 18px;
     padding: 13px 18px;     
@@ -1183,7 +1214,6 @@ header{
 }
 
 .feed-card:hover .card-popup{
-
     bottom: 0;
 }
 .feed-card:hover{
@@ -1609,8 +1639,44 @@ header{
 .personal-profile{
     grid-area: profile;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
-.personal-profile img{
+
+.personal-profile:hover .personal-profile-popup{
+    bottom: 0;
+}
+
+.personal-profile-popup{
+    z-index: 1;
+    position:absolute; 
+    bottom: -100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    color: #fff;
+    background: rgba(80, 80, 80, 0.5);
+    transition: all 0.3s;
+    backdrop-filter: blur(3px);
+}
+.personal-profile-popup> img{
+    object-fit:contain;
+    object-position: 50% 50%;
+    height: 250px;
+    width: 250px;
+    filter:brightness(50);
+}
+
+.personal-profile-popup> div{
+    font-size: 1.2em;
+}
+
+.personal-profile > img{
     height: 250px;
     width: 230px;
     padding: 40px;
