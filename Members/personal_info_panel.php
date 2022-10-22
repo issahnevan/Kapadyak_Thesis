@@ -256,7 +256,7 @@ $query = $conn->query("select * from members where member_id = '$id2'");
     <div class="personal-container">
     <div class="personal-title">Personal Information</div>
     <div class="personal-form">
-      <div class="personal-profile" onclick="showAddPost()">					 	
+      <div class="personal-profile">					 	
         <?php include('profile_picture.php'); ?>
       </div>
       <div class="personal-update-button">

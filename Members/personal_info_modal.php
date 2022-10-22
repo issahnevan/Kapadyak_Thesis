@@ -19,7 +19,9 @@ $get_id= $_GET['id'];
 	<link rel="ICON" type="image/x-icon" href="../Images/logo.ico">
 	<link rel="stylesheet" type="text/css" href="../style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-	<script src="../Script/index.js"></script>
+	<script src="../Scripts/index.js"></script>
+	<script src="../Scripts/passStrength.js"></script>
+				
 	<title>Update Account</title>
 </head>
 <body>
@@ -44,7 +46,11 @@ $get_id= $_GET['id'];
 			<div class="personal-container">
 			<div class="personal-title">Edit Personal Information</div>
 			<div class="personal-form">
-			<div class="personal-profile" onclick="showAddPost()">					 	
+			<div class="personal-profile">
+				<div class="personal-profile-popup" onclick="showAddPost()">
+					<img src="../Images/change-profile.png">
+					<div>Change Profile Picture</div>
+				</div>
 				<?php include('profile_picture.php'); ?>
 			</div>
 			<div class="personal-update-button ">
@@ -57,9 +63,28 @@ $get_id= $_GET['id'];
 						<input name="middlename" value="<?php echo $row['middle_name']; ?>" type="text" class="form-control" >
 						<input name="lastname" value="<?php echo $row['last_name']; ?>" type="text" class="form-control">
 				</div>
+				
 				<div>Username: <input name="username" value="<?php echo $row['username']; ?>" type="text" class="form-control"></div>
-				<div>Date of Birth:<label> <input name="birth" value="<?php echo $row['dob']; ?>" type="text" class="form-control" /></label></div>
-				<div>Contact No:<label> <input name="contact_no" value="<?php echo $row['contact_number']; ?>" type="text" class="form-control" /></label></div>
+				<div>Date of Birth:<label><input name="birth"  id="datefield" min='1900-01-01' max='2000-13-13' value="<?php echo $row['dob']; ?>" type="date" class="form-control" /></label></div>
+				<script>
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth() + 1; //January is 0!
+                    var yyyy = today.getFullYear();
+
+                    if (dd < 10) {
+                    dd = '0' + dd;
+                    }
+
+                    if (mm < 10) {
+                    mm = '0' + mm;
+                    } 
+                        
+                    today = yyyy + '-' + mm + '-' + dd;
+                    document.getElementById("datefield").setAttribute("max", today);
+                </script>
+				<div>Contact No:<label><input type="tel" class="form-control" id="contactNumber" placeholder="09XX-XXX-XXXX" name="contact_no" value="<?php echo $row['contact_number']; ?>" onblur="ValidateNumber(this)"; required /></label></div>
+				
 				<div>Address:<label> <input name="address" value="<?php echo $row['address']; ?>" type="text" class="form-control"></label></div>
 				<div>Email Address:<label> <?php echo $row['email_address']; ?></label></div>
 				<div>Sex:<label> 
