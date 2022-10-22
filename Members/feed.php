@@ -154,7 +154,7 @@ include('../session.php');
 
               <div class="card-body-title">  
                <?php 
-              if($post_row['post_image']!="../post_images/"){ ?> 
+              if($post_row['post_image']!=""){ ?> 
                <img src="<?php echo $post_row['post_image']?>" alt="..." class="card-picture">
                <div class="card-title-float"><?php echo $post_row['post_title']; ?></div><?php } 
                else{

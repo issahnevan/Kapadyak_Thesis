@@ -26,7 +26,7 @@
 <div class="start-container">
     <div class="start-header">
         <div class="header-logo" id="headerLogo">
-            <a href="index.php"><img src="Images/logo.png" >
+            <a href="start.php"><img src="Images/logo.png" >
                 <!-- <span class="start-header-logo-text">APADYAK</span> -->
             </a>
         </div>

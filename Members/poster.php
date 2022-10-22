@@ -30,9 +30,9 @@ if (!isset($_SESSION['SessionEmail'])) {
     <div> 
         <select name="topic" class="form-control">
           <option>FEED</option>
-          <option>PRE LOVED</option>
+          <!-- <option>PRE LOVED</option>
           <option>RENTAL</option>
-          <option>EVENTS</option>
+          <option>EVENTS</option> -->
         </select>
     </div>
     <div class="add-form-subtitles">Title: </div>
@@ -41,8 +41,9 @@ if (!isset($_SESSION['SessionEmail'])) {
         <textarea name="post_content" class="form-control" rows="12" required></textarea>
 
             <div class="image-upload" title="Upload FIle">
-                <input type="file" id="image1" name="image" accept="image/*" onchange="showImage(event);">
-                <label for="image1">Upload Image</label>
+                <input type="file" id="image1" name="image[]" accept="multiple" onchange="showImage(event);" multiple>
+                <label for="image1">Add Photos/Videos</label><br>
+
               <div class="image-preview">
                 <img id="image1-preview">
               </div>
@@ -56,57 +57,82 @@ if (!isset($_SESSION['SessionEmail'])) {
 
     <?php
       if (isset($_POST['post'])){
-
-        $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-        $image_name = addslashes($_FILES['image']['name']);
-        $image_size = getimagesize($_FILES['image']['tmp_name']);
-
-        move_uploaded_file($_FILES["image"]["tmp_name"], "../post_images/" . $_FILES["image"]["name"]);
+        $errors= array();
+        $file_name = $_FILES['image']['name'];
+        $file_size = $_FILES['image']['size'];
+        $file_tmp = $_FILES['image']['tmp_name'];
+        $file_type = $_FILES['image']['type'];
+    
+      if(empty($errors)==true) {
+        $file='';
+        $file_tmp='';
+        $image_location="../post_images/";
+        $video_location="../post_videos/";
+        $data='';
         
-        $location = "../post_images/" . $_FILES["image"]["name"];
+        foreach($_FILES['image']['name'] as $key=>$val)
+       {
+        $file=$_FILES['image']['name'][$key];
+        $file = str_replace(' ', '_', $file);
+        $file_tmp=$_FILES['image']['tmp_name'][$key];
+        $file_ext=strtolower(end(explode('.',$_FILES['image']['name'][$key])));
+
+        $mediaType = "";
+
+        switch ($file_ext) {
+            case "mp4":
+            case "mkv":
+            case "mov":
+            case "ogg":
+            case "webm":
+                $mediaType = "video";
+                break;
+            case "jpg":
+            case "jpeg":
+            case "gif":
+            case "png":
+
+            default:
+                $mediaType = "image";
+                break;
+        }
+
+        if($mediaType == "video"){
+          move_uploaded_file($file_tmp,$video_location.$file);
+        } else{
+          move_uploaded_file($file_tmp,$image_location.$file);
+        }
+        
+        $data .=$file." ";
+        if($data == " "){
+            $data = "";
+        }
+
+       }
 
         $topic = $_POST['topic'];
         $post_title = $_POST['post_title'];
         $post_content = $_POST['post_content'];
         $date_posted = date('m'.'/'.'d'.'/'.'Y')." | ".date("h:i:sa");
  
-          $query_topic_ctr = $conn->query("select * from members where member_id='$id2'") or die(mysql_error());
-		while ($row_query_topic_ctr = $query_topic_ctr->fetch()) 
+        $query_topic_ctr = $conn->query("select * from members where member_id='$id2'") or die(mysql_error());
+		    while ($row_query_topic_ctr = $query_topic_ctr->fetch()) 
         {
             $ctr_topic=$row_query_topic_ctr['topic_ctr']+1;
-            	$conn->query("update members set topic_ctr='$ctr_topic' where member_id='$id2'");
+            $conn->query("update members set topic_ctr='$ctr_topic' where member_id='$id2'");
         }
                               
-        $connect->query("insert into post (member_id,date_posted,post_content,post_title,post_image,topic,access) values('$id2','$date_posted','$post_content','$post_title','$location','$topic','Member')");
+        $connect->query("insert into post (member_id,date_posted,post_content,post_title,post_image,topic,access) values('$id2','$date_posted','$post_content','$post_title','$data','$topic','Member')");
         if($topic=="FEED")
         {
 
         ?>
         <script>
-        window.location = 'index.php';
         </script>
 
         <?php
         }
-        elseif($topic=="PRE LOVED")
-        {
-        ?>
-
-        <script>
-          window.location = 'feed_pre.php';
-        </script>	
-        <?php 
-        }
-        elseif($topic=="RENTAL")
-        {
-        ?>
-
-        <script>
-          window.location = 'feed_rental.php';
-        </script>	
-        <?php 
-        }
-        elseif($topic=="EVENTS")
+       
         {
         
           ?>
@@ -152,31 +178,16 @@ if (!isset($_SESSION['SessionEmail'])) {
                               }
                               ?>
                         <script>
-                          window.location = 'feed_events.php';
                         </script>	
                         
                         <?php  
                                   }
                                       
+                                       }} else {
+                                        print_r($errors);
                                        } ?>
             
             </div>
             
                
           </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    

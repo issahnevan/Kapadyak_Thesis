@@ -44,8 +44,7 @@ date_default_timezone_set('Asia/Manila');
             $access=$post_row['access'];
             $replies=$post_row['replies'];
             $threads=$post_row['threads'];
-                    
-                
+            
             if($access=="Admin")
             {   
             $pmem_query = $conn->query("select * from user where user_id='$mmmmm'");
@@ -66,6 +65,8 @@ date_default_timezone_set('Asia/Manila');
             $pmname=$pmem_row['first_name']." ".$pmem_row['middle_name']." ".$pmem_row['last_name'];
             } 
             }
+
+            
             ?>
 
             <h1>View Post</h1>
@@ -83,15 +84,56 @@ date_default_timezone_set('Asia/Manila');
                     </div>
                 </div>
                <div class="comment-body">
-                    <?php if($post_row['post_image']=="../post_images/"){  ?>
+                
+                    <?php 
+                  
+                   if($post_row['post_image']!=""){  
+                    $i="";
+                    $iquery=mysqli_query($connect,"select post_image from post where post_id = '$ppppp'");
+                    $data=mysqli_fetch_array($iquery);
+                    $res=$data['post_image'];
+                    $res=explode(" ",$res);
+                    $count=count($res)-1;        
+                    for($i=0;$i<$count;$i++)
+                    {
+                        $tmp = explode('.', $res[$i]);
+                        $file_ext = end($tmp);
+                        $mediaType = "";
+
+                        switch ($file_ext) {
+                            case "mp4":
+                            case "mkv":
+                            case "mov":
+                            case "ogg":
+                            case "webm":
+                                $mediaType = "video";
+                                break;
+                            case "jpg":
+                            case "jpeg":
+                            case "gif":
+                            case "png":
+
+                            default:
+                                $mediaType = "image";
+                                break;
+                        }
+
+                        if($mediaType == "video"){
+                            ?>
+                            <video src="../post_videos/<?= $res[$i]?>" width="400px" controls/>';
+                            <?php
+                        } else if($mediaType == "image"){
+                            ?>
+                            <img src="../post_images/<?= $res[$i]?>" height="100px" width="100px"/>
+                            <?php
+                        }
+                  
+                    } ?>
                         <div class="comment-body-text">
                             <?php echo nl2br($post_row['post_content']); ?>
                         </div>
                     <?php }else{ ?>
                        
-                        <div class="comment-body-img">
-                            <img src="<?php echo $post_row['post_image']; ?>" alt="..."/>
-                        </div>
                         <div class="comment-body-text">
                             <?php echo nl2br($post_row['post_content']); ?>
                         </div>
@@ -128,8 +170,8 @@ date_default_timezone_set('Asia/Manila');
                     $cmname =$cmem_row['first_name']." ".$cmem_row['middle_name']." ".$cmem_row['last_name'];
                     }
                 }
-          
                 ?>
+
 
             <div class="comment-container">
                 <div class="comment-header">
@@ -143,7 +185,7 @@ date_default_timezone_set('Asia/Manila');
                                 <h1><?php echo $post_row['post_title']; ?></h1>
                             </div>
                         </div>
-                </div>      
+                </div>
                <div class="comment-body">
                     <?php 
                     if($cm_id==$id2 and $access=="Member")
