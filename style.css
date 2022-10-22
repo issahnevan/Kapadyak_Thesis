@@ -1345,8 +1345,9 @@ header{
     word-wrap: break-word;
     display: flex;
     text-transform: uppercase;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: center;
+    align-items: center;
     position: relative;
     text-align: center;
     height: 200px;

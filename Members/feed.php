@@ -154,10 +154,61 @@ include('../session.php');
 
               <div class="card-body-title">  
                <?php 
-              if($post_row['post_image']!=""){ ?> 
-               <img src="<?php echo $post_row['post_image']?>" alt="..." class="card-picture">
-               <div class="card-title-float"><?php echo $post_row['post_title']; ?></div><?php } 
-               else{
+              $i="";
+              $iquery=mysqli_query($connect,"select post_image from post where post_id = '$ppppp'");
+              $data=mysqli_fetch_array($iquery);
+              $res=$data['post_image'];
+              $res=explode(" ",$res);
+              $count=count($res)-1;     
+
+              if($post_row['post_image'] != "" && $count > 1){ 
+                 
+                for($i=0;$i<$count;$i++)
+                {
+                    $tmp = explode('.', $res[$i]);
+                    $file_ext = end($tmp);
+                    $mediaType = "";
+
+                    switch ($file_ext) {
+                        case "mp4":
+                        case "mkv":
+                        case "mov":
+                        case "ogg":
+                        case "webm":
+                            $mediaType = "video";
+                            break;
+                        case "jpg":
+                        case "jpeg":
+                        case "gif":
+                        case "png":
+
+                        default:
+                            $mediaType = "image";
+                            break;
+                    }
+
+                    if($mediaType == "video"){
+                        ?>
+                        <video src="../post_videos/<?= $res[$i]?>" width="200px" class="card-picture"></video>
+                        <?php
+                    } else if($mediaType == "image"){
+                        ?>
+                        <img src="../post_images/<?= $res[$i]?>" height="100px" width="100px" class="card-picture"/>
+                        <?php
+                    }
+              } ?>
+
+               <div class="card-title-float">
+                  <?php echo $post_row['post_title']; ?>
+                </div><?php 
+
+              } else if($post_row['post_image'] != "" && $count == 1){ ?>
+                <img src="../post_images/<?= $post_row['post_image']?>" height="100px" width="100px" class="card-picture"/>
+                <div class="card-title-float">
+                  <?php echo $post_row['post_title']; ?>
+                </div><?php 
+              }
+              else{
                 echo $post_row['post_title']; 
               }
               ?>
