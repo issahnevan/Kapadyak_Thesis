@@ -120,7 +120,7 @@ date_default_timezone_set('Asia/Manila');
 
                         if($mediaType == "video"){
                             ?>
-                            <video src="../post_videos/<?= $res[$i]?>" width="400px" controls/>';
+                            <video src="../post_videos/<?= $res[$i]?>" width="400px" controls></video>
                             <?php
                         } else if($mediaType == "image"){
                             ?>

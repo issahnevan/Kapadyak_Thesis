@@ -7,7 +7,11 @@ if(!isset($_SESSION))
 } 
 
 if (!isset($_SESSION['id']) || ($_SESSION['id'] == '')) {
-header('location:login.php?=Error');
+    ?>
+    <script>
+        window.location = '../login.php?=Error';
+    </script>	
+    <?php
 }
 
 $id = $_SESSION['id'];

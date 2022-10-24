@@ -98,7 +98,7 @@ include('../session.php');
    
     <div class="feed-card-body">
    
-              <div class="card-body-header"> 
+          <div class="card-body-header"> 
                 <ul> 
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
@@ -150,10 +150,10 @@ include('../session.php');
                   </li>
 
                 </ul>
-              </div>
+          </div>
 
-              <div class="card-body-title">  
-               <?php 
+            <div class="card-body-content">  
+              <?php 
               $i="";
               $iquery=mysqli_query($connect,"select post_image from post where post_id = '$ppppp'");
               $data=mysqli_fetch_array($iquery);
@@ -186,30 +186,37 @@ include('../session.php');
                             $mediaType = "image";
                             break;
                     }
-
+                    ?>
+                    <div class="card-body-background">
+                    <?php
                     if($mediaType == "video"){
                         ?>
-                        <video src="../post_videos/<?= $res[$i]?>" width="200px" class="card-picture"></video>
+                        <video src="../post_videos/<?= $res[$i]?>"></video>
                         <?php
                     } else if($mediaType == "image"){
                         ?>
-                        <img src="../post_images/<?= $res[$i]?>" height="100px" width="100px" class="card-picture"/>
+                        <img src="../post_images/<?= $res[$i]?>"/>
                         <?php
                     }
+                    ?>
+                    </div>
+                    <?php
               } ?>
 
-               <div class="card-title-float">
+                <div class="card-title-float">
                   <?php echo $post_row['post_title']; ?>
                 </div><?php 
 
               } else if($post_row['post_image'] != "" && $count == 1){ ?>
-                <img src="../post_images/<?= $post_row['post_image']?>" height="100px" width="100px" class="card-picture"/>
+                <img src="../post_images/<?= $post_row['post_image']?>" class="card-body-background-single"/>
                 <div class="card-title-float">
                   <?php echo $post_row['post_title']; ?>
                 </div><?php 
               }
-              else{
-                echo $post_row['post_title']; 
+              else{?>
+                <div class="card-title-float-blank">
+                  <?php echo $post_row['post_title']; ?>
+                </div><?php
               }
               ?>
               
@@ -218,7 +225,7 @@ include('../session.php');
               <a href="add_views.php?id=<?php echo $ppppp ?>">View Post</a>
               </div>
               
-    </div>
+            </div>
               
   </div>
   
