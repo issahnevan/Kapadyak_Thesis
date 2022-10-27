@@ -207,11 +207,50 @@ include('../session.php');
                   <?php echo $post_row['post_title']; ?>
                 </div><?php 
 
-              } else if($post_row['post_image'] != "" && $count == 1){ ?>
-                <img src="../post_images/<?= $post_row['post_image']?>" class="card-body-background-single"/>
-                <div class="card-title-float">
-                  <?php echo $post_row['post_title']; ?>
-                </div><?php 
+              } else if($post_row['post_image'] != "" && $count == 1){ 
+                for($i=0;$i<$count;$i++)
+                {
+                    $tmp = explode('.', $res[$i]);
+                    $file_ext = end($tmp);
+                    $mediaType = "";
+
+                    switch ($file_ext) {
+                        case "mp4":
+                        case "mkv":
+                        case "mov":
+                        case "ogg":
+                        case "webm":
+                            $mediaType = "video";
+                            break;
+                        case "jpg":
+                        case "jpeg":
+                        case "gif":
+                        case "png":
+
+                        default:
+                            $mediaType = "image";
+                            break;
+                    }
+                    ?>
+                    <div class="card-body-background-single">
+                    <?php
+                    if($mediaType == "video"){
+                        ?>
+                        <video src="../post_videos/<?= $res[$i]?>"></video>
+                        <?php
+                    } else if($mediaType == "image"){
+                        ?>
+                        <img src="../post_images/<?= $res[$i]?>"/>
+                        <?php
+                    }
+                    ?>
+                    </div>
+                    <div class="card-title-float">
+                      <?php echo $post_row['post_title']; ?>
+                    </div>
+                    <?php
+                    
+              } 
               }
               else{?>
                 <div class="card-title-float-blank">

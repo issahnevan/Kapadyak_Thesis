@@ -40,7 +40,7 @@
             </li>
 <!-- Newsfeed -->
             <li class="nav-item">
-                <a href="index.php" class="nav-link">
+                <a href="index.php" class="nav-link highlight">
                 <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
                 <g class="fa-group">
                     <path
@@ -149,7 +149,15 @@
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Message</span>
+                <span class="link-text">Message 
+                    <?php 
+                    $msg_query = $conn->query("SELECT COUNT(member_id) as unreadMessage FROM message WHERE status='Unread' AND member_id='$id2'");
+                    $data=$msg_query->fetch();
+                    $unreadCount = $data['unreadMessage'];
+                    if($unreadCount > 0){ 
+                        ?><span class="link-text-badge"><?php echo $unreadCount; ?> </span> <?php
+                    }?>  
+                </span>
                 </a>
             </li>
 <!-- Status -->

@@ -264,6 +264,9 @@
 					<th>Email Address</th>
 					<th>Contact Number</th>
 					<th></th>
+                    <th>Pending Post</th>
+               
+   
 					<th class="empty">Action</th>
 		</tr>
 		</thead>
@@ -283,7 +286,6 @@
 		<td><?php echo $row['address']; ?></td> 
 		<td><?php echo $row['email_address']; ?></td> 
 		<td><?php echo $row['contact_number']; ?></td> 
- 
         	<td><?php 
             
             
@@ -327,3 +329,56 @@
 	
 		</tbody>
         	<?php }  ?>
+          
+          <?php
+
+		$query = $conn->query("select * from post LEFT JOIN members on post.member_id = members.member_id where pstatus_rnt= 'PENDING'") or die(mysql_error());
+		while ($row = $query->fetch()) {
+		$id = $row['post_id'];
+        ?>
+        <tbody>
+	
+		<tr>
+         
+        <td><?php echo $row['pstatus_rnt']; ?></td> 
+        	<td><?php 
+            
+            ?> </td> 
+            
+		<td class="empty" width="280">
+        <form method="POST">
+       
+        <input name="edit_id" type="hidden" value="<?php echo $id; ?>" />
+	<?php if($row['pstatus_rnt']=="PENDING"){
+	   ?>
+       
+         <input name="pstatus_rnt" type="hidden" value="APPROVED" />
+         <button data-placement="left" title="Click to  Deactivate Member"  name="update"  class="btn btn-success">approved</button>
+
+       
+       <?php
+       }   ?>
+       
+
+    
+        </tbody>
+        
+        	<?php }  ?>
+
+            <?php
+							if (isset($_POST['update'])){
+							 
+                                $edit_id =  $_POST['edit_id'];
+							  
+       	                        $pstatus =  $_POST['pstatus_rnt'];
+                                   
+								$conn->query("update post set pstatus_rnt='$pstatus' where post_id='$edit_id'");
+                                ?>
+                                <script>
+                                    alert('Post Approved');
+                                    window.location = 'data.php';
+                                </script>	
+                                <?php 
+                            
+						  } ?>
+     

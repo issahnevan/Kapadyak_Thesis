@@ -272,7 +272,7 @@ session_start();
 		 
 <?php  
  
-									$post_query = $conn->query("select * from post LEFT JOIN members on post.member_id = members.member_id where topic='EVENTS' order by post_id DESC");
+									$post_query = $conn->query("select * from post LEFT JOIN members on post.member_id = members.member_id where pstatus_rnt='APPROVED' order by post_id DESC");
 									while($post_row = $post_query->fetch()){
 							 
                       

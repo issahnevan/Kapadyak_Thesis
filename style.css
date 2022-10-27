@@ -868,7 +868,8 @@ html body{
     width: 100%;
     grid-template-areas: 
     'header2 header2'
-    'sidenav indexcontent';
+    'sidenav indexcontent'
+    'footer footer';
 }
 .index-sidenav{
     grid-area: sidenav;
@@ -921,7 +922,7 @@ html body{
     background-color: var(--bg-secondary);
     overflow: hidden;
     width: auto;
-    height: 90vh;
+    height: 100vh;
     transition: width 200ms ease;
 }
 
@@ -1362,17 +1363,13 @@ header{
     flex-basis: auto;
     filter: blur(3px);
 }
-.card-body-background > video{
+.card-body-background > video, .card-body-background > img{
     object-fit: cover;
     width: inherit;
     height: 100%;
 }
-.card-body-background > img{
-    object-fit: cover;
-    width: inherit;
-    height: 100%;
-}
-.card-body-background-single{
+
+.card-body-background-single > video, .card-body-background-single > img{
     object-fit: cover;
     object-position: 50% 25%;
     width: 100%;

@@ -191,8 +191,7 @@ date_default_timezone_set('Asia/Manila');
                     if($cm_id==$id2 and $access=="Member")
                     { 
                     ?>
-                    <td >&nbsp;</td>
-                    <td width="5"><a href="del_comment.php?comment_id=<?php echo $ccccc;?>&post_id=<?php echo $get_id; ?>"><i class="fa fa-trash-o">Delete</i></a></td>
+                    <a href="del_comment.php?comment_id=<?php echo $ccccc;?>&post_id=<?php echo $get_id; ?>">Delete</a>
                     <?php 
                     } 
                     else   
@@ -219,10 +218,10 @@ date_default_timezone_set('Asia/Manila');
         <?php	$repz_query = $conn->query("select * from repz where comment_id='$ccccc' order by reply_id ASC");
         while($repz_row = $repz_query->fetch())
         {
-        $repz_id= $repz_row['reply_id'];
-        $rm_id= $repz_row['member_id'];
-        $rimg =$repz_row['reply_image'];
-        $r_access =$repz_row['access'];
+        $repz_id = $repz_row['reply_id'];
+        $rm_id = $repz_row['member_id'];
+        $rimg = $repz_row['reply_image'];
+        $r_access = $repz_row['access'];
                 
         if($r_access=="Admin")
         {	
@@ -259,17 +258,9 @@ date_default_timezone_set('Asia/Manila');
                     </div>
                 </div>
                <div class="comment-body">
-                    <?php 
-                    if($rm_id==$id2 and $r_access=="Member")
-                    { 
-                    ?>
-                        <td width="5">&nbsp;</td>
-                    <td width="5"><a href="delete_reply.php?repz_id=<?php echo $repz_id;?>&post_id=<?php echo $get_id; ?>"><i class="fa fa-trash-o"></i></a></td>
-                    <?php  
-                    }
-                    else   
-                    {} 
-                    ?>
+
+                    <a href="del_reply.php?repz_id=<?php echo $repz_id;?>&post_id=<?php echo $get_id; ?>">Delete</a>
+
                    <?php if($rimg=="../repz_images/"){ ?> 
                         <div class="comment-body-text">
                             <?php  echo nl2br($repz_row['reply_content']); ?>
@@ -292,7 +283,7 @@ date_default_timezone_set('Asia/Manila');
                         <input type="hidden" name="post_id" value="<?php echo $get_id; ?>" />
                         <input type="hidden" name="comment_id" value="<?php echo $ccomment_row['comment_id'];; ?>" />
                             <div class="comment-body-inputs">
-                                <textarea name="comment_content" class="form-control" rows="2" placeholder="Reply here..." required autofocus></textarea>
+                                <textarea name="reply_content" class="form-control" rows="2" placeholder="Reply here..." required autofocus></textarea>
                             </div>
                             <div class="comment-body-buttons">
                                 <input type="file" name="repz_image" class="comment-body-button-file" title="click to add image to your comment"/>
@@ -354,7 +345,7 @@ date_default_timezone_set('Asia/Manila');
               
               
                             
-                $conn->query("insert into repz (member_id,date_replied,reply_content,comment_id,reply_image,access) values ('$id2','$date_replied','$reply_content','$comment_id','$repz_location','Member')");
+                $conn->query("INSERT INTO repz (member_id,date_replied,reply_content,comment_id,reply_image,access) VALUES ('$id2','$date_replied','$reply_content','$comment_id','$repz_location','Member')");
 					 	
                 $post_query = $conn->query("select * from post where post_id='$topic_id'");
 				while($post_row = $post_query->fetch())
