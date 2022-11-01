@@ -113,7 +113,7 @@ if (!isset($_SESSION['SessionEmail'])) {
         $topic = $_POST['topic'];
         $post_title = $_POST['post_title'];
         $post_content = $_POST['post_content'];
-        $date_posted = date('m'.'/'.'d'.'/'.'Y')." | ".date("h:i:sa");
+        $date_posted = date('M'.' '.'d'.', '.'Y')." | ".date("h:i:sa");
  
         $query_topic_ctr = $conn->query("select * from members where member_id='$id2'") or die(mysql_error());
 		    while ($row_query_topic_ctr = $query_topic_ctr->fetch()) 
