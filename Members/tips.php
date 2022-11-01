@@ -171,7 +171,15 @@
                     ></path>
                 </g>
                 </svg>
-                <span class="link-text">Message</span>
+                <span class="link-text">Message 
+                    <?php 
+                    $msg_query = $conn->query("SELECT COUNT(member_id) as unreadMessage FROM message WHERE status='Unread' AND member_id='$id2'");
+                    $data=$msg_query->fetch();
+                    $unreadCount = $data['unreadMessage'];
+                    if($unreadCount > 0){ 
+                        ?><span class="link-text-badge"><?php echo $unreadCount; ?> </span> <?php
+                    }?>  
+                </span>
                 </a>
             </li>
 <!-- Status -->
@@ -410,9 +418,7 @@ include('../session.php');
 </div>
 
 
-			<button onclick="showAddPost()">
-				<div class="add-post-button"></div>
-			</button>
+      <div class="add-post-button" onclick="showAddPost()"></div>
 		</div>
 		
 	</div>	
